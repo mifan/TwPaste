@@ -21,7 +21,11 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "systemu"
+
   config.gem "uuidtools"
+
+  config.gem "acts-as-taggable-on", :source => "http://gemcutter.org"
+
   # config.gem "rmagick"	
 
   # Only load the plugins named here, in the order given (default is alphabetical).
