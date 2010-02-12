@@ -86,8 +86,8 @@ class SnippetsController < ApplicationController
     
     if request.post?
       pcomment = params[:comment]
-
-      @comment = @snippet.comments.new(:title => pcomment[:title],:user => @current_user,:comment => pcomment[:comment])       
+      title = (pcomment[:title].blank?)?'Anonymous':pcomment[:title]
+      @comment = @snippet.comments.new(:title => title,:user => @current_user,:comment => pcomment[:comment])       
 
         if @comment.save
           redirect_to :controller => :snippets, :action => :show,:id => params[:id],:anchor => "comments"

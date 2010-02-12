@@ -48,21 +48,7 @@
 	<div id="comment_new">
   	<div class="form">	
   		<% form_for @comment,:url => "/code/#{params[:id]}/comment" do |f|%>
-  		<%= f.error_messages %>	  
-  		<% if @current_user %>
-  		<%= f.hidden_field :title, :value => @current_user.name %>
-  		<% else %>
-      <div class="row">
-        <%= f.label :title,"Name:" %><br />
-        <%= f.text_field :title ,:class => "short" %>				
-  		</div>
-    	<div class="row">
-    	  <%= captcha_hidden_text %>
-    	  <%= captcha_input_text("Captcha:<br />") %><br /> 	  
-        <label>Unregistered user must enter the Captcha, <%= link_to "login", login_path %> </label><br />
-    	  <%= captcha_image %> 	
-    	</div>
-  		<% end %>
+  		<%= f.error_messages %>
   		<div class="row">
         <%= f.label :comment,"Comment:" %><br />
         <%= f.text_area :comment ,:class => "text", :rows => 4, :cols => 50 %>				
