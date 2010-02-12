@@ -28,6 +28,8 @@ Rails::Initializer.run do |config|
 
   config.gem "will_paginate", :source => "http://gemcutter.org"
 
+  config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
+
   # config.gem "rmagick"	
 
   # Only load the plugins named here, in the order given (default is alphabetical).
