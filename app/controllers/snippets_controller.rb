@@ -88,17 +88,13 @@ class SnippetsController < ApplicationController
       pcomment = params[:comment]
 
       @comment = @snippet.comments.new(:title => pcomment[:title],:user => @current_user,:comment => pcomment[:comment])       
-      if !captcha_validated? and !@current_user
-        @comment.errors.add("captcha","不正确，请检查")    
-        render :action => "show",:archor => "comments"
-      else
-        
+
         if @comment.save
           redirect_to :controller => :snippets, :action => :show,:id => params[:id],:anchor => "comments"
         else
           render :action => "show",:archor => "comments"
         end     
-      end
+  
     else            
       @comment = @snippet.comments.new
       set_seo_meta("##{@snippet.id} #{@snippet.title}")
@@ -136,9 +132,6 @@ class SnippetsController < ApplicationController
     if @current_user
       @snippet.user_id = @current_user.id
     else
-      if !captcha_validated?
-        @snippet.errors.add("captcha","不正确，请检查")       
-      end
       @snippet.user_id = nil
     end
     

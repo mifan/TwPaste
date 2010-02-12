@@ -15,9 +15,11 @@ class Highlight
     f = File.new(tmpfile,"a")
     f.puts code
     f.close
-    result = systemu("pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile}")
+    #result = systemu("pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile}")
+    result = code 
     File.delete(tmpfile)
 
-    return result[1].gsub('<div class="highlight">','<div class="inner_code">')
+    #return result[1].gsub('<div class="highlight">','<div class="inner_code">')
+    result
   end
 end
