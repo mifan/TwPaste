@@ -2,26 +2,6 @@ class HomeController < ApplicationController
 	before_filter :require_login, :only => [:settings]
 	validates_captcha
 	
-	def register		
-		@user = User.new
-		
-		if params[:user]
-			@user = User.new(params[:user])
-            passwd_unencoded = @user.passwd
-			@user.passwd = User.encode(@user.passwd)
-			if @user.save
-				save_notice("Register successed.")
-                # send regist successed mail to user Email
-                Mailer.regist_successed(@user,passwd_unencoded)
-				save_login(@user)
-				redirect_to "/"
-				return
-			end
-		end
-		set_seo_meta("Register")
-		render :action => "register"
-		
-	end
 	
 	# login
   def login
@@ -67,14 +47,7 @@ class HomeController < ApplicationController
 		end
 	end
 	
-	def password
-		if request.method == :put
-      if @current_user.update_passwd(params[:old_passwd], params[:new_passwd], params[:confirm_passwd])
-        save_notice("Password changed.")
-        redirect_to :action => "password"
-      end
-    end
-	end
+	
 
 	def help
 		set_seo_meta("Help")

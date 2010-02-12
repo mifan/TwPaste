@@ -31,9 +31,6 @@
 				<li<%= ' class="hot active"' if params[:controller] == "home" and params[:action] == "settings" %>><a href="/settings">Settings</a></li>
 				<li><a href="/logout">Logout</a></li>
 				<% else %>
-				<li<%= ' class="hot active"' if params[:controller] == "home" and params[:action] == "register" %>>
-					<a href="/register">Register</a>
-				</li>
 				<li<%= ' class="hot active"' if params[:controller] == "home" and params[:action] == "login" %>>
 					<a href="/login">Login</a>
 				</li>
