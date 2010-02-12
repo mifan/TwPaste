@@ -15,13 +15,7 @@
 			<%= f.label :passwd, "Password:" %><br />
 			<%= f.password_field :passwd,:class => 'text' %>	
 		</p>
-		<p>		  
-		  <%= captcha_hidden_text %>
-		  <%= captcha_input_text("Captcha:<br />") %>		  
-		</p>
-		<p>
-		  <%= captcha_image %> 
-		</p>
+		 
 		<div class="submit">
 			<%= f.submit "Login", :disable_with => 'Submitting...', :class => 'button submit' %> or <%= link_to "Register", :controller => "home", :action => "register" %>
 		</div>
