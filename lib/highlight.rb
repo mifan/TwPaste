@@ -1,7 +1,9 @@
+
 require 'systemu'
 require "uuidtools"
 require "fileutils"
 require 'string'
+require 'coderay'
 
 # snippet highlight
 class Highlight    
@@ -20,6 +22,9 @@ class Highlight
     File.delete(tmpfile)
 
     #return result[1].gsub('<div class="highlight">','<div class="inner_code">')
+    
+    result = CodeRay.scan(code,type.to_sym).div
     result
+
   end
 end
