@@ -24,13 +24,15 @@ Rails::Initializer.run do |config|
 
   config.gem "uuidtools"
 
-  config.gem "acts-as-taggable-on", :source => "http://gemcutter.org"
+  config.gem 'acts-as-taggable-on', :source => 'http://gemcutter.org'
 
-  config.gem "will_paginate", :source => "http://gemcutter.org"
+  config.gem 'will_paginate', :source => 'http://gemcutter.org'
 
   config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
 
-  config.gem "authlogic"
+  config.gem 'authlogic'
+
+  config.gem 'coderay'
 
   # config.gem "rmagick"	
 
