@@ -26,6 +26,8 @@ Rails::Initializer.run do |config|
 
   config.gem "acts-as-taggable-on", :source => "http://gemcutter.org"
 
+  config.gem "will_paginate", :source => "http://gemcutter.org"
+
   # config.gem "rmagick"	
 
   # Only load the plugins named here, in the order given (default is alphabetical).
