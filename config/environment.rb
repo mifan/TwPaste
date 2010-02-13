@@ -25,13 +25,15 @@ Rails::Initializer.run do |config|
 
   config.gem 'will_paginate', :source => 'http://gemcutter.org'
 
-  config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => "http://gems.github.com"
+  config.gem 'jackdempsey-acts_as_commentable', :lib => 'acts_as_commentable', :source => 'http://gems.github.com'
 
   config.gem 'authlogic'
 
-  config.gem 'coderay'
+  config.gem 'oauth'
 
-  # config.gem "rmagick"	
+  config.gem 'authlogic-oauth', :lib => 'authlogic_oauth'
+
+  config.gem 'coderay'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

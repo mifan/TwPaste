@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091127000001) do
+ActiveRecord::Schema.define(:version => 20090819032328) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -26,32 +26,29 @@ ActiveRecord::Schema.define(:version => 20091127000001) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "languages", :force => true do |t|
-    t.string   "name",                          :null => false
-    t.string   "slug",                          :null => false
-    t.integer  "snippets_count", :default => 0, :null => false
+    t.string   "name",           :default => "", :null => false
+    t.string   "slug",           :default => "", :null => false
+    t.integer  "snippets_count", :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "snippets", :force => true do |t|
-    t.string   "title",                                                      :null => false
-    t.text     "code",              :limit => 2147483647,                    :null => false
-    t.text     "code_formatted",    :limit => 2147483647,                    :null => false
-    t.float    "size",                                    :default => 0.0
+    t.string   "title",             :default => "",    :null => false
+    t.text     "code",                                 :null => false
+    t.text     "code_formatted",                       :null => false
+    t.text     "summary_formatted",                    :null => false
+    t.string   "desc"
+    t.float    "size",              :default => 0.0
+    t.integer  "line_count",        :default => 0,     :null => false
+    t.integer  "comments_count",    :default => 0,     :null => false
+    t.integer  "views_count",       :default => 0,     :null => false
+    t.boolean  "private",           :default => false, :null => false
     t.integer  "language_id"
-    t.boolean  "private",                                 :default => false, :null => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "line_count",                              :default => 0,     :null => false
-    t.text     "summary_formatted",                                          :null => false
-    t.integer  "comments_count",                          :default => 0
-    t.string   "desc"
-    t.integer  "views_count",                             :default => 0,     :null => false
   end
-
-  add_index "snippets", ["language_id"], :name => "language_id_idx"
-  add_index "snippets", ["user_id"], :name => "user_id_idx"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
@@ -71,19 +68,17 @@ ActiveRecord::Schema.define(:version => 20091127000001) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                              :null => false
-    t.string   "login",                             :null => false
-    t.string   "passwd",                            :null => false
-    t.string   "email",                             :null => false
+    t.string   "name",           :default => "",    :null => false
+    t.string   "login",          :default => "",    :null => false
+    t.string   "passwd",         :default => "",    :null => false
+    t.string   "email",          :default => "",    :null => false
     t.integer  "snippets_count", :default => 0,     :null => false
     t.string   "bio"
     t.string   "url"
     t.boolean  "admin",          :default => false
+    t.integer  "comments_count", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "oauth_token",    :default => "",    :null => false
-    t.string   "oauth_secret",   :default => "",    :null => false
-    t.integer  "comments_count", :default => 0
   end
 
 end

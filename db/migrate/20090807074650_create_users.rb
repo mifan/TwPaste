@@ -14,8 +14,6 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
 
-    u = User.new(:name => 'admin',:login => 'admin', :passwd => 'f0ed32e0a349447990ea11911935c95a', :email => 'pastie@huacnlee.com',:admin => true)
-    u.save
   end
 
   def self.down
