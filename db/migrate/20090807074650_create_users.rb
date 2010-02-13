@@ -10,6 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :url
       t.boolean :admin, :default => false
 
+      t.integer :comments_count, :default => 0
       t.timestamps
     end
 
