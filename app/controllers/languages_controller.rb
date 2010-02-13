@@ -5,7 +5,6 @@ class LanguagesController < ApplicationController
   # GET /languages.xml
   def index
     @languages = Language.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @languages }
