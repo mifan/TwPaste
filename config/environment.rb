@@ -96,6 +96,3 @@ ActionMailer::Base.smtp_settings = {
 }
 
 ExceptionNotifier.exception_recipients = %w(huacnlee@gmail.com)
-
-# 验证码加密特殊符号
-CAPTCHA_SALT = "8998Lj1**&@"

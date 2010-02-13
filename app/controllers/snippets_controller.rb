@@ -2,7 +2,6 @@ class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.xml
   before_filter :require_login, :only => [:edit,:update,:destroy]
-  validates_captcha
   
   def index 
     @sub_title = ""
