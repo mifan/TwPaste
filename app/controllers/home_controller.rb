@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
 	before_filter :require_login, :only => [:settings]
-	validates_captcha
 	
 	
 	# login
@@ -8,11 +7,7 @@ class HomeController < ApplicationController
     @user = User.new
     
     if params[:user]
-      if !captcha_validated?
-        flash[:errors] = "Captcha not match."        
-      else
         @user = User.check_login(params[:user][:email], User.encode(params[:user][:passwd]))
-              
         if @user
           save_login(@user)
           redirect_to "/"
@@ -21,7 +16,6 @@ class HomeController < ApplicationController
           @user = User.new
           flash[:errors] = "Invalid login name/email or password."
         end
-      end
     end
     
 		set_seo_meta("Login")
