@@ -10,7 +10,7 @@ class Snippet < ActiveRecord::Base
   acts_as_commentable
 
   validates_presence_of :title,:code
-  validates_length_of :title, :within => 2..200
+  validates_length_of :title, :within => 2..100
 
   before_save :format_code
 
@@ -22,8 +22,8 @@ class Snippet < ActiveRecord::Base
     @skip_before_filter = skip_before_filter
   end
 
-	# before_filters
-	def format_code
+  # before_filters
+  def format_code
     if not self.skip_before_filter
       self.size = self.code.length
       self.code_formatted = Highlight.format(self.code,self.language.slug)
@@ -31,33 +31,33 @@ class Snippet < ActiveRecord::Base
       self.line_count = code_lines.length
       self.summary_formatted = Highlight.format(code_lines[0..5].join("\n"),self.language.slug)
     end
-	end			
-			
-	def size_kb
-		f = sprintf("%0.2f",self.size / 1024)
-		return "#{f} KB"
-	end
-	
-	def code_formatted_show
+  end
+
+  def size_kb
+    f = sprintf("%0.2f",self.size / 1024)
+    return "#{f} KB"
+  end
+
+  def code_formatted_show
     if code_formatted.index('<table class="highlighttable">')
       code_formatted.gsub('<div class="highlight">','<div class="inner_code">')
     end
     return code_formatted.gsub('<table class="highlighttable">',
         '<div class="highlight_top">View: <a href="#{APP_DOMAIN}/code/#{self.id}" target="_blank">Source</a> or <a href="#{APP_DOMAIN}/code/#{self.id}.raw" target="_blank">Raw</a></div><table class="highlight" cellspacing="0" cellpadding="0">')
-	end
+  end
 
   def summary_formatted_show
     return summary_formatted.gsub('<table class="highlighttable">','<table class="highlight">')
   end
 	
-	# find method
-	def self.find_page(page = 1)		
-		conditions = ["private = ?",false]
-		paginate :page => page, :per_page => 8,
-			:conditions => conditions, 
-			:order => "id desc",
-			:include => [:user,:language]
-	end
+  # find method
+  def self.find_page(page = 1)		
+    conditions = ["private = ?",false]
+    paginate :page => page,
+             :per_page => 8,
+             :conditions => conditions,
+             :order => "id desc",
+             :include => [:user,:language]
+  end
 
-    
 end
