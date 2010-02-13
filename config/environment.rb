@@ -60,8 +60,6 @@ Rails::Initializer.run do |config|
 	
 end
 
-# snippets upload temp file dir
-SNIPPET_UPLOAD_TEMP_DIR = '/tmp/cache/pasite/upload/'
 
 Time::DATE_FORMATS[:short_date_string] = "%y年%m月%d日"
 Time::DATE_FORMATS[:short_date] = "%y-%m-%d"
