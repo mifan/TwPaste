@@ -1,23 +1,31 @@
 class User < ActiveRecord::Base
-  has_many :snippets	
-  attr_protected :admin
-  validates_presence_of :name,:login, :passwd, :email
-  validates_uniqueness_of :login,:email
-  validates_length_of :name, :within => 2..20
-  validates_length_of :login, :within => 4..50
-  validates_format_of :login, :with => /^[\w\d\-\_]+$/, :message => "格式不符合要求(字母、数字、-、_)"
-
-  def self.encode(passwd)
-    Digest::MD5.hexdigest("-D(*@#JKS@**&^@-#{passwd}")
-  end
-
-  # check login by login/email and passwd
-  def self.check_login(login,passwd)
-    find(:first, :conditions => ['(login = ? or email = ?) and passwd = ?',login, login, passwd])
-  end
+  acts_as_authentic
+  has_many :snippets
+  before_create :populate_oauth_user
 
   def self.find_top_by_snippets_count(size = 10)
     paginate :page => 1, :per_page => size, :order => "snippets_count desc"
+  end
+
+
+
+
+  
+private
+
+  def populate_oauth_user
+    unless oauth_token.blank?
+      @response = UserSession.oauth_consumer.request(:get, '/account/verify_credentials.json',
+      access_token, { :scheme => :query_string })
+      case @response
+      when Net::HTTPSuccess
+        user_info = JSON.parse(@response.body)
+        
+        self.name = user_info['name']
+        self.twitter_uid = user_info['id']
+        self.avatar_url = user_info['profile_image_url']
+      end
+    end
   end
 
 end

@@ -1,12 +1,21 @@
 ActionController::Routing::Routes.draw do |map|
+
+
+  map.resource :account, :controller => "users"
+  map.resources :users
+  map.resource :user_session
+
+
   map.root :controller => "snippets"
   map.resources :languages
   map.resources :comments
-  map.resources :users	
+
   map.resources :snippets, :as => "code"
   map.connect "code/:id/comment",:controller => "snippets", :action => "show" ,:only => :post
-  map.login "login",:controller => "home", :action => "login" 
-  map.logout "logout",:controller => "home", :action => "logout" 
+
+  map.login "login",:controller => "user_sessions", :action => "new" 
+  map.logout "logout",:controller => "user_sessions", :action => "destroy" 
+
   map.register "register",:controller => "home", :action => "register" 
   map.settings "settings",:controller => "home", :action => "settings" 
   map.password "password",:controller => "home", :action => "password"

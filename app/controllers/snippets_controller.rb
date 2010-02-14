@@ -26,9 +26,9 @@ class SnippetsController < ApplicationController
       if @user
         @snippets = @user.snippets.find_page(params[:page])
         @snippets_count = @user.snippets_count
-        @sub_title = "Listing #{@user.name}'s snippets"
-        @feed_title = "#{@user.name}'s snippets"
-        set_seo_meta("#{@user.name}'s snippets")
+        @sub_title = "Listing #{@user.login}'s snippets"
+        @feed_title = "#{@user.login}'s snippets"
+        set_seo_meta("#{@user.login}'s snippets")
       end
     else
       @snippets = Snippet.find_page(params[:page])

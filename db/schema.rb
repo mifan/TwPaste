@@ -68,17 +68,27 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",           :default => "",    :null => false
-    t.string   "login",          :default => "",    :null => false
-    t.string   "passwd",         :default => "",    :null => false
-    t.string   "email",          :default => "",    :null => false
-    t.integer  "snippets_count", :default => 0,     :null => false
-    t.string   "bio"
-    t.string   "url"
-    t.boolean  "admin",          :default => false
-    t.integer  "comments_count", :default => 0
+    t.string   "login"
+    t.string   "email"
+    t.string   "password"
+    t.string   "persistence_token",   :default => "", :null => false
+    t.string   "single_access_token", :default => "", :null => false
+    t.string   "perishable_token",    :default => "", :null => false
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
+    t.integer  "login_count",         :default => 0,  :null => false
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.integer  "snippets_count",      :default => 0,  :null => false
+    t.integer  "comments_count",      :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["login"], :name => "index_users_on_login"
+  add_index "users", ["oauth_token"], :name => "index_users_on_oauth_token"
+  add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
 
 end
