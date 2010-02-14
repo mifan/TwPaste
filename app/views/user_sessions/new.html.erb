@@ -1,0 +1,37 @@
+
+<% content_for :main do %>
+<h2>Login</h2>
+<div id="signin">
+	<% form_for @user_session,:url => user_session_path do |f| -%>
+		<% if flash[:errors] %>
+		<div class="errorExplanation">
+			<%=h flash[:errors] %>
+		</div>
+		<% end %>
+		<p>
+			<%= f.label :login, "Login:" %><br />
+			<%= f.text_field :login,:class => 'text' %>	
+		</p>
+		<p>
+			<%= f.label :password, "Password:" %><br />
+			<%= f.password_field :password %>
+		</p>
+		<p>
+			<%= f.label :remember_me, "Remember me:" %><br />
+			<%= f.check_box :remember_me,:class => 'text' %>	
+
+		</p>
+		 
+		<div class="submit">
+			<%= f.submit "Login", :disable_with => 'Submitting...', :class => 'button submit' %>
+
+            <%= oauth_login_button :value => "Login with Twitter", :class => 'twitter' %>
+			
+
+		</div>
+	<% end %>
+</div>
+ 
+
+
+<% end %>
