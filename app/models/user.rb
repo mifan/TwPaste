@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  acts_as_authentic
   has_many :snippets
+
+  acts_as_authentic
   before_create :populate_oauth_user
 
   def self.find_top_by_snippets_count(size = 10)

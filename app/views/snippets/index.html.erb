@@ -1,6 +1,7 @@
 <% content_for :head do %>
     <%= auto_discovery_link_tag(:rss, :action => "index", :type => "feed") %>
 <% end %>
+
 <% content_for :main do  %>
 <h2><%= @sub_title %> <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed")), :action => "index", :type => "feed"  %></h2>
 <div id="snippets">
