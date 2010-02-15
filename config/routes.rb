@@ -13,19 +13,17 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :snippets, :as => "code"
   map.connect "code/:id/comment",:controller => "snippets", :action => "show" ,:only => :post
 
-  map.login "login",:controller => "user_sessions", :action => "new" 
-  map.logout "logout",:controller => "user_sessions", :action => "destroy" 
-
-  map.register "register",:controller => "home", :action => "register" 
-  map.settings "settings",:controller => "home", :action => "settings" 
-  map.password "password",:controller => "home", :action => "password"
+  
+  
+  #map.settings "settings",:controller => "home", :action => "settings" 
+  #map.password "password",:controller => "home", :action => "password"
   map.help "help",:controller => "home", :action => "help" 	
   map.links "links",:controller => "home", :action => "links" 	
   map.lang "lang/:lang",:controller => "snippets", :action => "index"   
   map.feed "feed",:controller => "snippets", :action => "index",:type => "feed"
   map.lang_feed "lang/:lang/feed",:controller => "snippets", :action => "index",:type => "feed"
   map.user_feed ":login/feed",:controller => "snippets", :action => "index",:type => "feed"
-  map.user ":login",:controller => "snippets", :action => "index"
+#  map.user ":login",:controller => "snippets", :action => "index"
 
 	
   # The priority is based upon order of creation: first created -> highest priority.
