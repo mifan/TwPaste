@@ -33,6 +33,8 @@ Rails::Initializer.run do |config|
 
   config.gem 'authlogic-oauth', :lib => 'authlogic_oauth'
 
+  config.gem 'json'
+
   config.gem 'coderay'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
