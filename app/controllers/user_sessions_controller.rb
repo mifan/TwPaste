@@ -9,6 +9,9 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     @user_session.save do |result|
+      puts "\n\n\nputs @user_session"
+      puts @user_session.inspect
+      puts "\n\n\n"
       if result
         flash[:notice] = "Login successful!"
         puts "\n\n\nputs current_user"
