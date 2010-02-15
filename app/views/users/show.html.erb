@@ -10,29 +10,9 @@
 </p>
 
 <p>
-  <b>Passwd:</b>
-  <%=h @user.passwd %>
-</p>
-
+  <%=h @user.inspect %>
 <p>
-  <b>Email:</b>
-  <%=h @user.email %>
-</p>
 
-<p>
-  <b>Bio:</b>
-  <%=h @user.bio %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%=h @user.url %>
-</p>
-
-<p>
-  <b>Admin:</b>
-  <%=h @user.admin %>
-</p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

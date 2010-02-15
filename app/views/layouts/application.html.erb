@@ -13,23 +13,29 @@
   <%= yield :scripts %>
   <div id="header">
       <ul id="nav">
-        <li<%= ' class="hot active"' if params[:controller] == "snippets" and params[:action] == "new" %>>
+        <li>
           <%= link_to "New", :controller => "snippets", :action => "new" %>
         </li>
-        <li<%= ' class="hot active"' if params[:controller] == "snippets" and params[:action] == "index" %>>
+        <li class="hot active">
 			<%= link_to "All", :controller => "snippets", :action => "index" %>
 		</li>
 		<li>
 			<a href="/help">Help</a>
 		</li>
-		<% if @current_user %>
-			<li class="userbar">Hi <%= @current_user.name %></li>
-			<li><%= link_to "Me", :controller => "snippets", :action => "index", :login => @current_user.login %></li>
-			<li<%= ' class="hot active"' if params[:controller] == "home" and params[:action] == "settings" %>><a href="/settings">Settings</a></li>
-			<li><a href="/logout">Logout</a></li>
+		<% if current_user %>
+			<li class="userbar">Hi <%= current_user.login %></li>
+			<li>
+			<%= link_to "Me", :controller => "snippets", :action => "index", :login => current_user.login %>
+			</li>
+			<li class="hot active">
+			<%= link_to "My Account", account_path %>
+			</li>
+			<li>
+				<%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
+			</li>
 		<% else %>
-			<li<%= ' class="hot active"' if params[:controller] == "home" and params[:action] == "login" %>>
-					<a href="/login">Login</a>
+			<li>
+				<%= link_to "Log In", new_user_session_path %>
 			</li>
 		<% end %>
       </ul>
