@@ -9,7 +9,18 @@ class User < ActiveRecord::Base
   end
 
 
+   def oauth_json_info
+     unless oauth_token.blank?
+      @response = UserSession.oauth_consumer.request(:get, '/account/verify_credentials.json',
+      access_token, { :scheme => :query_string })
+      case @response
+      when Net::HTTPSuccess
+        user_info = JSON.parse(@response.body)
+        return user_info
+      end
+    end
 
+   end
 
   
 private
