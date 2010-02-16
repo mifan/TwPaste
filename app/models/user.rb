@@ -4,9 +4,13 @@ class User < ActiveRecord::Base
   acts_as_authentic
   before_create :populate_oauth_user
 
+  #TODO 
+
   def self.find_top_by_snippets_count(size = 10)
     paginate :page => 1, :per_page => size, :order => "snippets_count desc"
   end
+
+ 
 
 
    def oauth_json_info
@@ -23,7 +27,7 @@ class User < ActiveRecord::Base
    end
 
   
-private
+ 
 
   def populate_oauth_user
     unless oauth_token.blank?
@@ -31,9 +35,9 @@ private
       access_token, { :scheme => :query_string })
       case @response
       when Net::HTTPSuccess
-        user_info = JSON.parse(@response.body)
-        
+        user_info = JSON.parse(@response.body)        
         self.name = user_info['name']
+	self.login = user_info['screen_name']
         self.twitter_uid = user_info['id']
         self.avatar_url = user_info['profile_image_url']
       end
