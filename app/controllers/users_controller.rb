@@ -18,6 +18,33 @@ class UsersController < ApplicationController
     end
   end
 
+ # form_tag({:controller => "users", :action => "create"}, {:method => "post"}) do = oauth_register_button :value => "Sign In with Twitter"
+ def create1
+  @user = User.new(params[:user])
+  @user.save do |result| # LINE A
+    if result
+      flash[:notice] = "Account registered!"
+      redirect_to some_inner_path
+    else
+      unless @user.oauth_token.nil?
+        @user = User.find_by_oauth_token(@user.oauth_token)
+        unless @user.nil?
+          UserSession.create(@user)
+          flash.now[:message] = "Welcome back!"
+          redirect_to some_inner_path        
+        else
+          redirect_back_or_default root_path
+        end
+      else
+        redirect_back_or_default root_path
+      end
+    end
+  end
+end
+
+
+
+
   def show
     @user = @current_user
   end
