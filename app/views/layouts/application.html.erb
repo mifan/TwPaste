@@ -24,9 +24,9 @@
 			<a href="/help">Help</a>
 		</li>
 		<% if current_user %>
-			<li class="userbar">Hi <%= current_user.login %></li>
+			<li class="userbar">Hi <%= current_user.name %></li>
 			<li>
-			<%= link_to "Me", :controller => "snippets", :action => "index", :login => current_user.login %>
+			<%= link_to "Me", :controller => "snippets", :action => "index", :login => current_user.name %>
 			</li>
 			<li class="hot active">
 			<%= link_to "My Account", account_path %>

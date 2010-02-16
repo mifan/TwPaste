@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         unless @user.nil?
           UserSession.create(@user)
           flash.now[:message] = "Welcome back!"
-          redirect_to some_inner_path        
+          redirect_to root_path
         else
           redirect_back_or_default root_path
         end
