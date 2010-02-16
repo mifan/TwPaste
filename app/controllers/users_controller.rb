@@ -24,14 +24,14 @@ class UsersController < ApplicationController
   @user.save do |result| # LINE A
     if result
       flash[:notice] = "Account registered!"
-      redirect_to some_inner_path
+      redirect_back_or_default root_path
     else
       unless @user.oauth_token.nil?
         @user = User.find_by_oauth_token(@user.oauth_token)
         unless @user.nil?
           UserSession.create(@user)
           flash.now[:message] = "Welcome back!"
-          redirect_to root_path
+          redirect_back_or_default root_path
         else
           redirect_back_or_default root_path
         end
