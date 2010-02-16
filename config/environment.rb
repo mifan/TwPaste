@@ -21,6 +21,8 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
+  config.gem 'mysql'
+
   config.gem 'acts-as-taggable-on', :source => 'http://gemcutter.org'
 
   config.gem 'will_paginate', :source => 'http://gemcutter.org'
@@ -33,7 +35,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'authlogic-oauth', :lib => 'authlogic_oauth'
 
-  config.gem 'json'
+  #config.gem 'json'
 
   config.gem 'coderay'
 
@@ -80,7 +82,7 @@ APP_THEMES_NAMES = ['Active4D','Cobalt','Dawn','Mac Classic','LAZY','IDLE','Blac
 	'Sunburst','SpaceCadet']
 APP_THEMES = ['active4d','cobalt','dawn','mac_classic','lazy','idle','black_board','twilight',
 	'sunburst','space_cadet']
-require 'will_paginate'
+#require 'will_paginate'
 
 ActionMailer::Base.default_content_type = "text/html"
 ActionMailer::Base.delivery_method = :smtp

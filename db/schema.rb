@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "languages", :force => true do |t|
-    t.string   "name",           :default => "", :null => false
-    t.string   "slug",           :default => "", :null => false
-    t.integer  "snippets_count", :default => 0,  :null => false
+    t.string   "name",                          :null => false
+    t.string   "slug",                          :null => false
+    t.integer  "snippets_count", :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "snippets", :force => true do |t|
-    t.string   "title",             :default => "",    :null => false
+    t.string   "title",                                :null => false
     t.text     "code",                                 :null => false
     t.text     "code_formatted",                       :null => false
     t.text     "summary_formatted",                    :null => false
@@ -70,19 +70,22 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
   create_table "users", :force => true do |t|
     t.string   "login"
     t.string   "email"
-    t.string   "password"
-    t.string   "persistence_token",   :default => "", :null => false
-    t.string   "single_access_token", :default => "", :null => false
-    t.string   "perishable_token",    :default => "", :null => false
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token",                :null => false
     t.string   "oauth_token"
     t.string   "oauth_secret"
-    t.integer  "login_count",         :default => 0,  :null => false
+    t.string   "twitter_uid"
+    t.string   "avatar_url"
+    t.string   "name"
+    t.integer  "login_count",       :default => 0, :null => false
+    t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.integer  "snippets_count",      :default => 0,  :null => false
-    t.integer  "comments_count",      :default => 0
+    t.integer  "snippets_count",    :default => 0, :null => false
+    t.integer  "comments_count",    :default => 0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
