@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def create2
     @user = User.new(params[:user])
     @user.save do |result|
       if result
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
  # form_tag({:controller => "users", :action => "create"}, {:method => "post"}) do = oauth_register_button :value => "Sign In with Twitter"
- def create1
+ def create
   @user = User.new(params[:user])
   @user.save do |result| # LINE A
     if result

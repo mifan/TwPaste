@@ -1,11 +1,9 @@
 <div id="content">
-<h1>Register</h1>
+<h1>Login with Twitter</h1>
 
 <% form_for @user, :url => account_path do |f| %>
   <%= f.error_messages %>
-  <%= render :partial => "form", :object => f %>
-  <%= f.submit "Register" %>
-  <%= oauth_register_button :value => "Register with Twitter", :class => 'twitter' %>
+  <%= oauth_register_button :value => "Login with Twitter", :class => 'twitter' %>
 <% end %>
 
  
