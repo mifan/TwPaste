@@ -1,4 +1,4 @@
-<% content_for :main do %>
+<div id="content">
 <h2>Listing comments</h2>
 <div id="comments">
 <% i = 0 %>
@@ -27,7 +27,8 @@
 <div class="pages">
 <%= will_paginate @comments %>
 </div>
-<% end %>
-<% content_for :right do %>
+</div>
+
+<div id="right">
 	<%= link_to 'New comment', new_comment_path %>
-<% end %>
+</div>

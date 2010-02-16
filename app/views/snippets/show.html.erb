@@ -1,9 +1,9 @@
-<% content_for :styles do %>
-    <%= stylesheet_link_tag "themes/#{@theme_name}.css" %>
-<% end %>
-<% content_for :scripts do %>
-<% end %>
-<% content_for :main do %>
+<!-- content_for :styles do  >
+    <= stylesheet_link_tag "themes/#{@theme_name}.css" >
+  end -->
+
+ 
+<div id="content">
 <%= success_messages %>
 <h2>#<%= @snippet.id %> <%=h @snippet.title %> <%= image_tag("icons/private.gif",:alt => "Private") if @snippet.private %></h2>
 <div id="snippet_show">	
@@ -60,8 +60,8 @@
   	</div>	
 	</div>
 </div>
-<% end %>
-<% content_for :right do %>
+</div>
+<div id="right">
   <form action="" method="get">
 	<div class="theme">	  
 		<label>Theme:</label><br />
@@ -121,4 +121,4 @@
 			<%= link_to 'Edit', edit_snippet_path(@snippet) %> | <%= link_to 'Destroy', @snippet, :confirm => 'Are you sure?', :method => :delete %>
 	</p>
 	<% end %>
-<% end %>
+</div>

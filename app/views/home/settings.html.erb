@@ -1,4 +1,4 @@
-<% content_for :main do %>
+<div id="content">
 <h2>Settings</h2>
 <div id="settings">
 	<% form_for(@user,:url => "") do |f| %>
@@ -34,10 +34,10 @@
 	  </p>
 	<% end %>
 </div>
-<% end %>
-<% content_for :right do %>
+</div>
+<div id="right">
 	<ul class="submenu">
 		<li><%= link_to "Settings", :controller => "home", :action => "settings" %></li>
 		<li><%= link_to "Modify password", :controller => "home", :action => "password" %></li>
 	</ul>
-<% end %>
+</div>

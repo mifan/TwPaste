@@ -1,4 +1,4 @@
-<% content_for :main do %>
+<div id="content">
 <h2>Listing languages</h2>
 <div id="languages">
 	<%= success_messages %>
@@ -19,7 +19,7 @@
 <% end %>
 </table>
 </div>
-<% end %>
-<% content_for :right do %>
+</div>
+<div id="right">
 	<%= link_to 'New language', new_language_path %>
-<% end %>
+</div>

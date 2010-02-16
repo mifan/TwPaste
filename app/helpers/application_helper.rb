@@ -41,4 +41,18 @@ module ApplicationHelper
   def format_comment(comment)
     return auto_link(simple_format(html_escape(comment)))
   end
+
+  #-------------------------------------------------------------
+  def page_title
+    @page_title || 'TwPaste | Twitter Paste'
+  end
+  
+  def page_keywords
+    @page_keywords || 'TwPaste'
+  end
+    
+  def page_description
+    @page_description || 'TwPaste'
+  end
+
 end

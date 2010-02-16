@@ -1,4 +1,4 @@
-<% content_for :main do %>
+<div id="content">
 <h1>Editing language</h1>
 
 <% form_for(@language) do |f| %>
@@ -19,9 +19,9 @@
     <%= f.submit 'Save' %>
   </p>
 <% end %>
-<% end %>
-<% content_for :right do %>
+</div>
+<div id="right">
 	<div class="box">
 		<%= link_to 'Languages list', languages_path %>
 	</div>
-<% end %>
+</div>

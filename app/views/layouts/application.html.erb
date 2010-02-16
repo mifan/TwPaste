@@ -1,16 +1,17 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title><%= @page_title %></title>
-    <link rel="shortcut icon" href="/favicon.ico?v=001" />
+    <title><%=page_title %></title>
+    <meta name="keywords" content="<%=page_keywords %>" />
+    <meta name="description" content="<%=page_description %>" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <%= stylesheet_link_tag "coderay","src/base","src/pasite", :cache => "pasite" %>
     <%= yield :styles %>
-    <%= yield :head %>
+    <%= javascript_include_tag 'all' %>
   </head>
 <body>
-  <%= yield :scripts %>
   <div id="header">
       <ul id="nav">
         <li>
@@ -44,13 +45,18 @@
       </div>
   </div>
   <div id="container">
+  <!--
     <div id="content">
-      <%= yield :main %>
+      <= yield :main >
     </div>
-	<div id="right">
-	<%= yield :right %>
-	</div>
+    <div id="right">
+       <= yield :right >
+    </div>
+  -->
+  <%= yield :layout %>
   </div>
+
+  
   <div id="footer">
     <p class="copyright">
       &copy; 2009 TwPaste.com <a href="http://pasite.uservoice.com" target="_blank">Feedback</a> | <a href="/links">Links</a>
