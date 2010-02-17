@@ -59,6 +59,7 @@ class SnippetsController < ApplicationController
   # GET /snippets/1
   # GET /snippets/1.xml
   def show
+
     @snippet = Snippet.find(params[:id],:include => [:user,:tags,:comments])
     @snippet.update_views_count
             
@@ -86,7 +87,7 @@ class SnippetsController < ApplicationController
     if request.post?
       pcomment = params[:comment]
       title = (pcomment[:title].blank?)?'Anonymous':pcomment[:title]
-      @comment = @snippet.comments.new(:title => title,:user => @current_user,:comment => pcomment[:comment])       
+      @comment = @snippet.comments.new(:title => title,:user => current_user,:comment => pcomment[:comment])       
 
         if @comment.save
           redirect_to :controller => :snippets, :action => :show,:id => params[:id],:anchor => "comments"
