@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :require_login, :only => [:settings]
+  before_filter :require_user, :only => [:settings]
 
   # login
   def login

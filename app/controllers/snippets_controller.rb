@@ -1,7 +1,7 @@
 class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.xml
-  before_filter :require_login, :only => [:edit,:update,:destroy]
+  before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy]
   
   def index 
     @sub_title = ""
@@ -76,7 +76,7 @@ class SnippetsController < ApplicationController
     end
     
     if @snippet.private
-      return if not require_login
+      return if not require_user
       if not(@current_user.id == @snippet.user_id or @current_user.admin)
         render_404
         return
