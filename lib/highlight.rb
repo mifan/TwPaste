@@ -8,8 +8,8 @@ class Highlight
     result = ''
     tmpfile = nil
     begin
-      tmpfile = TempFile.new('twpaste')
-      tmpfile.asciimode
+      tmpfile = Tempfile.new('twpaste')
+      #tmpfile.binmode
       tmpfile.puts code
       result = systemu("pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile}")
     ensure
