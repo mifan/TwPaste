@@ -84,15 +84,14 @@
             <span style="color: rgb(153, 153, 153);">or</span> <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
         </div>
     </div>
-    <% if !@snippet.user.blank? %>
     <p class="box">
         <label>Author</label><br />
-        <%= link_to (h @snippet.user.name), :controller => "snippets", :action => "index", :login => @snippet.user.login %>
+        <%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %>
     </p>
-    <% end %>
+
     <p class="box">
         <label>Pasted</label><br />
-        <%= time_ago_in_words(@snippet.created_at) %>前
+        <%= time_ago_in_words(@snippet.created_at) %> Ago
     </p>
     <p class="box">
         <label>Language</label><br />

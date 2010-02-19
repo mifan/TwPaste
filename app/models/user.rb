@@ -38,9 +38,9 @@ class User < ActiveRecord::Base
       access_token, { :scheme => :query_string })
       case @response
       when Net::HTTPSuccess
-        user_info = JSON.parse(@response.body)        
+        user_info = JSON.parse(@response.body)
         self.name = user_info['name']
-	self.login = user_info['screen_name']
+        self.login = user_info['screen_name']
         self.twitter_uid = user_info['id']
         self.avatar_url = user_info['profile_image_url']
       end
