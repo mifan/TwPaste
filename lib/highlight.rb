@@ -1,4 +1,4 @@
-require 'systemu'
+#require 'systemu'
 require 'tempfile'
 require 'string'
 
@@ -11,10 +11,14 @@ class Highlight
       tmpfile = Tempfile.new('twpaste')
       #tmpfile.binmode
       tmpfile.puts code
-      result = systemu("pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile}")
+      convert_command ="pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile}"
+      result = `#{convert_command}`
+      if $? != 0
+        result = code
+      end
     ensure
       tmpfile.close if tmpfile
     end
-    return result[1]
+    return result
   end
 end
