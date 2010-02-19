@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
 
   def update_twitter_info
     populate_oauth_user
-    self.save
   end
 
  
