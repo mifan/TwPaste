@@ -7,9 +7,8 @@
     <meta name="keywords" content="<%=page_keywords %>" />
     <meta name="description" content="<%=page_description %>" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <%= stylesheet_link_tag "coderay","src/base","src/pasite", :cache => "pasite" %>
-    <%= yield :styles %>
-    <%= javascript_include_tag 'all' %>
+    <%= stylesheet_link_tag "pasite" %>
+    <%= javascript_include_tag :default %>
   </head>
 <body>
   <div id="header">
