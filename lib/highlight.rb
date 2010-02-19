@@ -9,7 +9,8 @@ class Highlight
     tmpfile = nil
     begin
       tmpfile = Tempfile.new('twpaste')
-      tmpfile.puts(code).flush
+      tmpfile.puts(code)
+      tmpfile.flush
       result = `pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile.path}`
       if $? != 0
         result = code
