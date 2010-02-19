@@ -10,10 +10,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :languages
   map.resources :comments
 
+
   map.resources :snippets, :as => "code"
   map.connect "code/:id/comment",:controller => "snippets", :action => "show" ,:only => :post
 
   map.login 'login', :controller => 'users', :action => 'new'
+  map.logout 'logout', :controller => 'user_session'
+
   
   #map.settings "settings",:controller => "home", :action => "settings" 
   #map.password "password",:controller => "home", :action => "password"

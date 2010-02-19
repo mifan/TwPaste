@@ -7,8 +7,8 @@
     <meta name="keywords" content="<%=page_keywords %>" />
     <meta name="description" content="<%=page_description %>" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <%= stylesheet_link_tag "pasite" %>
-    <%= javascript_include_tag :default %>
+    <%= stylesheet_link_tag 'pasite' 'themes/idle'  %>
+    <%= javascript_include_tag :defaults %>
   </head>
 <body>
   <div id="header">
@@ -23,13 +23,16 @@
 			<a href="/help">Help</a>
 		</li>
 		<% if current_user %>
-			<li class="userbar">Hi <%= current_user.name %></li>
+			<li class="userbar">
+			  <%= current_user.name %>
+			   <a href="/account">
+			     <img alt="" width="20" height="20" src="<%=current_user.avatar_url%>" />
+			   </a>
+			   <%= link_to current_user.name, account_path %>
+			</li>
 			<li>
 			<%= link_to "Me", :controller => "snippets", :action => "index", :login => current_user.name %>
-			</li>
-			<li class="hot active">
-			<%= link_to "My Account", account_path %>
-			</li>
+			</li>			 
 			<li>
 				<%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %>
 			</li>
