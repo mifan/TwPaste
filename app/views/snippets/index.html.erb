@@ -7,19 +7,14 @@
 <div id="content">
 <h2><%= @sub_title %> <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed")), :action => "index", :type => "feed"  %></h2>
 <div id="snippets">
-  <div class="pages">
-    <%= will_paginate @snippets %>
-  </div>
   <div class="total">
     There have <%= @snippets_count %> pasites 
   </div>
   <% @snippets.each do |snippet| %>
   <div class="item clearfix">
     <div class="when">      
-      <span class="typo_date" title="<%= snippet.created_at %>"><%= snippet.created_at.to_s(:short_time) %></a>
-
+      <span class="typo_date" title="<%= snippet.created_at %>"><%= snippet.created_at.to_s(:short_time) %></span>
         by <%= link_to (truncate(snippet.user.login,:length => 10)) ,:action => "index", :login => snippet.user.login %>
-           
     </div>
     <div class="link">      
       #<%= snippet.id %> <%= link_to (truncate(h(snippet.title),:length => 50)), snippet %> 
