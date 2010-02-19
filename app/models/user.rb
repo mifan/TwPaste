@@ -4,16 +4,21 @@ class User < ActiveRecord::Base
   acts_as_authentic
   before_create :populate_oauth_user
 
-  #TODO 
 
+  #TODO 
   def self.find_top_by_snippets_count(size = 10)
     paginate :page => 1, :per_page => size, :order => "snippets_count desc"
+  end
+
+  def update_twitter_info
+    populate_oauth_user
+    self.save
   end
 
  
 
 
-   def oauth_json_info
+  def oauth_json_info
      unless oauth_token.blank?
       @response = UserSession.oauth_consumer.request(:get, '/account/verify_credentials.json',
       access_token, { :scheme => :query_string })
@@ -23,7 +28,6 @@ class User < ActiveRecord::Base
         return user_info
       end
     end
-
    end
 
   
