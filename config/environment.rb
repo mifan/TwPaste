@@ -84,20 +84,3 @@ APP_THEMES_NAMES = ['Active4D','Cobalt','Dawn','Mac Classic','LAZY','IDLE','Blac
 	'Sunburst','SpaceCadet']
 APP_THEMES = ['active4d','cobalt','dawn','mac_classic','lazy','idle','black_board','twilight',
 	'sunburst','space_cadet']
-#require 'will_paginate'
-
-ActionMailer::Base.default_content_type = "text/html"
-ActionMailer::Base.delivery_method = :smtp
-ActionMailer::Base.default_charset = "utf-8"
-ActionMailer::Base.raise_delivery_errors = true
-ActionMailer::Base.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :enable_starttls_auto => true,
-  :port => 587,
-  :domain => "pasite.org",
-  :authentication => :plain,
-  :user_name => "support@pasite.org",
-  :password => "SU_123123"
-}
-
-ExceptionNotifier.exception_recipients = %w(huacnlee@gmail.com)

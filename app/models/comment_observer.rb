@@ -3,7 +3,7 @@ class CommentObserver < ActiveRecord::Observer
     snippet = comment.commentable
     if snippet
       if snippet.user_id != comment.user_id
-        Mailer.snippet_got_comment(comment,snippet)
+         #snippet.user.update("@#{comment.user.login} #{comment}")
       end
     end
   end
