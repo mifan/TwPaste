@@ -10,24 +10,7 @@
   <div class="total">
     There have <%= @snippets_count %> pasites 
   </div>
-  <% @snippets.each do |snippet| %>
-  <div class="item clearfix">
-    <div class="when">      
-      <span class="typo_date" title="<%= snippet.created_at %>">
-        <%= snippet.created_at.to_s(:short_time) %>
-      </span>
-      by <%= link_to snippet.user.login,{:action => "index", :login => snippet.user.login} %>
-    </div>
-    <div class="link">      
-      #<%= snippet.id %> <%= link_to (truncate(h(snippet.title),:length => 50)), snippet %> 
-            <span class="lang"> [<%= snippet.language.name %>]</span>
-            <span  class="count">(<%= snippet.line_count %> lines,<%= snippet.comments_count %> comments)</span>
-    </div>
-    <div class="summary">
-      <%= snippet.summary_formatted_show %>
-    </div>  
-  </div>
-  <% end %>  
+  <%=render :partial => 'snippet' , :collection => @snippets %>
   <div class="pages">
     <%= will_paginate @snippets %>
   </div>
@@ -39,7 +22,7 @@
   <div class="box" id="right_profile">
     <h3>Profile</h3>
     <ul>
-      <li>        
+      <li>
         <img src="<%= current_user.avatar_url %>" width="48px" height="48px" alt="<%=current_user.login %>'s face" />
       </li>   
       <li><label>Twitter Name:</label> <%=h current_user.login %></li>
