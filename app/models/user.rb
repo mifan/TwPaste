@@ -14,14 +14,14 @@ class User < ActiveRecord::Base
     populate_oauth_user
   end
 
-  def twitter_update(twett) 
+  def twitter_update(tweet) 
     client = TwitterOAuth::Client.new(
-      :consumer_key => 'IlWs2yGnF37alfsW2w',
-      :consumer_secret => 'ItMhbGjZQzn0tT00zudDEXtHg9aVuAO51IjsJmat8s',
+      :consumer_key => 'KvvYJRTQrGiHbUWlw4lXIg',
+      :consumer_secret => 'AaxExL83gKvh7kGWQezNEWsr6x7klBw4Sc8EZCl4EUU',
       :token => self.oauth_token, 
       :secret => self.oauth_secret)
     if client.authorized?
-      client.update(twett)
+      client.update(tweet)
     end
   end
 
