@@ -14,6 +14,19 @@ class User < ActiveRecord::Base
     populate_oauth_user
   end
 
+  def twitter_update(twett) 
+    client = TwitterOAuth::Client.new(
+      :consumer_key => 'IlWs2yGnF37alfsW2w',
+      :consumer_secret => 'ItMhbGjZQzn0tT00zudDEXtHg9aVuAO51IjsJmat8s',
+      :token => self.oauth_token, 
+      :secret => self.oauth_secret)
+    if client.authorized?
+      client.update(twett)
+    end
+  end
+
+
+
  
 
 

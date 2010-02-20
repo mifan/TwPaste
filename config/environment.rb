@@ -35,9 +35,9 @@ Rails::Initializer.run do |config|
 
   config.gem 'authlogic-oauth', :lib => 'authlogic_oauth'
 
-  #config.gem 'json'
+  config.gem 'json'
 
-  #config.gem 'coderay'
+  config.gem 'twitter_oauth'
 
   config.gem 'hoptoad_notifier'
 
