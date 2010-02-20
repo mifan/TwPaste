@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
     t.string    :login,               :null => true, :default => nil  # optional, you can use email instead, or both
     #t.string    :email,               :null => true, :default => nil  # optional, you can use login instead, or both
 
-    #t.string    :crypted_password,    :null => true
+    t.string    :crypted_password,    :null => true
     #t.string    :password_salt,       :null => true
 
     t.string    :persistence_token,   :null => false                # required
