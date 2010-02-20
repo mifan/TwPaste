@@ -1,0 +1,16 @@
+<div class="item clearfix">
+  <div class="when">
+    <span class="typo_date" title="<%= snippet.created_at %>">
+      <%= snippet.created_at.to_s(:short_time) %>
+    </span>
+    by <%= link_to snippet.user.login ,{:controller => 'snippets' ,:action => "index", :login => snippet.user.login} %>
+  </div>
+  <div class="link">
+      #<%= snippet.id %> <%= link_to (truncate(h(snippet.title),:length => 50)), snippet %> 
+       <span class="lang"> [<%= snippet.language.name %>]</span>
+       <span  class="count">(<%= snippet.line_count %> lines,<%= snippet.comments_count %> comments)</span>
+  </div>
+  <div class="summary">
+    <%= snippet.summary_formatted_show %>
+  </div>
+</div>
