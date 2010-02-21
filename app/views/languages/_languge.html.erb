@@ -1,0 +1,8 @@
+<tr>
+  <td><%=h language.name %></td>
+  <td><%= h language.slug %></td>
+  <td><%= language.snippets_count %></td>
+  <% if admin_user? %>
+    <td><%= link_to 'Edit', edit_language_path(language) %></td>
+  <% end %>
+</tr>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
-  helper_method :current_user_session, :current_user
+  helper_method :current_user_session, :current_user , :admin_user?
   filter_parameter_logging :password, :password_confirmation
 
   # 输出404错误
@@ -39,6 +39,13 @@ class ApplicationController < ActionController::Base
         redirect_to new_user_url
         return false
       end
+    end
+
+    def admin_user?
+      if current_user
+           return true if ['twpaste','mifan'].include? current_user.login
+      end
+      false
     end
 
     def require_no_user

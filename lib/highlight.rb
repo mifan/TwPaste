@@ -1,6 +1,4 @@
-#require 'systemu'
 require 'tempfile'
-require 'string'
 
 # snippet highlight
 class Highlight    

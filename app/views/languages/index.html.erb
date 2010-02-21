@@ -1,25 +1,22 @@
 <div id="content">
-<h2>Listing languages</h2>
+<h2>Supported languages</h2>
 <div id="languages">
-	<%= success_messages %>
+<%= success_messages %>
 <table class="grid">
   <tr class="head">
     <td>Name</td>
-		<td>slug</td>
-		<td>Snippets count</td>
-		<td></td>
-  </tr>	
-<% @languages.each do |language| %>
-  <tr>
-    <td><%=h language.name %></td>
-		<td><%= h language.slug %></td>
-		<td><%= language.snippets_count %></td>		
-    <td><%= link_to 'Edit', edit_language_path(language) %></td>
+    <td>Description</td>
+    <td>Snippets count</td>
+    <% if admin_user? %>
+    <td>Action</td>
+    <% end %>
   </tr>
-<% end %>
+  <%=render :partial => 'language' , :collection => @languages %>
 </table>
 </div>
 </div>
 <div id="right">
-	<%= link_to 'New language', new_language_path %>
+  <% if admin_user? %>
+    <%= link_to 'New language', new_language_path %>
+  <% end %>	
 </div>
