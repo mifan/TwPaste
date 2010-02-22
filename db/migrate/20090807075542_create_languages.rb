@@ -2,7 +2,8 @@ class CreateLanguages < ActiveRecord::Migration
   def self.up
     create_table :languages do |t|
       t.string :name, :null => false
-			t.string :slug, :null => false
+      t.string :slug, :null => false
+      t.string :description, :null => false
       t.integer :snippets_count, :null => false, :default => 0
 
       t.timestamps

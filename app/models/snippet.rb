@@ -9,8 +9,8 @@ class Snippet < ActiveRecord::Base
   acts_as_views_count
   acts_as_commentable
 
-  validates_presence_of :title,:code
-  validates_length_of :title, :within => 2..100
+  validates_presence_of :code
+  validates_length_of   :title, :within => 2..50
 
   before_save :format_code 
   after_create :twitter_update

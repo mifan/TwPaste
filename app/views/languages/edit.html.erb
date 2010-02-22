@@ -7,21 +7,21 @@
     <%= f.label :name, "Name:" %><br />
     <%= f.text_field :name %>
   </p>
-	<p>
-		<%= f.label :slug, "File type:" %><br />
-		<%= f.text_field :slug %>		
-	</p>
-	<p>
-	  <%= f.label :snippets_count, "Snippets count:" %><br />
-	  <%= f.text_field :snippets_count, :value => @language.snippets.count %>
-	</p>
+    <p>
+      <%= f.label :descrption, "Description:" %><br />
+      <%= f.text_field :descrption %>
+    </p>
+    <p>
+      <%= f.label :slug, "Slug:" %><br />
+        <%= f.text_field :slug %>
+    </p>
   <p>
     <%= f.submit 'Save' %>
   </p>
 <% end %>
 </div>
 <div id="right">
-	<div class="box">
-		<%= link_to 'Languages list', languages_path %>
-	</div>
+    <div class="box">
+        <%= link_to 'Languages list', languages_path %>
+    </div>
 </div>
