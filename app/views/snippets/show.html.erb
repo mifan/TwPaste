@@ -78,7 +78,7 @@
   </form>
     <div style="margin: 1em 0pt 0em; font-size: 0.75em;">
         <div style="float: left;">
-            <%= link_to (image_tag("button_raw.png",:alt => "view raw file")), :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %>
+	   <%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %>
         </div>
         <div style="padding-top: 2px; margin-left: 68px;">
             <span style="color: rgb(153, 153, 153);">or</span> <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
