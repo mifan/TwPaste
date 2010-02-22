@@ -4,6 +4,6 @@ echo '' > $style_file_name
 for loop in $styles
 do
   echo "processing $loop ..."
-  `pygmentize -f html -S #{loop} -a .hl#{loop} >> #{style_file_name}`
+  `pygmentize -f html -S $loop -a .hl$loop >> $style_file_name`
 done
 
