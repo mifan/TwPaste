@@ -19,20 +19,22 @@
     <%= f.label :code,"Source code:" %><br />
         <%= f.text_area :code, :class => "pastebox" %>    
   </div>
-  <div class="row">
+   <div class="row">
+   <div  style="float: right;">
+    <%= link_to '+ Add Description', '#' ,{ :id => 'addDescId'}%>
+     <%= link_to '+ Add Tags', '#' ,{ :id => 'addDescId'}%>
+   </div>
+  </div>
+  <div class="row" style="display:none;" id="textDesc">
     <%= f.label :desc, "Description:" %><br />
     <%= f.text_area :desc, :class => "desc" %>
   </div>
-  <div class="row">
-   <div  style="float: right;">
-         <%= link_to '+ Add Description', '#' %>
-	 <%= link_to '+ Add Tags', '#' %>
-        </div>
-  </div>
-  <div class="row">
+		
+  <div class="row" style="display:none;" id="textTags" >
         <%= f.label :tags, "Tags:" %><br />        
         <%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "text long") %>
-    </div>
+  </div>
+
   <div class="submit">
     <%= f.submit 'Save', :class => "submit" %> or
     <%= link_to 'Back', snippets_path %>
