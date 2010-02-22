@@ -6,29 +6,36 @@
   <div class="row">
     <%= f.label :title,"Title:" %>
     <%= f.text_field :title ,:class => "text"%>
-		<div  style="float: right;">
-			<%= f.label :language, "Language:" %>
-			<% languages_array = Language.all.map { |l| [l.name, l.id] } %>		
-			<%= f.select(:language_id,languages_array) %>		
-			<%= f.check_box :private %>
-			<%= f.label :private, (image_tag("icons/private.gif",:alt => "Private")) %>		
-		</div>
+        <div  style="float: right;">
+            <%= f.label :language, "Language:" %>
+            <% languages_array = Language.all.map { |l| [l.name, l.id] } %>
+            <%= f.select(:language_id,languages_array) %>
+            <%= f.label :paivate, "Private?" %>
+            <%= f.check_box :private %>
+            <%= f.label :private, (image_tag("icons/private.gif",:alt => "Private")) %>        
+        </div>
   </div>
   <div class="row">
     <%= f.label :code,"Source code:" %><br />
-		<%= f.text_area :code, :class => "pastebox" %>    
+        <%= f.text_area :code, :class => "pastebox" %>    
   </div>
   <div class="row">
     <%= f.label :desc, "Description:" %><br />
     <%= f.text_area :desc, :class => "desc" %>
   </div>
-	<div class="row">
-		<%= f.label :tags, "Tags:" %><br />		
-		<%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "text long") %>
-	</div>
+  <div class="row">
+   <div  style="float: right;">
+         <%= link_to '+ Add Description', '#' %>
+	 <%= link_to '+ Add Tags', '#' %>
+        </div>
+  </div>
+  <div class="row">
+        <%= f.label :tags, "Tags:" %><br />        
+        <%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "text long") %>
+    </div>
   <div class="submit">
     <%= f.submit 'Save', :class => "submit" %> or
-		<%= link_to 'Back', snippets_path %>
+    <%= link_to 'Back', snippets_path %>
   </div>
 <% end %>
 </div>
