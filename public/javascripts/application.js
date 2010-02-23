@@ -15,16 +15,16 @@ $(document).ready(function() {
   });
 
   $("#addTagsId").click(function(){
-    //$(this).blur();
     var textTags = $("#textTags");
-      if(textTags){
-        textTags.slideToggle("fast");
+    if(textTags){
+      textTags.slideToggle("fast", function(){
         if(textTags.is(":visible")){
           $("#addTagsId").text('- Hide Tags');
         }else{
           $("#addTagsId").text('+ Add Tags');
         }
-      }
+      });
+    }
     return false;
   });
 
