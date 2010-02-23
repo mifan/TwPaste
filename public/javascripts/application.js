@@ -1,15 +1,15 @@
 $(document).ready(function() {  
   //click
   $("#addDescId").click(function(){
-    //$(this).blur();
     var textDesc = $("#textDesc");
     if(textDesc){
-      textDesc.slideToggle("fast");
-      if(textDesc.is(":hidden")){
-        $("#addDescId").text('+ Add Description');
-      }else{
-        $("#addDescId").text('- Hide Description');
-      }
+      textDesc.slideToggle("fast", function(){
+        if(textDesc.is(":visible")){
+          $("#addDescId").text('- Hide Description');
+        }else{
+          $("#addDescId").text('+ Add Description');
+        }
+      });
     }
     return false;
   });
@@ -19,10 +19,10 @@ $(document).ready(function() {
     var textTags = $("#textTags");
       if(textTags){
         textTags.slideToggle("fast");
-        if(textTags.is(":hidden")){
-          $("#addTagsId").text('+ Add Tags');
-        }else{
+        if(textTags.is(":visible")){
           $("#addTagsId").text('- Hide Tags');
+        }else{
+          $("#addTagsId").text('+ Add Tags');
         }
       }
     return false;
