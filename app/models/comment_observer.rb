@@ -3,6 +3,10 @@ class CommentObserver < ActiveRecord::Observer
     snippet = comment.commentable
     if snippet
       if snippet.user_id != comment.user_id
+         replied_name = snippet.user.login
+	 comment_user = comment.user
+	 reply_str = "@#{replied_name} #{comment.comment}"
+	 comment_user.twitter_update(truncate(h(item.title),:length => 130))
          #snippet.user.update("@#{comment.user.login} #{comment}")
       end
     end
