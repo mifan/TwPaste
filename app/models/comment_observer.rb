@@ -1,5 +1,5 @@
 class CommentObserver < ActiveRecord::Observer
-  include ActionView::ERB::Util
+  include ERB::Util
   include ActionView::Helpers::TextHelper
   def after_create(comment)
     snippet = comment.commentable
