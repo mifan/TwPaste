@@ -6,7 +6,7 @@
   <div class="body">
     <div class="face">
       <a href="<%= url_for(:controller => "snippets", :action => "index",:login => comment.user.login) %>">
-        <img src="<%= comment.user.avatar_url) %>" width="48px" height="48px" alt="<%= comment.user.name %>" />
+        <img src="<%= comment.user.avatar_url %>" width="48px" height="48px" alt="<%= comment.user.name %>" />
       </a>
     </div>
         <%= format_comment(comment.comment) %>
