@@ -6,7 +6,7 @@ class CommentObserver < ActiveRecord::Observer
          replied_name = snippet.user.login
 	 comment_user = comment.user
 	 reply_tweet = "@#{replied_name} #{comment.comment}"
-	 comment_user.twitter_update(truncate(h(reply_tweet),:length => 130))
+	 comment_user.twitter_update(reply_tweet)
          #snippet.user.update("@#{comment.user.login} #{comment}")
       end
     end
