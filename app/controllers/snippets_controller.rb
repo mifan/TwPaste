@@ -36,13 +36,9 @@ class SnippetsController < ApplicationController
       @sub_title = "Listing snippets"
       @feed_title = "Recent snippets"
       set_seo_meta(nil)
-    end   
-     
-    @top_languages = Language.find_top      
-    if not @user
-      @top_users = User.find_top_by_snippets_count
-      @recent_comments = Comment.snippet_recent(10)
     end
+
+ 
     
     if params[:type] == "feed"
       # Set the content type to the standard one for RSS

@@ -32,40 +32,36 @@
  
     </ul>
   </div>    
-  <% else %>
+  <% end %>
   <div class="box" id="right_top_languages">    
     <h3>Top Languages</h3>
     <ul>
-      <% if !@top_languages.blank? %>
-        <% for item in @top_languages%>
-          <li><%= link_to (h item.name), :controller => "snippets", :action => "index", :lang => item.slug %> <span class="count">(<%= item.snippets_count %>)</span></li>
+        <% for language in Language.find_top %>
+          <li><%= link_to (h language.name), :controller => "snippets", :action => "index", :lang => language.slug %> <span class="count">(<%= language.snippets_count %>)</span></li>
         <% end %>
-      <% end %>      
     </ul>
   </div>  
-    <% if @snippets.size > 1 %>
+
   <div class="box" id="right_top_users">
     <h3>Top Users</h3>
     <ul>
-      <% if !@top_users.blank? %>
-        <% for item in @top_users  %>
+        <% for item in User.find_top_by_snippets_count %>
           <li><%= link_to (h item.name), :controller => "snippets", :action => "index", :login => item.login %> <span class="count">(<%= item.snippets_count %>)</span></li>
         <% end %>      
-      <% end %>      
     </ul>
   </div>
-    <% end %>
-    <% if @snippets.size > 3 %>
+
+
         <div class="box" id="recent_comments">
         <h3>Recent Comments</h3>
         <ul>
-          <% if !@recent_comments.blank? %>
-            <% for item in @recent_comments  %>
-              <li><%= link_to (truncate(h(item.title),:length => 10)), :controller => "snippets", :action => "show", :id => item.commentable_id %>: <%= truncate(h(item.comment),:length => 40) %></li>
-            <% end %>      
-          <% end %>      
+          <% Comment.snippet_recent(10).each do |c| %>
+            <li>
+              <%= link_to (truncate(c.user.login,:length => 10)), :controller => "snippets", :action => "show", :id => c.commentable_id %>: <%= truncate(h(item.comment),:length => 20) %>
+           </li>
+          <% end %>
         </ul>
       </div>
-    <% end %>
-  <% end %>
+
+
 </div>
