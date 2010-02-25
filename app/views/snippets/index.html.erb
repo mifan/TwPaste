@@ -45,8 +45,8 @@
   <div class="box" id="right_top_users">
     <h3>Top Users</h3>
     <ul>
-        <% for item in User.find_top_by_snippets_count %>
-          <li><%= link_to (h item.name), :controller => "snippets", :action => "index", :login => item.login %> <span class="count">(<%= item.snippets_count %>)</span></li>
+        <% for user in User.find_top_by_snippets_count %>
+          <li><%= link_to (h user.login), :controller => "snippets", :action => "index", :login => user.login %> <span class="count">(<%= user.snippets_count %>)</span></li>
         <% end %>      
     </ul>
   </div>
@@ -55,9 +55,9 @@
         <div class="box" id="recent_comments">
         <h3>Recent Comments</h3>
         <ul>
-          <% Comment.snippet_recent(10).each do |c| %>
+          <% Comment.snippet_recent(10).each do |comment| %>
             <li>
-              <%= link_to (truncate(c.user.login,:length => 10)), :controller => "snippets", :action => "show", :id => c.commentable_id %>: <%= truncate(h(item.comment),:length => 20) %>
+              <%= link_to (truncate(comment.user.login,:length => 10)), :controller => "snippets", :action => "show", :id => comment.commentable_id %>: <%= truncate(h(comment.comment),:length => 20) %>
            </li>
           <% end %>
         </ul>
