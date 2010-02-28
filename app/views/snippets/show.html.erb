@@ -38,8 +38,7 @@
 </div>
 </div>
 <div id="right">
-  <form action="" method="get">
-    <div class="theme">      
+    <div class="box">
         <label>Theme:</label><br />
         <select name="theme" onchange="this.form.submit();">          
           <% if !APP_THEMES.blank? %>
@@ -53,8 +52,8 @@
           <% end %>
         </select>
     </div>
-  </form>
-    <div style="box">
+ 
+    <div class="box">
           <%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %>
           <span style="color: rgb(153, 153, 153);">or</span>
           <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
