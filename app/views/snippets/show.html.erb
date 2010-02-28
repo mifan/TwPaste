@@ -54,12 +54,10 @@
         </select>
     </div>
   </form>
-    <div style="margin: 1em 0pt 0em; font-size: 0.75em;">
-        <div style="float: left;">
+    <div style="box">
           <%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %>
           <span style="color: rgb(153, 153, 153);">or</span>
           <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
-        </div>
     </div>
     <p class="box">
         <label>Author</label><br />
