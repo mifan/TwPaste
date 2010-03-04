@@ -40,18 +40,7 @@
 <div id="right">
     <div class="box">
         <label>Theme:</label><br />
-        <select name="theme" onchange="this.form.submit();">          
-          <% if !APP_THEMES.blank? %>
-            <% i = 0 %>
-            <% for item in APP_THEMES %>
-              <option value="<%= item.parameterize('_').to_s %>"<%= ' selected="selected"' if @theme_name == "#{item.parameterize('_').to_s}" %>><%= APP_THEMES_NAMES[i] %></option>
-          <% i += 1 %>
-            <% end %>
-          <% else %>
-            <option value="idle">IDLE</option>
-          <% end %>
-        </select>
-		 <%= select( "themes","first",APP_STYLES, {:size =>20,:maxlength => 20,:selected => 'colorful'},{:class => 'landing_textarea'})%>
+		 <%= select( 'theme',nil,APP_STYLES, {:size =>20,:maxlength => 20,:selected => 'colorful'},{:class => 'select'})%>
     </div>
  
     <div class="box">
@@ -59,15 +48,16 @@
           <span style="color: rgb(153, 153, 153);">or</span>
           <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
     </div>
-    <p class="box">
+    <div class="box">
         <label>Author</label><br />
         <%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %>
-    </p>
+    </div>
 
-    <p class="box">
+    <div class="box">
         <label>Pasted</label><br />
         <%= time_ago_in_words(@snippet.created_at) %> Ago
-    </p>
+    </div>
+
     <p class="box">
         <label>Language</label><br />
         <%= link_to (h @snippet.language.name), :controller => "snippets", :action => "index", :lang => @snippet.language.slug %>
