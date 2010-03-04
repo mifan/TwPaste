@@ -40,47 +40,51 @@
 <div id="right">
     <div class="box">
         <label>Theme:</label><br />
-		 <%= select( 'theme',nil,APP_STYLES, {:size =>20,:maxlength => 20,:selected => 'colorful'},{:class => 'select'})%>
+		 <%= select( 'theme','name',APP_STYLES, {:size =>20,:maxlength => 20,:selected => 'colorful'},{:class => 'select'})%>
     </div>
  
     <div class="box">
-          <%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %>
+          <p><%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %></p>
           <span style="color: rgb(153, 153, 153);">or</span>
-          <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
+          <p><%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %></p>
     </div>
     <div class="box">
         <label>Author</label><br />
-        <%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %>
+        <p><%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %></p>
     </div>
 
     <div class="box">
         <label>Pasted</label><br />
-        <%= time_ago_in_words(@snippet.created_at) %> Ago
+        <p><%= time_ago_in_words(@snippet.created_at) %> Ago</p>
     </div>
 
-    <p class="box">
+    <div class="box">
         <label>Language</label><br />
-        <%= link_to (h @snippet.language.name), :controller => "snippets", :action => "index", :lang => @snippet.language.slug %>
-    </p>
-    <p class="box">
+        <p><%= link_to (h @snippet.language.name), :controller => "snippets", :action => "index", :lang => @snippet.language.slug %></p>
+    </div>
+
+    <div class="box">
         <label>File size<label><br />
-        <%=h @snippet.size_kb %>
-    </p>
-  <p class="box">
+        <p><%=h @snippet.size_kb %></p>
+    </div>
+
+  <div class="box">
     <label>Views count<label><br />
-    <%=h @snippet.views_count_s  %>
-  </p>
-    <p class="box tags">
-        <% if !@snippet.tags.blank? %>
+    <p><%=h @snippet.views_count_s  %></p>
+  </div>
+
+     <% unless @snippet.tags.blank? %>
+    <div class="box tags">
         <label>Tags</label><br />        
           <% for item in @snippet.tags %>
             <span class="tag_name"><%= link_to (h item.name), :controller => "snippets", :action => "index", :tag => (h item.name.downcase) %></span>
           <% end %>        
+
+    </div>
         <% end %>
-    </p>
     <% if has_permission(@snippet) %>
-    <p class="box operate">
-            <%= link_to 'Edit', edit_snippet_path(@snippet) %> | <%= link_to 'Destroy', @snippet, :confirm => 'Are you sure?', :method => :delete %>
-    </p>
+    <div class="box operate">
+            <p><%= link_to 'Edit', edit_snippet_path(@snippet) %> | <%= link_to 'Destroy', @snippet, :confirm => 'Are you sure?', :method => :delete %></p>
+    </div>
     <% end %>
 </div>
