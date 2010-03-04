@@ -68,16 +68,9 @@ Rails::Initializer.run do |config|
 end
 
 
-Time::DATE_FORMATS[:short_date_string] = "%y年%m月%d日"
+
 Time::DATE_FORMATS[:short_date] = "%y-%m-%d"
-Time::DATE_FORMATS[:short_time_string] = "%y年%m月%d日 %H:%M"
 Time::DATE_FORMATS[:short_time] = "%y-%m-%d %H:%M"
 
- 
-
-APP_THEMES_NAMES = ['Active4D','Cobalt','Dawn','Mac Classic','LAZY','IDLE','BlackBoard','Twilight',
-	'Sunburst','SpaceCadet']
-APP_THEMES = ['active4d','cobalt','dawn','mac_classic','lazy','idle','black_board','twilight',
-	'sunburst','space_cadet']
 
 APP_STYLES = %w[monokai manni perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs pastie friendly native]
