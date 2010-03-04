@@ -22,7 +22,7 @@ class Snippet < ActiveRecord::Base
 
 
   def twitter_update
-    self.user.twitter_update("Create a new snippet: #{self.id} #{self.title} , http://www.twpaste.com/code/#{self.id}")
+    self.user.twitter_update("Create a new snippet: #{self.id} #{self.title} , http://twpaste.com/code/#{self.id}")
   end
 
   def skip_before_filter=(skip_before_filter)
