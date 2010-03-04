@@ -10,18 +10,12 @@
 		本站除了用于记录你的代码片段外，还有个功能就是向博客文章内贴有色彩的代码，如：<a href="http://huacnlee.com/blog/create-rails-task-scheduler-by-rake-and-cronjob" target="_blank">这篇文章里面的代码</a>。<br /><br />
 		实现的途径是：<br />
 		<ol>
-			<li>在你网站的CSS里面加入 <a href="<%= APP_DOMAIN %>/stylesheets/themes/idle.css">这个文件</a> 的代码；</li>
+			<li>在你网站的CSS里面加入 <a href="/stylesheets/themes/idle.css">这个文件</a> 的代码；</li>
 			<li>查看提交好的代码，并点击左边的 <b>HTML Code</b> 连接，并复制出来的内容；</li>
 			<li>在你的博客文章编辑器里面以 HTML 的方式插入刚才复制的代码，并保存。</a>
 		</ol>
 		本站的高亮主题 CSS文件列表(请复制到你博客的CSS里面)：<br />
-		<ul>
-			<% i = 0 %>
-			<% for item in APP_THEMES %>
-				<li><a href="<%= APP_DOMAIN %>/stylesheets/themes/<%= item.parameterize('_').to_s %>.css"><%= APP_THEMES_NAMES[i] %></a></li>
-				<% i += 1 %>
-			<% end %>
-		</ul>
+		 
 		另外字体的设置我没有放到CSS里面，因为有些使用者可能需要使用不同的字体和字体大小，如果你想让你博客上面的代码像本站一样显示，请加入以下代码到你的 CSS 里面去：
 		<div class="highlight"><pre><span class="nc">.highlight</span> <span class="p">{</span> <span class="k">overflow</span><span class="o">-</span><span class="err">x</span><span class="o">:</span><span class="k">scroll</span><span class="p">;</span> <span class="k">line-height</span><span class="o">:</span><span class="m">120%</span><span class="p">;</span> <span class="p">}</span>
 <span class="nc">.highlight</span> <span class="nt">pre</span><span class="o">,</span>

@@ -50,7 +50,7 @@ class Snippet < ActiveRecord::Base
       code_formatted.gsub('<div class="highlight">','<div class="inner_code">')
     end
     return code_formatted.gsub('<table class="highlighttable">',
-        '<div class="highlight_top">View: <a href="#{APP_DOMAIN}/code/#{self.id}" target="_blank">Source</a> or <a href="#{APP_DOMAIN}/code/#{self.id}.raw" target="_blank">Raw</a></div><table class="highlight" cellspacing="0" cellpadding="0">')
+        '<div class="highlight_top">View: <a href="#">Source</a> or <a href="#{APP_DOMAIN}/code/#{self.id}.raw" target="_blank">Raw</a></div><table class="highlight" cellspacing="0" cellpadding="0">')
   end
 
   def summary_formatted_show

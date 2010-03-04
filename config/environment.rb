@@ -73,14 +73,11 @@ Time::DATE_FORMATS[:short_date] = "%y-%m-%d"
 Time::DATE_FORMATS[:short_time_string] = "%y年%m月%d日 %H:%M"
 Time::DATE_FORMATS[:short_time] = "%y-%m-%d %H:%M"
 
-# App domain
-APP_HOST = 'pasite.org'
-APP_DOMAIN  = "http://#{APP_HOST}"
-
-# custom configs
-APP_VERSION = '0.1.7'
+ 
 
 APP_THEMES_NAMES = ['Active4D','Cobalt','Dawn','Mac Classic','LAZY','IDLE','BlackBoard','Twilight',
 	'Sunburst','SpaceCadet']
 APP_THEMES = ['active4d','cobalt','dawn','mac_classic','lazy','idle','black_board','twilight',
 	'sunburst','space_cadet']
+
+APP_STYLES = %w[monokai manni perldoc borland colorful default murphy vs trac tango fruity autumn bw emacs pastie friendly native]
