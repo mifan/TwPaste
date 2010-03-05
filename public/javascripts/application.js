@@ -104,20 +104,13 @@ $(document).ready(function() {
   var showClasses = "highlight "+ user_theme ;
   $(".highlight").attr("class",showClasses);
 
-  alert($("#theme_name"));
-  alert($("#theme_name").length);
-  alert($("#theme_name") == null);
-
-  if($("#theme_name")){
-   var selectedVal = $("#theme_name").val();
-   if(user_theme.substring(2) != selectedVal){
-     $("#theme_name").val(user_theme.substring(2));
-   }
-
-
+  if($("#theme_name").length > 0){
+    var selectedVal = $("#theme_name").val();
+    if(user_theme.substring(2) != selectedVal){
+      $("#theme_name").val(user_theme.substring(2));
+    }
   }
-  
-  
+
   $("#theme_name").change(function(){
 	var selectedValue = $(this).val();
     var currentClasses = "highlight hl" + selectedValue;
@@ -125,7 +118,5 @@ $(document).ready(function() {
     $(".highlight").attr("class",currentClasses);
     return false;
   });
-
-
 
 });

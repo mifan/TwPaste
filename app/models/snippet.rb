@@ -45,18 +45,6 @@ class Snippet < ActiveRecord::Base
     return "#{f} KB"
   end
 
-  def code_formatted_show
-    if code_formatted.index('<table class="highlighttable">')
-      code_formatted.gsub('<div class="highlight">','<div class="inner_code">')
-    end
-    return code_formatted.gsub('<table class="highlighttable">',
-        '<div class="highlight_top">View: <a href="#">Source</a> or <a href="#{APP_DOMAIN}/code/#{self.id}.raw" target="_blank">Raw</a></div><table class="highlight" cellspacing="0" cellpadding="0">')
-  end
-
-  def summary_formatted_show
-    return summary_formatted.gsub('<table class="highlighttable">','<table class="highlight">')
-  end
-	
   # find method
   def self.find_page(page = 1)		
     conditions = ["private = ?",false]
