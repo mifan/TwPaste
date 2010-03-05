@@ -103,9 +103,10 @@ $(document).ready(function() {
   }
   var showClasses = "highlight "+ user_theme ;
   $(".highlight").attr("class",showClasses);
+
   
   
-   $("#theme_name").change(function(){
+  $("#theme_name").change(function(){
 	var selectedValue = $(this).val();
     var currentClasses = "highlight hl" + selectedValue;
 	$.cookie('user_theme', 'hl'+selectedValue , { expires: 60, path: '/' });
