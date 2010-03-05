@@ -95,10 +95,10 @@ jQuery.cookie = function(name, value, options) {
     }
 };
 
-$(document).ready(function() {
+$(document).ready(function() {	
   // get default highlight
   var user_theme = $.cookie('user_theme');
-  if(user_theme){
+  if(user_theme == null){
     user_theme = 'hldefault';
   }
   var showClasses = "highlight "+ user_theme ;
@@ -107,8 +107,8 @@ $(document).ready(function() {
   
    $("#theme_name").change(function(){
 	var selectedValue = $(this).val();
-    var currentClasses = "highlight hl" + 
-	$.cookie('user_theme', 'hl'+ $(this).val() , { expires: 60, path: '/' });
+    var currentClasses = "highlight hl" + selectedValue;
+	$.cookie('user_theme', 'hl'+selectedValue , { expires: 60, path: '/' });
     $(".highlight").attr("class",currentClasses);
     return false;
   });
