@@ -31,7 +31,7 @@ class Snippet < ActiveRecord::Base
 
   # before_filters
   def format_code
-    if not self.skip_before_filter
+    unless self.skip_before_filter
       self.size = self.code.length
       self.code_formatted = Highlight.format(self.code,self.language.slug)
       code_lines = self.code.gsub("\r\n","\n").split("\n")

@@ -10,6 +10,7 @@ class Highlight
       tmpfile.puts(code)
       tmpfile.flush
       result = `pygmentize -f html -l #{type} -O encoding=utf8,linenos=1 #{tmpfile.path}`
+      result.gsub('class="highlight"','class="highlight hldefault"')
       if $? != 0
         result = code
       end
