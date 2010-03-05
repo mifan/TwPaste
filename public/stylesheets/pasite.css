@@ -430,8 +430,9 @@ width:99%;
 .linenos { padding:0 5px; text-align:right; color:#999; }
 /*.highlight td.code { width:100%; }*/
 .highlight_top { margin-bottom:5px; font-size:11px; text-align:right; padding-right:8px; display:none; }
-.highlight td.linenos { width:23px;}
+/*.highlighttable td.linenos { width:23px;}*/
 .highlighttable { width:100%;}
+.highlighttable td.code { width:100%; }
 
 
 table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-spacing:0}
