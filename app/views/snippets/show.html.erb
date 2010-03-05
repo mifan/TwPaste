@@ -23,7 +23,7 @@
     <div id="comment_new">
       <% if current_user %>
       <div class="form">
-          <% form_for @comment,:url => "/code/#{params[:id]}/comment" do |f|%>
+          <% form_for @comment,:url => "/code/#{@snippet.id}/comment" do |f|%>
           <%= f.error_messages %>
           <div class="row">
              <%= f.label :comment,"Comment:" %><br />
