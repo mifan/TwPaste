@@ -431,6 +431,8 @@ width:99%;
 .highlight td.code { width:100%; }
 .highlight_top { margin-bottom:5px; font-size:11px; text-align:right; padding-right:8px; display:none; }
  
+ .highlighttable { width:100%;}
+
 
 table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-spacing:0}
 	table.grid tr td { font-size: 12px; padding:4px; border-top: 1px solid #CCC; border-left: 1px solid #CCC;}
