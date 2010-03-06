@@ -50,10 +50,12 @@ background:black none repeat scroll 0 0;border:1px solid #666666;color:white;}
 
 #right {
 	float:left;
-	font-family:'Lucida Grande','Trebuchet MS',Arial,Helvetica,sans-serif;
 	margin-left:1.25em;
 	margin-top:1em;
 	width:20%;
+	background:none no-repeat scroll right top #FAFAFA;
+    border-left:1px solid #DEE1E4;
+    border-top:medium none;
 }
 #right p {
 	font-size:0.8em;
