@@ -187,13 +187,18 @@ ul.navigation a  {
   font-size:1.10em;
   font-weight:bold;
   margin:0;
-  padding-top:12px;
+  padding-bottom:0;
+
 }
 
 .profile .name a {
   color:#333333;
 }
 
+.profile .twitterpage {
+  font-size: 9px;
+  padding-left: 12px;
+}
 
 
 
