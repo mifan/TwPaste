@@ -148,8 +148,8 @@ ul.navigation a  {
 
 /********************Right Column begin*****************************/
 .rightCol{
- border-left:1px solid #DEE1E4;
-border-top:medium none;
+  border-left:1px solid #DEE1E4;
+  border-top:medium none;
 }
 .side-box {
   border-bottom:1px solid #EDEDED;
