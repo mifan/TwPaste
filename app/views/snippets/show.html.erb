@@ -4,33 +4,24 @@
     <%=render :partial => 'tiles/sidebox/posted_by', :object =>@snippet.user %>
  
     <div class="side-box">
+	      <label>View as </label>
           <%= link_to "Raw", {:controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id } , { :class => 'normal-weight'}%>
           <span style="color: rgb(153, 153, 153);">or</span>
-          <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
-    </div>
-    <div class="side-box">
-        <label>Author</label>
-        <%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %>
-    </div>
-
-    <div class="side-box">
-        <label>Pasted</label>
-        <%= time_ago_in_words(@snippet.created_at) %> Ago
+          <%= link_to "HTML Code", {:controller => "snippets", :action => "show", :format => :code, :id => @snippet.id} , { :class => 'normal-weight'}%>
     </div>
 
     <div class="side-box">
         <label>Language</label>
-        <p><%= link_to (h @snippet.language.name), :controller => "snippets", :action => "index", :lang => @snippet.language.slug %></p>
+        <%= link_to (h @snippet.language.name), { :controller => "snippets", :action => "index", :lang => @snippet.language.slug } , { :class => 'normal-weight'} %>
     </div>
 
     <div class="side-box">
-        <label>File size<label>
-        <p><%=h @snippet.size_kb %></p>
+        <label>File size<label> <%=h @snippet.size_kb %>
     </div>
 
   <div class="side-box">
     <label>Views count<label>
-    <p><%=h @snippet.views_count_s  %></p>
+	<%=h @snippet.views_count_s  %>
   </div>
 
      <% unless @snippet.tags.blank? %>

@@ -11,4 +11,5 @@
 	  <a href="http://twitter.com/<%=posted_by.login%>">twitter page</a>
     </p>
   </div>
+  <%= time_ago_in_words(@snippet.created_at) %> Ago
 </div>
