@@ -12,7 +12,7 @@
     <% else %>
     <ul class="navigation signin">
       <li>
-        <img alt="Avatar from Twitter" width="20" height="20" src="<%=current_user.avatar_url%>" />
+        <img alt="Avatar from Twitter" width="20" height="20" src="<%=current_user.avatar_url%>" class="inline" />
 		<%= link_to current_user.login, account_path %>
       </li>
       <li><%= link_to "New", new_snippet_path %></li>

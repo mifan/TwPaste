@@ -120,6 +120,12 @@ ul.navigation a  {
   font-weight:lighter;
   line-height:18px;
 }
+
+.nav-img {
+  background:url("/images/default_profile.png") no-repeat scroll left top #222222;
+
+}
+
 /********************* head  part end *********************/
 
 
