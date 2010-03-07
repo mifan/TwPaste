@@ -179,8 +179,12 @@ ul.navigation a  {
   overflow:hidden;
 }
 
+.profile .image{
+  float:left;
+  margin-right:9px;
+}
 .profile .name {
-  font-size:1.35em;
+  font-size:1.10em;
   font-weight:bold;
   margin:0;
   padding-top:12px;
