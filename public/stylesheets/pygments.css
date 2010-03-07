@@ -1,4 +1,4 @@
-.highlighttable { width:100%;}
+.highlighttable { width:100%; overflow:auto;}
 .highlighttable td.code { width:100%; }
 .highlighttable th, .highlighttable td {border:0;} 
 
