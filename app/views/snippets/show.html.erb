@@ -4,18 +4,18 @@
     <%=render :partial => 'tiles/sidebox/posted_by', :object =>@snippet.user %>
  
     <div class="side-box">
-          <p><%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %></p>
+          <%= link_to "Raw", {:controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id } , { :class => 'normal-weight'}%>
           <span style="color: rgb(153, 153, 153);">or</span>
-          <p><%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %></p>
+          <%= link_to "HTML Code", :controller => "snippets", :action => "show", :format => :code, :id => @snippet.id %>
     </div>
     <div class="side-box">
-        <label>Author</label><br />
-        <p><%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %></p>
+        <label>Author</label>
+        <%= link_to (h @snippet.user.login), :controller => "snippets", :action => "index", :login => @snippet.user.login %>
     </div>
 
     <div class="side-box">
-        <label>Pasted</label><br />
-        <p><%= time_ago_in_words(@snippet.created_at) %> Ago</p>
+        <label>Pasted</label>
+        <%= time_ago_in_words(@snippet.created_at) %> Ago
     </div>
 
     <div class="side-box">

@@ -150,6 +150,10 @@ ul.navigation a  {
   margin:0.5em 0 0.5em 1.5em; 
   color:#999; 
 }
+.normal-weight{
+  font-weight:normal;
+}
+
 /********************util dnd ****************************   /
 
 /********************Right Column begin*****************************/
@@ -197,7 +201,7 @@ ul.navigation a  {
 
 .profile .twitterpage {
   font-size: 9px;
-  padding-left: 12px;
+  padding-left: 14px;
 }
 
 
