@@ -6,6 +6,10 @@ body {
   color:#454547;
 }
 
+a {
+  color:#005A9C;
+}
+
 .page {
   width:auto;
 }
@@ -14,8 +18,11 @@ body {
   width: 90%;
   margin:0 auto;
   overflow:auto;
+  background:none repeat scroll 0 0 #ffffff;
+}
+
+.main {
   padding:10px;
-  background:none repeat scroll 0 0 #FFFFFF;
 }
 
 h2, .h2 {
@@ -26,6 +33,20 @@ h3, .h3 {
  color:#232323;
 }
 
+input, select {
+  border:1px solid #999999;
+  padding:2px;
+}
+
+select {
+  font:15px Georgia,serif;
+}
+
+label {
+  color:#333333;
+  font-size:0.9em;
+  font-weight:normal;
+}
 /********************* global  setting end *********************/
 
 
@@ -133,6 +154,18 @@ border-top:medium none;
 .side-box {
   border-bottom:1px solid #EDEDED;
   padding:17px;
+}
+
+.side-box h3 {
+  color:#212121;
+  font-size:108%;
+  font-weight:bold;
+  padding:0;
+}
+
+.follow-us {
+  background:url("/images/follow_us.png") no-repeat scroll left bottom transparent;
+  padding:12px 12px 12px 90px;
 }
 
 /*background:url("/img/sidebar_bg.png") no-repeat scroll right top #FAFAFA; */
@@ -333,12 +366,7 @@ color:orange;
 }
  
  
-label {
-color:#666666;
-font-family:'Lucida Grande',Tahoma,Arial,Helvetica,sans-serif;
-font-size:0.8em;
-font-weight:normal;
-}
+
  
  
 .clearfix:after{clear:both;content:'';display:block;font-size:0;line-height:0;visibility:hidden;width:0;height:0}
