@@ -1,0 +1,14 @@
+<div class="side-box">
+  <h3>Posted by</h3>
+  <div class="profile">
+    <p class="image">
+	   <img src="<%= posted_by.avatar_url %>" width="48px" height="48px" alt="<%=posted_by.login %>'s face" />
+    </p>
+    <p class="name">
+      <a href="/users/<%=posted_by.login%>"><%=posted_by.login%></a>
+    </p>
+    <p style="font-size: 9px;">
+	  <a href="http://twitter.com/<%=posted_by.login%>">twitterpage</a>
+    </p>
+  </div>
+</div>
