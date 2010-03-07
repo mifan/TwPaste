@@ -1,6 +1,7 @@
 <div class="rightCol">
     <%=render :partial => 'tiles/sidebox/select_style' %>
     <%=render :partial => 'tiles/sidebox/follow_us' %>
+    <%=render :partial => 'tiles/sidebox/posted_by', :object =>@snippet.user %>
  
     <div class="side-box">
           <p><%= link_to "Raw", :controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id %></p>
