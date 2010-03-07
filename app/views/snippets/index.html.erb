@@ -4,22 +4,11 @@
 -->
  
 
-<div id="content">
-<h2><%= @sub_title %> <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed")), :action => "index", :type => "feed"  %></h2>
-<div id="snippets">
-  <div class="total">
-    There have <%= @snippets_count %> pasites 
-  </div>
-  <%=render :partial => 'snippet' , :collection => @snippets %>
-  <div class="pages">
-    <%= will_paginate @snippets %>
-  </div>
-</div>
-</div>
 
-<div id="right">
-      <div class="box">
-        <label>Theme:</label><br />
+
+<div class="rightCol">
+      <div class="side-box">
+        <label>Theme:</label>
 		<%= select( 'theme' ,'name' ,APP_STYLES ,{:selected => 'default'} )%>
     </div>
   <% if current_user %>
@@ -37,7 +26,7 @@
     </ul>
   </div>    
   <% end %>
-  <div class="box" id="right_top_languages">    
+  <div class="side-box" id="right_top_languages">    
     <h3>Top Languages</h3>
     <ul>
         <% for language in Language.find_top %>
@@ -46,7 +35,7 @@
     </ul>
   </div>  
 
-  <div class="box" id="right_top_users">
+  <div class="side-box" id="right_top_users">
     <h3>Top Users</h3>
     <ul>
         <% for user in User.find_top_by_snippets_count %>
@@ -56,7 +45,7 @@
   </div>
 
 
-        <div class="box" id="recent_comments">
+        <div class="side-box" id="recent_comments">
         <h3>Recent Comments</h3>
         <ul>
           <% Comment.snippet_recent(10).each do |comment| %>
@@ -68,4 +57,16 @@
       </div>
 
 
+</div>
+
+<div class="main">
+  <h2 class="inline"><%= @sub_title %></h2>
+  <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed inline")), :action => "index", :type => "feed" %>
+  <div id="snippets">
+    <div class="summary">There have <%= @snippets_count %> pasites </div>
+    <%=render :partial => 'snippet' , :collection => @snippets %>
+    <div class="pages">
+      <%= will_paginate @snippets %>
+    </div>
+  </div>
 </div>

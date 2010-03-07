@@ -1,8 +1,200 @@
+
+/* global settings */
+/********************* global  setting begin *********************/
 body {
-	background:none repeat scroll 0 0 #222222;
-    color:#454547;
+  background:none repeat scroll 0 0 #222222;
+  color:#454547;
 }
+
+.page {
+  width:auto;
+}
+
+.body {
+  width: 90%;
+  margin:0 auto;
+  overflow:auto;
+  padding:10px;
+  background:none repeat scroll 0 0 #FFFFFF;
+}
+
+h2, .h2 {
+ color:#232323;
+}
+
+h3, .h3 {
+ color:#232323;
+}
+
+/********************* global  setting end *********************/
+
+
+
+/********************* head  part begin *********************/
+.head {
+  margin-bottom:10px;
+  min-height:68px;
+}
+
+#logo {
+  background:transparent url(../images/pastie.gif) no-repeat scroll 0 0;
+  float:left;
+  width:200px;
+  height:32px;
+  margin: 17px 0 5px 42px;
+  padding: 10px 0 0 40px;
+}
+
+a#logo {
+  color:#efefef;
+}
+
+a#logo:visited {
+  color:#efefef;
+}
+
+ul.navigation {
+  background:none repeat scroll 0 0 #333333;
+  float:right;
+  margin:17px 100px 0 0;
+  padding:0;
+}
+
+ul.signout {
+  width: 220px;
+}
+
+ul.signin {
+  width: 300px;
+}
+
+ul.navigation li {
+  background:transparent none no-repeat scroll 0 50%;
+  display:inline;
+  float:left;
+  padding:7px 8px 0 8px;
+}
+
+ul.navigation li.navi-left {
+  background:url("/images/navi_left.png") no-repeat scroll left top #222222;
+  float:left;
+  margin:0;
+  padding:0;
+  height:33px;
+  width:10px;
+}
+
+ul.navigation li.navi-right {
+  background:url("/images/navi_right.png") no-repeat scroll left top #222222;
+  float:right;
+  margin:0;
+  padding:0;
+  height:33px;
+  width:10px;
+}
+
+ul.navigation a  {
+  color:#60A5FF;
+  font-size:12px;
+  font-weight:lighter;
+  line-height:18px;
+}
+/********************* head  part end *********************/
+
+
+
+
+/********************* foot  part begin *********************/
+.foot{
+  font-size:0.8em;
+  margin:0 auto 3.5em 2%;
+  min-width:560px;
+  padding:0 20px;
+}
+
+/********************* foot  part end *********************/
+
+
+
+/********************util begin ****************************/
+.feed { margin-bottom:-2px; }
+.inline { display: inline; }
+.summary { 
+  margin:0.5em 0 0.5em 1.5em; 
+  color:#999; 
+}
+/********************util dnd ****************************   /
+
+/********************Right Column begin*****************************/
+.rightCol{
+ border-left:1px solid #DEE1E4;
+border-top:medium none;
+}
+.side-box {
+  border-bottom:1px solid #EDEDED;
+  padding:17px;
+}
+
+/*background:url("/img/sidebar_bg.png") no-repeat scroll right top #FAFAFA; */
+
+
+
+
+
+/****************** pagination begin ************************/
+.pages {
+	float:right;
+	font-size:0.8em;
+	margin-top:0.25em;
+}
+.pagination { display:inline;}
+.pagination a, .pagination span {
+  border:1px solid #dddddd;
+  padding:2px 5px;
+  text-decoration:none;
+}
+.pagination span {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:black none repeat scroll 0 0;
+  border:1px solid #666666;
+  color:white;
+}
+.pagination span.gap {
+  -moz-background-clip:border;
+  -moz-background-inline-policy:continuous;
+  -moz-background-origin:padding;
+  background:transparent none repeat scroll 0 0;
+  border:0 none;
+  color:black;
+}
+/****************** pagination end ************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 a img { border:0 none;}
+
 
 #right a.or {color:#336699;text-decoration:underline;}
 
@@ -34,17 +226,6 @@ input.long { width:750px; }
 	margin-bottom:0;
 }
  
-div.pages {
-	float:right;
-	font-size:0.8em;
-	margin-top:0.25em;
-}
-.pagination { display:inline;}
-.pagination a, .pagination span { border:1px solid #DDDDDD;padding:2px 5px;text-decoration:none;}
-.pagination span {-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;
-background:black none repeat scroll 0 0;border:1px solid #666666;color:white;}
-.pagination span.gap {-moz-background-clip:border;-moz-background-inline-policy:continuous;
-	-moz-background-origin:padding;background:transparent none repeat scroll 0 0;border:0 none;color:black;}
 
  
 
@@ -65,34 +246,10 @@ background:black none repeat scroll 0 0;border:1px solid #666666;color:white;}
 #right p span.tag_name a { color:#333;}
 #right p.operate { margin-top:20px; }
 
-#footer {
-color:#333333;
-font-family:'Lucida Grande',Tahoma,Arial,Helvetica,sans-serif;
-font-size:0.75em;
-margin:0 auto 3.5em 3%;
-min-width:560px;
-padding:0 25px;
-width:66%;
-}
+ 
 
  
- 
-#site_logo, h1, h2, h3, h4 { font-family:'Lucida Grande','Trebuchet MS',Arial,Helvetica,sans-serif; }
-#site_logo {font-size:1.3em;}
-#site_logo a {color:#FFCC44; text-decoration:none; }
 
-h2 { font-size:1em;}
-h2 span { color:#999999; font-size:0.75em; margin-left:1em; }
-h2 img.feed { margin-bottom:-3px; }
-h3 { -moz-background-clip:border; -moz-background-inline-policy:continuous;
-  -moz-background-origin:padding; background:#E0E7E0 none repeat scroll 0 0;
-  color:#228822; font-size:0.8em; padding:3px 10px; }
-h4 { font-size:0.75em; }
-
- 
-#footer p {
-margin:0;
-}
  
 
  
@@ -109,7 +266,6 @@ vertical-align:middle;
 }
 div.submit .or_button {
 color:#999999;
-font-family:'Lucida Grande',Tahoma,Arial,Helvetica,sans-serif;
 font-size:0.75em;
 }
 div.submit .or_button a {
@@ -125,9 +281,7 @@ font-size:0.7em;
 font-weight:normal;
 }
  
-p {
-font-family:'Lucida Grande','Trebuchet MS',Arial,Helvetica,sans-serif;
-}
+ 
 #header {
 -moz-background-clip:border;
 -moz-background-inline-policy:continuous;
@@ -213,14 +367,14 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 .successMessage { font-size:12px;margin:10px 0; background:#CF9; padding:10px; border: 2px solid #6C0; }
 
 
-#right .box { }
-#right .box ul {  font-size:12px; list-style-position: inside; padding:0; margin:0 5px;}
-#right .box ul li { padding:0; margin:0; line-height:20px;}
-#right .box ul li span.count { font-size:11px; color:#999; font-weight:normal;}
+.box { }
+.box ul {  font-size:12px; list-style-position: inside; padding:0; margin:0 5px;}
+.box ul li { padding:0; margin:0; line-height:20px;}
+.box ul li span.count { font-size:11px; color:#999; font-weight:normal;}
 #right_profile ul { list-style:none; }
 
 #snippets {}
-#snippets .total { margin-bottom:1em; font-size:12px; color:#999; height:22px; line-height:22px;}
+
 #snippets .item {	-moz-background-clip:border;	-moz-background-inline-policy:continuous;
 		-moz-background-origin:padding;	background:#EEEEEE none repeat scroll 0 0;	
 		margin-bottom:1em;	padding:7px 15px;}
