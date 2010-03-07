@@ -36,7 +36,7 @@ class Snippet < ActiveRecord::Base
       self.code_formatted = Highlight.format(self.code,self.language.slug)
       code_lines = self.code.gsub("\r\n","\n").split("\n")
       self.line_count = code_lines.length
-      self.summary_formatted = Highlight.format(code_lines[0..5].join("\n"),self.language.slug)
+      self.summary_formatted = Highlight.format_without_linenos(code_lines[0..5].join("\n"),self.language.slug)
     end
   end
 
