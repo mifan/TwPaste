@@ -10,7 +10,7 @@
   <%=render :partial => 'tiles/sidebox/select_style' %>
   
   <% if current_user %>
-    <%=render :partial => 'tiles/sidebox/profile' %>
+    <%=render :partial => 'tiles/sidebox/profile', :object => current_user %>
   <% end %>
   <div class="side-box" id="right_top_languages">    
     <h3>Top Languages</h3>
