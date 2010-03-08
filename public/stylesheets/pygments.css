@@ -2,7 +2,7 @@
 .highlighttable td.code { width:100%; }
 .highlighttable th, .highlighttable td {border:0;} 
 
-.highlight { display:block ; overflow:scroll;}
+.highlight { display:block ; overflow:auto; width:99%;}
 
 /*.linenos pre,.highlight pre,.highlight pre span {font-family:"Bitstream Vera Sans Mono","Monaco","Courier New",monospace,宋体;font-size:9pt;font-weight:normal;} */
 
