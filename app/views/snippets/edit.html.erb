@@ -1,5 +1,7 @@
 <div class="rightCol">
-  <%=render :partial => 'tiles/sidebox/profile', :object => current_user %>
+ 
+  <%=render(:partial => 'tiles/sidebox/profile', :object => current_user)  if current_user %>
+ 
   <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
 
@@ -7,44 +9,61 @@
 
 <div class="main">
   <h2>Editing snippet</h2>
-  <div id="snippet_edit">
+  <div>
   <% form_for(@snippet) do |f| %>
     <%= f.error_messages %>
-    <div class="row">
-    <%= f.label :title,"Title:" %>
-    <%= f.text_field :title ,:class => "text",:maxlength => "50" %>
-        <div  style="float: right;">
-            <%= f.label :language, "Language:" %>
-            <% languages_array = Language.all(:order => 'name ASC').map { |l| [l.name, l.id] } %>
-            <%= f.select(:language_id,languages_array) %>
-            <%= f.label :paivate, "Private?" %>
-            <%= f.check_box :private %>
-            <%= f.label :private, (image_tag("icons/private.gif",:alt => "Private")) %>        
-        </div>
-  </div>
-  <div class="row">
-    <%= f.label :code,"Source code:" %><br />
-    <%= f.text_area :code, :class => "required pastebox" %>    
-  </div>
-   <div class="row">
-     <div class="submit" style="float: right;">
-       <%= link_to '+ Add Description', '#' ,{ :id => 'addDescId'}%>
-       <%= link_to '+ Add Tags', '#' ,{ :id => 'addTagsId'}%>
-     </div>
-  </div>
-  <div class="row" style="display:none;" id="textDesc">
-    <%= f.label :desc, "Description:" %><br />
-    <%= f.text_area :desc, :class => "desc" %>
-  </div>
-		
-  <div class="row" style="display:none;" id="textTags" >
-        <%= f.label :tags, "Tags:" %><br />        
-        <%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "text long") %>
-  </div>
+    <div >
+      <div style="float:left;" class="input-space">
+         <%= f.label :title,"Title:",:class => 'title' %>
+         <%= f.text_field :title ,{:class => 'space' ,:size => 50,:maxlength => "50"}%>
+      </div>
+      <div style="float:right;padding-right:10px;" class="input-space">
+       <%= f.label :language, "Language:" ,:class => 'title' %>
+        <% languages_array = Language.all(:order => 'name ASC').map { |l| [l.name, l.id] } %>
+        <%= f.select(:language_id,languages_array,{},:selected => '6') %>
+	  </div>
+    </div>
 
-  <div class="submit">
-    <%= f.submit 'Save', :class => "submit" %> or
-    <%= link_to 'Back', snippets_path %>
+    <div class="input-space">
+      <%= f.label :code,"Source code:" ,:class => 'title block'%>
+      <%= f.text_area :code, :class => "required space" , :rows => 18 %>    
+    </div>
+
+    <div style="display:none1;" id="textDesc" class="input-space">
+      <%= f.label :desc, "Description:" ,:class => 'title' %>
+      <%= f.text_area :desc, :class => "space", :rows => 5 %>
+    </div>
+		
+    <div style="display:none1;" id="textTags" class="input-space">
+        <%= f.label :tags, "Tags:" ,:class => 'title' %>
+        <%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "space") %>
+    </div>
+
+	
+
+	 <div style="width:90%;">
+	 <div>
+       <a href="#" id="addDescId">+ Description</a> | 
+       <a href="#" id="addTagsId">+ Tags</a>
+     </div>
+
+	  <div class="post-to-twitter">
+					<input type="checkbox" value="1" style="vertical-align: top;" name="image[tweet_this]" id="image_tweet_this" checked="checked">
+					<label style="display: inline;" for="image_tweet_this">Post it to Twitter</label>
+				</div>
+		 </div>
+		   <div class="post-to-twitter">
+					<input type="checkbox" value="1" style="vertical-align: top;" name="image[tweet_this]" id="image_tweet_this" checked="false">
+					<label style="display: inline;" for="image_tweet_this">Private</label>
+				</div>
+		 </div>
+		
+	 </div>
+
+    <div>
+      <%= f.submit 'Save', :class => "submit" %> or
+      <%= link_to 'Back', snippets_path %>
+    </div>
   </div>
 <% end %>
 </div>

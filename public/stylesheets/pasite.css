@@ -47,14 +47,21 @@ textarea {
   font-size:13px;
 }
 
+input.space , textarea.space {
+  padding-left:5px;
+  padding-right:10px;
+  width: 90%;
+}
+
+
 input.error , textarea.error {
   background-color:#FEF5F5;
-  border-color:#D5060D;
+  border-color:#D5665D;
 }
 
 label.error {
-  border:1px solid #EAABAD;
-  color:#333333;
+  color:#D5060D;
+  display:block;
 }
 
 
@@ -62,6 +69,14 @@ label {
   color:#333333;
   font-size:0.9em;
   font-weight:normal;
+}
+
+.title{
+  display:block;
+  font-size:13px;
+  font-weight:bold;
+  padding-bottom:3px;
+  width:200px;
 }
 /********************* global  setting end *********************/
 
@@ -159,12 +174,17 @@ ul.navigation a  {
 /********************util begin ****************************/
 .feed { margin-bottom:-2px; }
 .inline { display: inline; }
+.block { display: block; }
 .summary { 
   margin:0.5em 0 0.5em 1.5em; 
   color:#999; 
 }
 .normal-weight{
   font-weight:normal;
+}
+
+.input-space {
+  padding:5px 0 10px 10px;
 }
 
 /********************util dnd ****************************   /
@@ -251,50 +271,10 @@ ul.navigation a  {
 /****************** pagination end ************************/
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a img { border:0 none;}
-
-
  
 
-input.short { width:150px; }
-input.text { width:350px; }
-input.middle { width:550px; }
-input.long { width:750px; }
 
-	
-#container {margin:0 auto;min-width:760px;width:92%;}
- 
 
- 
-
- 
- 
-
- 
-
- 
- 
  
 div.submit {
 	font-size:12px;
@@ -373,11 +353,10 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 #snippets .item .when strong {color:black;}
 #snippets .item pre, #snippets .item pre span {font-weight:normal;}
 	
-#snippet_edit {}
-#snippet_edit textarea.pastebox {	width:100%;	font-size:12px; height:500px;}
-#snippet_edit textarea.desc { width:100%; font-size:12px; height:50px; }
+ 
 
-#snippet_show {}
+
+ 
 #snippet_show h1 a { font-size:12px; font-weight:normal;}
 #snippet_show .theme { position: absolute; font-size: 0.6em; color:#999; z-index: 100; right:38px;}
 #snippet_show .desc { font-size:12px; margin:10px 0; color:#666; }
@@ -399,3 +378,12 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 #help { font-size:14px; }
 #help ol { font-size:12px; }
 #help ol li { line-height:150%; }
+
+
+
+.post-to-twitter {
+  float:right;
+  margin-left:20px;
+  margin-right:0px;
+  margin-top:0px;
+}

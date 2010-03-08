@@ -1,7 +1,7 @@
 class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.xml
-  before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy]
+  before_filter :require_user, :only => [:create,:edit,:update,:destroy]
   
   def index 
     @sub_title = ""

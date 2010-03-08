@@ -1,30 +1,39 @@
 $(document).ready(function() {  
   //click
-  $("#addDescId").click(function(){
-    var textDesc = $("#textDesc");
-    if(textDesc){
-      textDesc.slideToggle("fast", function(){
-        if(textDesc.is(":visible")){
-          $("#addDescId").text('- Hide Description');
+  var textDesc = $("#textDesc");
+  var textTags = $("#textTags");
+  if(textDesc.is(":visible")){
+          $("#addDescId").text('- Description');
         }else{
-          $("#addDescId").text('+ Add Description');
+          $("#addDescId").text('+ Description');
+   }
+   if(textTags.is(":visible")){
+          $("#addTagsId").text('- Tags');
+        }else{
+          $("#addTagsId").text('+ Tags');
+   }
+
+
+
+  $("#addDescId").click(function(){
+      textDesc.toggle("fast", function(){
+        if(textDesc.is(":visible")){
+          $("#addDescId").text('- Description');
+        }else{
+          $("#addDescId").text('+ Description');
         }
       });
-    }
     return false;
   });
 
   $("#addTagsId").click(function(){
-    var textTags = $("#textTags");
-    if(textTags){
-      textTags.slideToggle("fast", function(){
+      textTags.toggle("fast", function(){
         if(textTags.is(":visible")){
-          $("#addTagsId").text('- Hide Tags');
+          $("#addTagsId").text('- Tags');
         }else{
-          $("#addTagsId").text('+ Add Tags');
+          $("#addTagsId").text('+ Tags');
         }
       });
-    }
     return false;
   });
 
