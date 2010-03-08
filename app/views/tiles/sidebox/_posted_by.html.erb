@@ -2,13 +2,13 @@
   <h3>Posted by</h3>
   <div class="profile">
     <p class="image">
-	   <img src="<%= posted_by.avatar_url %>" width="48px" height="48px" alt="<%=posted_by.login %>'s face" class="inline"/>
+       <img src="<%= posted_by.avatar_url %>" width="48px" height="48px" alt="<%=posted_by.login %>'s face" class="inline"/>
     </p>
     <p class="name">
       <a href="/users/<%=posted_by.login%>"><%=posted_by.login%></a>
     </p>
     <p class="twitterpage">
-	  <a href="http://twitter.com/<%=posted_by.login%>">twitter page</a>
+      <a href="http://twitter.com/<%=posted_by.login%>">twitter page</a>
     </p>
   </div>
   <%= time_ago_in_words(@snippet.created_at) %> Ago
