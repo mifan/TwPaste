@@ -10,34 +10,28 @@ class Snippet < ActiveRecord::Base
   acts_as_commentable
 
   validates_presence_of :code
-  validates_length_of   :title, :within => 2..50
+  validates_length_of   :title, :maximum => 60
 
   before_save :format_code 
   after_create :twitter_update
 
 
-  def skip_before_filter
-    return @skip_before_filter
-  end
+ 
 
 
   def twitter_update
     self.user.twitter_update("Create a new snippet: #{self.id} #{self.title} , http://twpaste.com/code/#{self.id}")
   end
 
-  def skip_before_filter=(skip_before_filter)
-    @skip_before_filter = skip_before_filter
-  end
+ 
 
   # before_filters
   def format_code
-    unless self.skip_before_filter
       self.size = self.code.length
       self.code_formatted = Highlight.format(self.code,self.language.slug)
       code_lines = self.code.gsub("\r\n","\n").split("\n")
       self.line_count = code_lines.length
       self.summary_formatted = Highlight.format_without_linenos(code_lines[0..5].join("\n"),self.language.slug)
-    end
   end
 
   def size_kb

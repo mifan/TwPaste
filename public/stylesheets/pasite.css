@@ -35,14 +35,28 @@ h3, .h3 {
  color:#232323;
 }
 
-input, select {
+input, select , textarea{
   border:1px solid #999999;
-  padding:2px;
 }
 
-select {
+input, select {
   font:15px Georgia,serif;
 }
+
+textarea {
+  font-size:13px;
+}
+
+input.error , textarea.error {
+  background-color:#FEF5F5;
+  border-color:#D5060D;
+}
+
+label.error {
+  border:1px solid #EAABAD;
+  color:#333333;
+}
+
 
 label {
   color:#333333;
@@ -123,10 +137,7 @@ ul.navigation a  {
   line-height:18px;
 }
 
-.nav-img {
-  background:url("/images/default_profile.png") no-repeat scroll left top #222222;
-
-}
+ 
 
 /********************* head  part end *********************/
 
