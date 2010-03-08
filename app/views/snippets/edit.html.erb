@@ -1,9 +1,16 @@
-<div id="content">
+<div class="rightCol">
+  <%=render :partial => 'tiles/sidebox/profile', :object => current_user %>
+  <%=render :partial => 'tiles/sidebox/follow_us' %>
+</div>
+
+
+
+<div class="main">
   <h2>Editing snippet</h2>
   <div id="snippet_edit">
-<% form_for(@snippet) do |f| %>
-  <%= f.error_messages %>
-  <div class="row">
+  <% form_for(@snippet) do |f| %>
+    <%= f.error_messages %>
+    <div class="row">
     <%= f.label :title,"Title:" %>
     <%= f.text_field :title ,:class => "text",:maxlength => "50" %>
         <div  style="float: right;">
