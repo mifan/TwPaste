@@ -17,12 +17,14 @@ a {
 .body {
   width: 90%;
   margin:0 auto;
-  overflow:auto;
+
   background:none repeat scroll 0 0 #ffffff;
 }
 
 .main {
   padding:10px;
+  display:block;
+  overflow:auto;
 }
 
 h2, .h2 {
