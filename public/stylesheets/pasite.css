@@ -1,6 +1,9 @@
 
 /* global settings */
 /********************* global  setting begin *********************/
+html{
+   background:none repeat scroll 0 0 #222222;
+ }
 body {
   background:none repeat scroll 0 0 #222222;
   color:#454547;
@@ -182,6 +185,17 @@ ul.navigation a  {
 .normal-weight{
   font-weight:normal;
 }
+.font-smaller{
+ font-size:93%;
+}
+
+.font-larger{
+ font-size:116%;
+}
+.font-largest{
+ font-size:123.1%;
+}
+
 
 .input-space {
   padding:5px 0 10px 10px;

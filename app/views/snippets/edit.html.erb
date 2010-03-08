@@ -1,7 +1,5 @@
 <div class="rightCol">
- 
-  <%=render(:partial => 'tiles/sidebox/profile', :object => current_user)  if current_user %>
- 
+  <%=render :partial => 'tiles/sidebox/profile', :object => current_user  if current_user %>
   <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
 
@@ -12,7 +10,7 @@
   <div>
   <% form_for(@snippet) do |f| %>
     <%= f.error_messages %>
-    <div >
+    <div style="width:99%;">
       <div style="float:left;" class="input-space">
          <%= f.label :title,"Title:",:class => 'title' %>
          <%= f.text_field :title ,{:class => 'space' ,:size => 50,:maxlength => "50"}%>
@@ -29,12 +27,12 @@
       <%= f.text_area :code, :class => "required space" , :rows => 18 %>    
     </div>
 
-    <div style="display:none1;" id="textDesc" class="input-space">
+    <div style="display:none;" id="textDesc" class="input-space">
       <%= f.label :desc, "Description:" ,:class => 'title' %>
       <%= f.text_area :desc, :class => "space", :rows => 5 %>
     </div>
-		
-    <div style="display:none1;" id="textTags" class="input-space">
+
+    <div style="display:none;" id="textTags" class="input-space">
         <%= f.label :tags, "Tags:" ,:class => 'title' %>
         <%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "space") %>
     </div>
@@ -42,29 +40,25 @@
 	
 
 	 <div style="width:90%;">
-	 <div>
-       <a href="#" id="addDescId">+ Description</a> | 
-       <a href="#" id="addTagsId">+ Tags</a>
-     </div>
+	   <div style="width:200px;float:left;padding-left:15px;">
+         <a href="#" id="addDescId" class="normal-weight font-smaller">+ Description</a> | 
+         <a href="#" id="addTagsId" class="normal-weight font-smaller">+ Tags</a>
+       </div>
 
-	  <div class="post-to-twitter">
-					<input type="checkbox" value="1" style="vertical-align: top;" name="image[tweet_this]" id="image_tweet_this" checked="checked">
-					<label style="display: inline;" for="image_tweet_this">Post it to Twitter</label>
-				</div>
+	    <div class="post-to-twitter">
+			<%= f.check_box :post_to_twitter, :checked => 'checked' %>
+            <%= f.label :post_to_twitter, "Post it to Twitter" %>
 		 </div>
-		   <div class="post-to-twitter">
-					<input type="checkbox" value="1" style="vertical-align: top;" name="image[tweet_this]" id="image_tweet_this" checked="false">
-					<label style="display: inline;" for="image_tweet_this">Private</label>
-				</div>
-		 </div>
-		
+		 <div class="post-to-twitter">
+		   <%= f.check_box :private %>
+           <%= f.label :private, "Private" %>    
+		 </div>		
 	 </div>
-
-    <div>
-      <%= f.submit 'Save', :class => "submit" %> or
-      <%= link_to 'Back', snippets_path %>
+       
+     <div style="clear:both; padding:10px 5px 15px 25px;">
+      <%= f.submit 'Save', :class => "submit" %>
     </div>
-  </div>
+
 <% end %>
 </div>
 </div>

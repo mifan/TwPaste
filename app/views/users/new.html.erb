@@ -1,10 +1,14 @@
-<div id="content">
-<h1>Login with Twitter</h1>
+<div class="rightCol">
+	  <%=render :partial => 'tiles/sidebox/follow_us' %>
+</div>
 
-<% form_for @user, :url => account_path do |f| %>
-  <%= f.error_messages %>
-  <%= oauth_register_button :value => "Login with Twitter", :class => 'twitter' %>
-<% end %>
-
+<div class="main">
+   <h2>Login with Twitter</h2>
+   <div style="padding:30px;">
+   <% form_for @user, :url => account_path do |f| %>
+      <%= f.error_messages %>
+      <%= oauth_register_button :value => "Login with Twitter", :class => 'twitter' %>
+   <% end %>
+   </div>
  
 </div>
