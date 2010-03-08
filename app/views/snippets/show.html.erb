@@ -4,7 +4,7 @@
     <%=render :partial => 'tiles/sidebox/posted_by', :object =>@snippet.user %>
  
     <div class="side-box">
-	      <label>View as </label>
+	      <h3>View as </h3>
           <%= link_to "Raw", {:controller => "snippets", :action => "show", :format => :raw, :id => @snippet.id } , { :class => 'normal-weight'}%>
           <span style="color: rgb(153, 153, 153);">or</span>
           <%= link_to "HTML Code", {:controller => "snippets", :action => "show", :format => :code, :id => @snippet.id} , { :class => 'normal-weight'}%>

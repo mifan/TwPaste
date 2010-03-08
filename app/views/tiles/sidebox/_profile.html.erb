@@ -1,0 +1,14 @@
+<div class="side-box">
+  <h3>Profile</h3>
+  <div class="profile">
+    <p class="image">
+       <img src="<%= profile.avatar_url %>" width="48px" height="48px" alt="<%=profile.login %>'s face" class="inline"/>
+    </p>
+    <p class="name">
+      <a href="/users/<%=profile.login%>"><%=profile.login%></a>
+    </p>
+    <p class="small-link">
+      <a href="http://twitter.com/<%=profile.login%>">twitter page</a>
+    </p>
+  </div>
+</div>
