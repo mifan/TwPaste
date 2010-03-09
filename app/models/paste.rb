@@ -17,7 +17,18 @@ class Paste < ActiveRecord::Base
   after_create :twitter_update
 
 
- 
+  named_scope :matching, lambda { |column, value|
+    return {} if value.blank?
+    { :conditions => ["#{column} = ?", "%#{value}%"] }
+  }
+
+  named_scope :order, lambda { |order|
+    { :order => order }
+  }
+
+  named_scope :match_language 
+
+  named_scope :public, :conditions => {:private => false } 
 
 
   def twitter_update

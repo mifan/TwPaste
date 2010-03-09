@@ -1,9 +1,9 @@
 xml.instruct! :xml, :version=>"1.0" 
 xml.rss(:version=>"2.0"){
   xml.channel{
-		xml.title "#{@feed_title} - Pasite"
-    xml.link APP_DOMAIN
-    xml.description("#{APP_HOST} 代码片段分享平台.")
+    xml.title "#{@feed_title} - Twitter Paste"
+    xml.link 'http://twpaste.com'
+    xml.description("code share platform.")
     xml.language('zh-cn')
       for item in @snippets
         xml.item do

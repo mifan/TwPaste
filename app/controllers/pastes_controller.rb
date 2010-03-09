@@ -4,10 +4,10 @@ class PastesController < ApplicationController
   before_filter :require_user, :only => [:create,:edit,:update,:destroy]
   
   def index 
-    @sub_title = ""
+    @sub_title = ''
     @pastes_count = 0
-    if params[:lang]
-      @language = Language.find_by_slug(params[:lang])
+    if params[:languguge_id]
+      @language = Language.find_by_id(:languguge_id)
       if @language
         @pastes = @language.pastes.find_page(params[:page])
         @pastes_count = @language.pastes.count
