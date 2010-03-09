@@ -16,7 +16,7 @@
     <h3>Top Languages</h3>
     <ul>
         <% for language in Language.find_top %>
-          <li><%= link_to (h language.name), {:controller => "snippets", :action => "index", :lang => language.slug} ,{:class => 'normal-weight font-larger'}%> <span class="count">(<%= language.snippets_count %>)</span></li>
+          <li><%= link_to (h language.name), {:controller => "pastes", :action => "index", :lang => language.slug} ,{:class => 'normal-weight font-larger'}%> <span class="count">(<%= language.pastes_count %>)</span></li>
         <% end %>
     </ul>
   </div>  
@@ -27,9 +27,9 @@
         <div class="side-box" id="recent_comments">
         <h3>Recent Comments</h3>
         <ul>
-          <% Comment.snippet_recent(10).each do |comment| %>
+          <% Comment.pastes_recent(10).each do |comment| %>
             <li>
-              <%= link_to (truncate(comment.user.login,:length => 10)), {:controller => "snippets", :action => "show", :id => comment.commentable_id} , {:class => 'normal-weight'}  %>: <%= truncate(h(comment.comment),:length => 20) %>
+              <%= link_to (truncate(comment.user.login,:length => 10)), {:controller => "pastes", :action => "show", :id => comment.commentable_id} , {:class => 'normal-weight'}  %>: <%= truncate(h(comment.comment),:length => 20) %>
            </li>
           <% end %>
         </ul>
@@ -42,11 +42,11 @@
 <div class="main">
   <h2 class="inline"><%= @sub_title %></h2>
   <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed inline")), :action => "index", :type => "feed" %>
-  <div id="snippets">
-    <div class="summary">There have <%= @snippets_count %> pasites </div>
-    <%=render :partial => 'snippet' , :collection => @snippets %>
+  <div id="pastes">
+    <div class="summary">There have <%= @pastes_count %> pasites </div>
+    <%=render :partial => 'paste' , :collection => @pastes %>
     <div class="pages">
-      <%= will_paginate @snippets %>
+      <%= will_paginate @pastes %>
     </div>
   </div>
 </div>

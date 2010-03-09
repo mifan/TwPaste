@@ -1,7 +1,8 @@
 require "lib/highlight"
 require "lib/string"
-class Snippet < ActiveRecord::Base
+class Paste < ActiveRecord::Base
   attr_protected :views_count, :comments_count
+
   belongs_to :language, :counter_cache => true
   belongs_to :user, :counter_cache => true
   acts_as_taggable_on :tags
@@ -20,7 +21,7 @@ class Snippet < ActiveRecord::Base
 
 
   def twitter_update
-    self.user.twitter_update("Create a new snippet: #{self.id} #{self.title} , http://twpaste.com/code/#{self.id}")
+    self.user.twitter_update("new paste: #{self.id} #{self.title} , http://twpaste.com/pastes/#{self.id}")
   end
 
  

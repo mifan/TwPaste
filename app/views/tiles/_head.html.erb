@@ -3,8 +3,8 @@
     <% unless current_user %>
     <ul class="navigation signout">
       <li class="navi-left"></li>
-      <li><%= link_to "New", new_snippet_path %></li>
-      <li><%= link_to "All", snippets_path %></li>
+      <li><%= link_to "New", new_paste_path %></li>
+      <li><%= link_to "All", pastes_path %></li>
       <li><%= link_to "Languages", languages_path %></li>
       <li><%= link_to "Login", login_path %></li>
       <li class="navi-right"></li>
@@ -16,8 +16,8 @@
         <img alt="Avatar from Twitter" width="20" height="20" src="<%=current_user.avatar_url%>" class="inline" />
 		<%= link_to current_user.login, account_path %>
       </li>
-      <li><%= link_to "New", new_snippet_path %></li>
-      <li><%= link_to "All", snippets_path %></li>
+      <li><%= link_to "New", new_paste_path %></li>
+      <li><%= link_to "All", pastes_path %></li>
       <li><%= link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?" %></li>
       <li class="navi-right"></li>
     </ul>

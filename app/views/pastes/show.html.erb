@@ -1,0 +1,88 @@
+<div class="rightCol">
+    <%=render :partial => 'tiles/sidebox/select_style' %>
+    <%=render :partial => 'tiles/sidebox/follow_us' %>
+    <%=render :partial => 'tiles/sidebox/posted_by', :object =>@paste.user %>
+ 
+    <div class="side-box">
+	      <h3>View as </h3>
+          <%= link_to "Raw", {:controller => "pastes", :action => "show", :format => :raw, :id => @paste.id } , { :class => 'normal-weight'}%>
+          <span style="color: rgb(153, 153, 153);">or</span>
+          <%= link_to "HTML Code", {:controller => "pastes", :action => "show", :format => :code, :id => @paste.id} , { :class => 'normal-weight'}%>
+    </div>
+
+    <div class="side-box">
+        <label>Language</label>
+        <%= link_to (h @paste.language.name), { :controller => "pastes", :action => "index", :lang => @paste.language.slug } , { :class => 'normal-weight'} %>
+    </div>
+
+    <div class="side-box">
+        <label>File size<label> <%=h @paste.size_kb %>
+    </div>
+
+  <div class="side-box">
+    <label>Views count<label>
+	<%=h @paste.views_count_s  %>
+  </div>
+
+     <% unless @paste.tags.blank? %>
+    <div class="side-box tags">
+        <label>Tags</label><br />        
+          <% for item in @paste.tags %>
+            <span class="tag_name"><%= link_to (h item.name), :controller => "pastes", :action => "index", :tag => (h item.name.downcase) %></span>
+          <% end %>        
+
+    </div>
+    <% end %>
+    <% if has_permission(@paste) %>
+    <div class="side-box operate">
+            <p><%= link_to 'Edit', edit_paste_path(@paste) %> | <%= link_to 'Destroy', @paste, :confirm => 'Are you sure?', :method => :delete %></p>
+    </div>
+    <% end %>
+</div>
+
+
+
+<div class="main">
+  <%= success_messages %>
+  <h2>
+   # <%= @paste.id %>  <%=h @paste.title %>
+   <%= image_tag("icons/private.gif",:alt => "Private") if @paste.private %>
+  </h2>
+  <div id="paste_show">    
+    <div class="paste-code">        
+        <%=@paste.code_formatted %>
+    </div>
+
+    <% unless @paste.desc.blank? %>
+    <div class="desc">
+      <%= format_comment @paste.desc %>
+    </div>
+    <% end  %>
+
+    <div class="comments" id="comments">
+      <h2>Comments<span class="count">(<%= @paste.comments_count %>)</span></h2>
+      <%=render :partial => 'comment' , :collection => @paste.comments %>
+    </div>
+
+    <div id="comment_new">
+      <% if current_user %>
+      <div class="form">
+          <% form_for @comment,:url => "/code/#{@paste.id}/comment" do |f|%>
+          <%= f.error_messages %>
+          <div class="row">
+             <%= f.label :comment,"Comment:" %><br />
+             <%= f.text_area :comment ,:class => "text", :rows => 4, :cols => 50 %>
+          </div>
+          <div class="row">
+            <%= f.submit "Post comment", :disable_with => 'Submiting...' %>
+          </div>
+        <% end %>
+      </div>
+      <% else %>
+          Please <a href="/login?return_to=<%=request.url%>">log in</a> to comment.
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

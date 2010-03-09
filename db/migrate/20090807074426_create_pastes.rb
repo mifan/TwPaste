@@ -1,6 +1,6 @@
-class CreateSnippets < ActiveRecord::Migration
+class CreatePastes < ActiveRecord::Migration
   def self.up
-    create_table :snippets do |t|
+    create_table :pastes do |t|
       t.string :title, :null => false
 
       t.text :code, :null => false
@@ -22,6 +22,6 @@ class CreateSnippets < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :snippets
+    drop_table :pastes
   end
 end

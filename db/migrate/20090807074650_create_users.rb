@@ -29,7 +29,7 @@ class CreateUsers < ActiveRecord::Migration
     t.string    :current_login_ip                                   # optional, see Authlogic::Session::MagicColumns
     t.string    :last_login_ip                                      # optional, see Authlogic::Session::MagicColumns
 
-    t.integer   :snippets_count, :null => false, :default => 0
+    t.integer   :pastes_count, :null => false, :default => 0
     t.integer   :comments_count, :null => false, :default => 0
 
     t.timestamps

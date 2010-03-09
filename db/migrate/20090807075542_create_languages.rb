@@ -4,7 +4,7 @@ class CreateLanguages < ActiveRecord::Migration
       t.string :name, :null => false
       t.string :slug, :null => false
       t.string :description, :null => true
-      t.integer :snippets_count, :null => false, :default => 0
+      t.integer :pastes_count, :null => false, :default => 0
 
       t.timestamps
     end

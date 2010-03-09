@@ -1,6 +1,6 @@
 require 'tempfile'
 
-# snippet highlight
+# paste highlight
 class Highlight    
   def self.format(code,type)
     result = ''

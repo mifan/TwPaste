@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class SnippetsControllerTest < ActionController::TestCase
+class PastesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:snippets)
+    assert_not_nil assigns(:pastes)
   end
 
   test "should get new" do
@@ -12,34 +12,34 @@ class SnippetsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create snippet" do
-    assert_difference('Snippet.count') do
-      post :create, :snippet => { }
+  test "should create paste" do
+    assert_difference('Paste.count') do
+      post :create, :paste => { }
     end
 
-    assert_redirected_to snippet_path(assigns(:snippet))
+    assert_redirected_to paste_path(assigns(:paste))
   end
 
-  test "should show snippet" do
-    get :show, :id => snippets(:one).to_param
+  test "should show paste" do
+    get :show, :id => pastes(:one).to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => snippets(:one).to_param
+    get :edit, :id => pastes(:one).to_param
     assert_response :success
   end
 
-  test "should update snippet" do
-    put :update, :id => snippets(:one).to_param, :snippet => { }
-    assert_redirected_to snippet_path(assigns(:snippet))
+  test "should update paste" do
+    put :update, :id => pastes(:one).to_param, :paste => { }
+    assert_redirected_to paste_path(assigns(:paste))
   end
 
-  test "should destroy snippet" do
-    assert_difference('Snippet.count', -1) do
-      delete :destroy, :id => snippets(:one).to_param
+  test "should destroy paste" do
+    assert_difference('Paste.count', -1) do
+      delete :destroy, :id => pastes(:one).to_param
     end
 
-    assert_redirected_to snippets_path
+    assert_redirected_to pastes_path
   end
 end

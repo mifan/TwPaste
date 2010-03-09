@@ -9,6 +9,10 @@ body {
   color:#454547;
 }
 
+th, td {
+  border:1px solid #BBBBBB;
+  vertical-align:top;
+}
 a {
   color:#005A9C;
 }

@@ -1,15 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :snippets
+  has_many :pastes
 
   acts_as_authentic
   before_create :populate_oauth_user
 
 
-  #TODO 
-  def self.find_top_by_snippets_count(size = 10)
-    paginate :page => 1, :per_page => size, :order => "snippets_count desc"
-  end
-
+ 
   def update_twitter_info
     populate_oauth_user
   end

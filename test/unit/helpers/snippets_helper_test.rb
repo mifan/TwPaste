@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class SnippetsHelperTest < ActionView::TestCase
+class PastesHelperTest < ActionView::TestCase
 end

@@ -6,18 +6,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create2
-    @user = User.new(params[:user])
-    @user.save do |result|
-      if result
-        flash[:notice] = "Account registered!"
-        redirect_back_or_default account_url
-      else
-        render :action => :new
-      end
-    end
-  end
-
  # form_tag({:controller => "users", :action => "create"}, {:method => "post"}) do = oauth_register_button :value => "Sign In with Twitter"
  def create
   @user = User.new(params[:user])

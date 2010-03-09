@@ -6,9 +6,9 @@
 
 
 <div class="main">
-  <h2>Editing snippet</h2>
+  <h2>Editing paste</h2>
   <div>
-  <% form_for(@snippet) do |f| %>
+  <% form_for(@paste) do |f| %>
     <%= f.error_messages %>
     <div style="width:99%;">
       <div style="float:left;" class="input-space">
@@ -34,7 +34,7 @@
 
     <div style="display:none;" id="textTags" class="input-space">
         <%= f.label :tags, "Tags:" ,:class => 'title' %>
-        <%= text_field_tag("snippet[tag_list]",@snippet.tags.join(","),:class => "space") %>
+        <%= text_field_tag("paste[tag_list]",@paste.tags.join(","),:class => "space") %>
     </div>
 
 	
@@ -62,5 +62,5 @@
 <% end %>
 </div>
 </div>
-<%= javascript_include_tag 'snippet.edit.js' %>
+<%= javascript_include_tag 'paste.edit.js' %>
 
