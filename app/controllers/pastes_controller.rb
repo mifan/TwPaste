@@ -31,8 +31,8 @@ class PastesController < ApplicationController
         set_seo_meta("#{@user.login}'s pastes")
       end
     else
-      @pastes = paste.find_page(params[:page])
-      @pastes_count = paste.count
+      @pastes = Paste.find_page(params[:page])
+      @pastes_count = Paste.count
       @sub_title = "Listing pastes"
       @feed_title = "Recent pastes"
       set_seo_meta(nil)
@@ -96,7 +96,7 @@ class PastesController < ApplicationController
   # GET /pastes/new
   # GET /pastes/new.xml
   def new
-    @paste = paste.new
+    @paste = Paste.new
     set_seo_meta("New paste")
     respond_to do |format|
       format.html { render :action => "edit" } # new.html.erb
@@ -106,7 +106,7 @@ class PastesController < ApplicationController
 
   # GET /pastes/1/edit
   def edit
-    @paste = paste.find(params[:id])
+    @paste = Paste.find(params[:id])
     set_seo_meta("Edit paste")
   end
 

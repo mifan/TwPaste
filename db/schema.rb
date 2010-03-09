@@ -26,15 +26,15 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "languages", :force => true do |t|
-    t.string   "name",           :default => "", :null => false
-    t.string   "slug",           :default => "", :null => false
+    t.string   "name",         :default => "", :null => false
+    t.string   "slug",         :default => "", :null => false
     t.string   "description"
-    t.integer  "snippets_count", :default => 0,  :null => false
+    t.integer  "pastes_count", :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "snippets", :force => true do |t|
+  create_table "pastes", :force => true do |t|
     t.string   "title",             :default => "",    :null => false
     t.text     "code",                                 :null => false
     t.text     "code_formatted",                       :null => false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.integer  "snippets_count",    :default => 0,  :null => false
+    t.integer  "pastes_count",      :default => 0,  :null => false
     t.integer  "comments_count",    :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
