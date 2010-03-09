@@ -349,16 +349,11 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 .successMessage { font-size:12px;margin:10px 0; background:#CF9; padding:10px; border: 2px solid #6C0; }
 
 
-
-#right_profile ul { list-style:none; }
-
-#snippets {}
-
 #snippets .item {	-moz-background-clip:border;	-moz-background-inline-policy:continuous;
 		-moz-background-origin:padding;	background:#EEEEEE none repeat scroll 0 0;	
 		margin-bottom:1em;	padding:7px 15px;}
 #snippets .item .link { color:#999;  font-size:12px;}
-#snippets .item pre {}
+
 #snippets .item p {color:#777777;font-size:0.7em;margin:0 0 0.5em;}
 #snippets .item span.lang {font-size:11px; color:#666; }
 #snippets .item span.count {font-size:11px;}
@@ -371,12 +366,12 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 
 
  
-#snippet_show h1 a { font-size:12px; font-weight:normal;}
-#snippet_show .theme { position: absolute; font-size: 0.6em; color:#999; z-index: 100; right:38px;}
 #snippet_show .desc { font-size:12px; margin:10px 0; color:#666; }
 #snippet_show .info { background:#DDD; padding:8px; font-size:12px;}
 #snippet_show .info span { margin-right:8px; color:#999;}
 #snippet_show .info span b { margin-right:8px; color:#666;}
+
+.snippet-code{ overflow:auto;}
 
 
 #comments { margin-top:18px; }
