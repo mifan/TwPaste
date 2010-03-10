@@ -2,7 +2,7 @@ require "lib/highlight"
 require "lib/string"
 class Paste < ActiveRecord::Base
   attr_protected :views_count, :comments_count
-  attr_access :post_to_twitter
+  attr_accessor :post_to_twitter
 
   belongs_to :language, :counter_cache => true
   belongs_to :user, :counter_cache => true
