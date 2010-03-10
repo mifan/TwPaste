@@ -18,19 +18,6 @@ class Paste < ActiveRecord::Base
   after_create :twitter_update
 
 
-  named_scope :matching, lambda { |column, value|
-    return {} if value.blank?
-    { :conditions => ["#{column} = ?", "%#{value}%"] }
-  }
-
-  named_scope :order , :order => 'id DESC' 
-
-  named_scope :language , lambda { |language_id|
-    { :conditions => ["language_id = ?", language_id] }
-  }
-
-  named_scope :public, :conditions => {:private => false } 
-
 
   def twitter_update
     if post_to_twitter
