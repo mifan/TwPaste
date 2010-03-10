@@ -5,7 +5,7 @@
 <div class="main">
    <h2>Login with Twitter</h2>
    <div style="padding:30px;">
-   <% form_for @user, :url => account_path do |f| %>
+   <% form_for @user, :url => users_path do |f| %>
       <%= f.error_messages %>
       <%= oauth_register_button :value => "Login with Twitter", :class => 'twitter' %>
    <% end %>
