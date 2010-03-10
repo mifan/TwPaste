@@ -1,7 +1,7 @@
 class PastesController < ApplicationController
   # GET /pastes
   # GET /pastes.xml
-  before_filter :require_user, :only => [:create,:edit,:update,:destroy]
+  before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy]
 
   
   def index 
