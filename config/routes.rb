@@ -14,6 +14,10 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :pastes 
   end
 
+  map.resources :tags, :only => [:show] do |tag|
+    tag.resources :pastes
+  end
+
   map.connect "pastes/:id/comment",:controller => "pastes", :action => "show" ,:only => :post
 
   map.login 'login', :controller => 'users', :action => 'new'

@@ -2,44 +2,38 @@ class PastesController < ApplicationController
   # GET /pastes
   # GET /pastes.xml
   before_filter :require_user, :only => [:create,:edit,:update,:destroy]
+
   
   def index 
     @sub_title = ''
     @pastes_count = 0
-    if params[:languguge_id]
-      @language = Language.find_by_id(:languguge_id)
-      if @language
-        @pastes = @language.pastes.find_page(params[:page])
-        @pastes_count = @language.pastes.count
-        @sub_title = "Listing pastes in #{@language.name} language"
-        @feed_title = "#{@language.name}"
-        set_seo_meta("pastes &raquo; #{@language.name} language")
-      end
-    elsif params[:tag]          
-      @pastes = paste.tagged_with(params[:tag],:on => :tags).find_page(params[:page])
+    @language = params[:language_id] ? Language.find_by_id(params[:language_id]) : nil
+    if @language
+      @pastes = @language.pastes.find_page(params[:page])
+      @pastes_count = @language.pastes.count
+      @sub_title = "Listing pastes in #{@language.name} language"
+      @feed_title = "#{@language.name}"
+      set_seo_meta("pastes &raquo; #{@language.name} language")
+    elsif params[:tag_id]
+      @pastes = paste.tagged_with(params[:tag_id],:on => :tags).find_page(params[:page])
       @pastes_count = paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
       @sub_title = "Listing #{params[:tag]} pastes"
       @feed_title = "#{params[:tag]}"
       set_seo_meta("pastes &raquo; Taged #{params[:tag]}")
-    elsif params[:login]
-      @user = User.find_by_login(params[:login])
-      if @user
+    elsif params[:login] && (@user = User.find_by_login(params[:login]))
         @pastes = @user.pastes.find_page(params[:page])
         @pastes_count = @user.pastes_count
         @sub_title = "Listing #{@user.login}'s pastes"
         @feed_title = "#{@user.login}'s pastes"
         set_seo_meta("#{@user.login}'s pastes")
-      end
     else
       @pastes = Paste.find_page(params[:page])
       @pastes_count = Paste.count
       @sub_title = "Listing pastes"
       @feed_title = "Recent pastes"
-      set_seo_meta(nil)
+      set_seo_meta("All pastes")
     end
 
- 
-    
     if params[:type] == "feed"
       # Set the content type to the standard one for RSS
       response.headers['Content-Type'] = 'application/rss+xml'
@@ -166,4 +160,24 @@ class PastesController < ApplicationController
       format.xml  { head :ok }
     end
   end
-end
+
+private
+
+  def nested_resource_language
+
+    if @language
+      @pastes = @language.pastes.find_page(params[:page])
+        @pastes_count = @language.pastes.count
+        @sub_title = "Listing pastes in #{@language.name} language"
+        @feed_title = "#{@language.name}"
+        set_seo_meta("pastes &raquo; #{@language.name} language")
+      
+    end
+
+  end
+
+       
+
+end 
+
+

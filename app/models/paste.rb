@@ -22,11 +22,11 @@ class Paste < ActiveRecord::Base
     { :conditions => ["#{column} = ?", "%#{value}%"] }
   }
 
-  named_scope :order, lambda { |order|
-    { :order => order }
-  }
+  named_scope :order , :order => 'id DESC' 
 
-  named_scope :match_language 
+  named_scope :language , lambda { |language_id|
+    { :conditions => ["language_id = ?", language_id] }
+  }
 
   named_scope :public, :conditions => {:private => false } 
 
