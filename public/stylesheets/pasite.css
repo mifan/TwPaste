@@ -344,13 +344,13 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 	table.grid tr td.date { width:60px;}
 	table.grid tr td.status { width:38px;}
 
-.errorExplanation { font-size:12px; margin:10px 0; background:#FFF8E7; padding:10px; border: 2px solid #F96;}
+.errorExplanation { font-size:12px; margin:10px 0; background:#FFF8E7; padding:10px; border: 1px solid #F96;}
 .errorExplanation h2 { font-size: 14px; line-height: 180%;}
 .errorExplanation p { color:#999;}
 .errorExplanation ul { font-size: 12px; margin-top: 8px; list-style: square inside; margin-left: 20px;}
  
 
-.successMessage { font-size:12px;margin:10px 0; background:#CF9; padding:10px; border: 2px solid #6C0; }
+.successMessage { font-size:12px;margin:10px 0; background:#CF9; padding:10px; border: 1px solid #6C0; }
 
 
 #snippets .item {	-moz-background-clip:border;	-moz-background-inline-policy:continuous;

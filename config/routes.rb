@@ -6,14 +6,17 @@ ActionController::Routing::Routes.draw do |map|
     paste.resources :comments
   end
 
+  #language_id = languge.slug
   map.resources :languages do |language| 
      language.resources :pastes 
- end
+  end
 
+  #user_id = user.login
   map.resources :users, :only => [:new,:create,:show] do |user| 
     user.resources :pastes 
   end
 
+  #tag_id = tag.tag
   map.resources :tags, :only => [:show] do |tag|
     tag.resources :pastes
   end
