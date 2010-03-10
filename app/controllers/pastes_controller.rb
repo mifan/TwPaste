@@ -107,7 +107,7 @@ class PastesController < ApplicationController
   # POST /pastes
   # POST /pastes.xml
   def create
-    @paste = paste.new(params[:paste])
+    @paste = Paste.new(params[:paste])
     if @current_user
       @paste.user_id = @current_user.id
     else
