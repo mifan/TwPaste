@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         @user = User.find_by_oauth_token(@user.oauth_token)
         unless @user.nil?
 	  @user.update_twitter_info
-          UserSession.create(@user)
+          UserSession.create(@user,true)
           flash.now[:message] = "Welcome back!"
           redirect_back_or_default root_path
         else
