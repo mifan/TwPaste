@@ -23,7 +23,7 @@ class PastesController < ApplicationController
       @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).find_page(params[:page])
       @pastes_count = Paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
       @sub_title = "Listing #{params[:tag_id]} pastes"
-      @feed_title = "#{params[:tagtag_id}"
+      @feed_title = "Tags: #{params[:tag_id}"
       set_seo_meta("pastes &raquo; Taged #{params[:tag_id]}")
     else
       @pastes = Paste.find_page(params[:page])
