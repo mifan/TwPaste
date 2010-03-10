@@ -1,7 +1,6 @@
 <tr>
-  <td><%=h language.name %></td>
-  <td><%= h language.slug %></td>
-  <td><%= language.pastes_count %></td>
+  <td><%= link_to language.name, "/languages/#{language.slug}/pastes",{:class => 'normal-weight'} %></td>
+  <td><%= h language.description %></td>
   <% if admin_user %>
     <td><%= link_to 'Edit', edit_language_path(language) %></td>
   <% end %>

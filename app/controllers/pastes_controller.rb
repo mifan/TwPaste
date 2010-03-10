@@ -7,25 +7,24 @@ class PastesController < ApplicationController
   def index 
     @sub_title = ''
     @pastes_count = 0
-    @language = params[:language_id] ? Language.find_by_id(params[:language_id]) : nil
-    if @language
+    if params[:language_id] && (@language = Language.find_by_slug(params[:language_id]))
       @pastes = @language.pastes.find_page(params[:page])
       @pastes_count = @language.pastes.count
       @sub_title = "Listing pastes in #{@language.name} language"
       @feed_title = "#{@language.name}"
       set_seo_meta("pastes &raquo; #{@language.name} language")
-    elsif params[:tag_id]
-      @pastes = paste.tagged_with(params[:tag_id],:on => :tags).find_page(params[:page])
-      @pastes_count = paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
-      @sub_title = "Listing #{params[:tag]} pastes"
-      @feed_title = "#{params[:tag]}"
-      set_seo_meta("pastes &raquo; Taged #{params[:tag]}")
     elsif params[:login] && (@user = User.find_by_login(params[:login]))
         @pastes = @user.pastes.find_page(params[:page])
         @pastes_count = @user.pastes_count
         @sub_title = "Listing #{@user.login}'s pastes"
         @feed_title = "#{@user.login}'s pastes"
         set_seo_meta("#{@user.login}'s pastes")
+    elsif params[:tag_id]
+      @pastes = paste.tagged_with(params[:tag_id],:on => :tags).find_page(params[:page])
+      @pastes_count = paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
+      @sub_title = "Listing #{params[:tag]} pastes"
+      @feed_title = "#{params[:tag]}"
+      set_seo_meta("pastes &raquo; Taged #{params[:tag]}")
     else
       @pastes = Paste.find_page(params[:page])
       @pastes_count = Paste.count

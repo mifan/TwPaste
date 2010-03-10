@@ -51,7 +51,6 @@ class CreateLanguages < ActiveRecord::Migration
       {:name => "Smalltalk",:slug => "smalltalk", :description => 'Smalltalk is a computer language designed specifically for a wide range of humans rather than a narrow group of computer specialists.'},
       {:name => "SQL",:slug => "sql", :description => 'Structured Query Language.'},
       {:name => "Tcsh",:slug => "tcsh", :description => 'Tcsh is a Unix shell based on and compatible with the C shell (csh).'},
-      {:name => "Tcsh",:slug => "tcsh", :description => 'Tcsh is a Unix shell based on and compatible with the C shell (csh).'},
 
       {:name => "Plain Text",:slug => "text", :description => 'Just text only.'},
 

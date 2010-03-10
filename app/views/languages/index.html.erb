@@ -1,19 +1,22 @@
 <div class="rightCol">
   <% if admin_user %>
-    <%= link_to 'New language', new_language_path %>
-  <% end %>	
+      <div class="side-box" id="recent_comments">
+        <h3>New Language</h3>
+         <%= link_to 'New language', new_language_path %>
+      </div>
+  <% end %>
+	  <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
 
 
 <div class="main">
 <h2>Supported languages</h2>
-<div id="languages">
+<div id="languages" style="padding-top:10px;">
 <%= success_messages %>
 <table class="grid">
   <tr class="head">
     <td>Name</td>
     <td>Description</td>
-    <td>Pastes count</td>
     <% if admin_user %>
     <td>Action</td>
     <% end %>
