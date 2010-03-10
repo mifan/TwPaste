@@ -12,7 +12,7 @@
 
     <div class="side-box">
         <label>Language</label>
-        <%= link_to (h @paste.language.name), { :controller => "pastes", :action => "index", :lang => @paste.language.slug } , { :class => 'normal-weight'} %>
+        <%= link_to (h @paste.language.name), { :controller => "pastes", :action => "index", :language_id => @paste.language.slug } , { :class => 'normal-weight'} %>
     </div>
 
     <div class="side-box">
@@ -28,7 +28,7 @@
     <div class="side-box tags">
         <label>Tags</label><br />        
           <% for item in @paste.tags %>
-            <span class="tag_name"><%= link_to (h item.name), :controller => "pastes", :action => "index", :tag => (h item.name.downcase) %></span>
+            <span class="tag_name"><%= link_to (h item.name), :controller => "pastes", :action => "index", :tag_id => (h item.name) %></span>
           <% end %>        
 
     </div>

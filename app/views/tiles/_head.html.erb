@@ -14,7 +14,7 @@
       <li class="navi-left"></li>
       <li>
         <img alt="Avatar from Twitter" width="20" height="20" src="<%=current_user.avatar_url%>" class="inline" />
-		<%= link_to current_user.login, user_pastes_path(current_user) %>
+		<%= link_to current_user.login, "/users/#{current_user.login}/pastes" %>
       </li>
       <li><%= link_to "New", new_paste_path %></li>
       <li><%= link_to "All", pastes_path %></li>

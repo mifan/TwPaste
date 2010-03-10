@@ -1,4 +1,10 @@
-<div id="content">
+<div class="rightCol">
+	  <%=render :partial => 'tiles/sidebox/follow_us' %>
+</div>
+
+
+
+<div class="main">
 <p>
   <b>Name:</b>
   <%=h @user.name %>
@@ -47,10 +53,5 @@
 <p>
   <b>Current login ip:</b>
   <%=h @user.current_login_ip %>
-</p>
-
-<p>
-  <b>Current All:</b>
-  <%=h @user.oauth_json_info.inspect %>
 </p>
 </div>

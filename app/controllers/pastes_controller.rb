@@ -13,7 +13,7 @@ class PastesController < ApplicationController
       @sub_title = "Listing pastes in #{@language.name} language"
       @feed_title = "#{@language.name}"
       set_seo_meta("pastes &raquo; #{@language.name} language")
-    elsif params[:login] && (@user = User.find_by_login(params[:login]))
+    elsif params[:user_id] && (@user = User.find_by_login(params[:user_id]))
         @pastes = @user.pastes.find_page(params[:page])
         @pastes_count = @user.pastes_count
         @sub_title = "Listing #{@user.login}'s pastes"
