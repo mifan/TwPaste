@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :pastes 
   end
 
-  #tag_id = tag.tag
+  #tag_id = tag.name
   map.resources :tags, :only => [:show] do |tag|
     tag.resources :pastes
   end

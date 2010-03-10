@@ -2,6 +2,7 @@ require "lib/highlight"
 require "lib/string"
 class Paste < ActiveRecord::Base
   attr_protected :views_count, :comments_count
+  attr_access :post_to_twitter
 
   belongs_to :language, :counter_cache => true
   belongs_to :user, :counter_cache => true
@@ -32,7 +33,9 @@ class Paste < ActiveRecord::Base
 
 
   def twitter_update
-    self.user.twitter_update("new paste: #{self.id} #{self.title} , http://twpaste.com/pastes/#{self.id}")
+    if post_to_twitter
+        self.user.twitter_update("new paste: #{self.id} #{self.title} , http://twpaste.com/pastes/#{self.id}")
+    end
   end
 
  
