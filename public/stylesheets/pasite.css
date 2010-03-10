@@ -400,3 +400,9 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
   margin-right:0px;
   margin-top:0px;
 }
+
+.twitter-icon {
+  background:url("/images/twitter-icon.png") no-repeat scroll left top;
+  padding-left:25px;
+  height:25px;
+}
