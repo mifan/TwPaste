@@ -49,10 +49,6 @@ class Paste < ActiveRecord::Base
       self.summary_formatted = Highlight.format_without_linenos(code_lines[0..5].join("\n"),self.language.slug)
   end
 
-  def size_kb
-    f = sprintf("%0.2f",self.size / 1024)
-    return "#{f} KB"
-  end
 
   # find method
   def self.find_page(page = 1)		

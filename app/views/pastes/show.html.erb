@@ -1,34 +1,30 @@
 <div class="rightCol">
     <%=render :partial => 'tiles/sidebox/select_style' %>
-    <%=render :partial => 'tiles/sidebox/follow_us' %>
     <%=render :partial => 'tiles/sidebox/posted_by', :object =>@paste.user %>
  
     <div class="side-box">
-	      <h3>View as </h3>
+          <h3>View as </h3>
           <%= link_to "Raw", {:controller => "pastes", :action => "show", :format => :raw, :id => @paste.id } , { :class => 'normal-weight'}%>
           <span style="color: rgb(153, 153, 153);">or</span>
           <%= link_to "HTML Code", {:controller => "pastes", :action => "show", :format => :code, :id => @paste.id} , { :class => 'normal-weight'}%>
     </div>
 
     <div class="side-box">
-        <label>Language</label>
+        <label>Language: </label>
         <%= link_to (h @paste.language.name), { :controller => "pastes", :action => "index", :language_id => @paste.language.slug } , { :class => 'normal-weight'} %>
     </div>
 
-    <div class="side-box">
-        <label>File size<label> <%=h @paste.size_kb %>
-    </div>
 
   <div class="side-box">
-    <label>Views count<label>
-	<%=h @paste.views_count_s  %>
+    <label>Views count: <label>
+    <%=h @paste.views_count_s  %>
   </div>
 
      <% unless @paste.tags.blank? %>
     <div class="side-box tags">
-        <label>Tags</label><br />        
-          <% for item in @paste.tags %>
-            <span class="tag_name"><%= link_to (h item.name), :controller => "pastes", :action => "index", :tag_id => (h item.name) %></span>
+        <h3>Tags</h3>
+          <% for tag in @paste.tags %>
+            <span class="tag_name"><%= link_to (h tag.name), :controller => "pastes", :action => "index", :tag_id => tag.name %></span>
           <% end %>        
 
     </div>
@@ -38,6 +34,7 @@
             <p><%= link_to 'Edit', edit_paste_path(@paste) %> | <%= link_to 'Destroy', @paste, :confirm => 'Are you sure?', :method => :delete %></p>
     </div>
     <% end %>
+    <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
 
 
