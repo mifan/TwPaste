@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.logout 'logout', :controller => 'user_session', :action => 'destroy'
 
 
-  map.lang "lang/:lang",:controller => "pastes", :action => "index"   
+
   map.feed "feed",:controller => "pastes", :action => "index",:type => "feed"
   map.lang_feed "lang/:lang/feed",:controller => "pastes", :action => "index",:type => "feed"
   map.user_feed ":login/feed",:controller => "pastes", :action => "index",:type => "feed"

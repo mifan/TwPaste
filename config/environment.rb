@@ -39,7 +39,7 @@ Rails::Initializer.run do |config|
 
   config.gem 'twitter_oauth'
 
-  #config.gem 'hoptoad_notifier'
+  config.gem 'bitly'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
