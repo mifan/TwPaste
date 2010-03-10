@@ -10,13 +10,13 @@
     </div>
 
     <div class="side-box">
-        <label>Language: </label>
+        <h3 class="inline">Language </h3>
         <%= link_to (h @paste.language.name), { :controller => "pastes", :action => "index", :language_id => @paste.language.slug } , { :class => 'normal-weight'} %>
     </div>
 
 
   <div class="side-box">
-    <label>Views count: <label>
+	<h3 class="inline">Views count </h3>
     <%=h @paste.views_count_s  %>
   </div>
 
