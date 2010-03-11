@@ -1,9 +1,10 @@
 class Comment < ActiveRecord::Base
+  attr_accessor :post_to_twitter
 
   include ActsAsCommentable::Comment
 	
   belongs_to :commentable, :polymorphic => true, :counter_cache => true
-	validates_presence_of :comment 
+  validates_presence_of :comment 
 	
   default_scope :order => 'id ASC'
 	
@@ -13,6 +14,16 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user, :counter_cache => true
+
+  after_create :twitter_update
+
+
+
+  def twitter_update
+    if post_to_twitter
+        self.user.twitter_update(self.comment)
+    end
+  end
 
   # get top comments
   def self.pastes_recent(size = 10)
