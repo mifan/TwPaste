@@ -52,8 +52,6 @@ class PastesController < ApplicationController
     @paste = Paste.find(params[:id],:include => [:user,:tags,:comments])
     @paste.update_views_count
             
- 
-    
     if @paste.private
       return if not require_user
       if not(@current_user.id == @paste.user_id or @current_user.admin)
@@ -61,29 +59,15 @@ class PastesController < ApplicationController
         return
       end
     end
-    
-    if request.post?
-      pcomment = params[:comment]
-      title = (pcomment[:title].blank?)?'Anonymous':pcomment[:title]
-      @comment = @paste.comments.new(:title => title,:user => current_user,:comment => pcomment[:comment])       
 
-        if @comment.save
-          redirect_to :controller => :pastes, :action => :show,:id => params[:id],:anchor => "comments"
-        else
-          render :action => "show",:archor => "comments"
-        end     
-  
-    else            
       @comment = @paste.comments.new
       set_seo_meta("##{@paste.id} #{@paste.title}")
-
       respond_to do |format|
         format.html # show.html.erb
-        format.xml  { render :xml => @paste }
         format.raw { render :text => @paste.code }
         format.code { render :text => @paste.code_formatted }
       end
-    end
+
   end
     
   # GET /pastes/new

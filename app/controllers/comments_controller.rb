@@ -1,24 +1,17 @@
 class CommentsController < ApplicationController
-  # GET /comments
-  # GET /comments.xml
-  def index
-    @comments = Comment.paginate(:page => params[:page],:per_page => 10,:order => "id desc")
+ def create
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @comments }
-    end
-  end
+ 
+      pcomment = params[:comment]
+      title = (pcomment[:title].blank?)?'Anonymous':pcomment[:title]
+      @comment = @paste.comments.new(:title => title,:user => current_user,:comment => pcomment[:comment])       
 
-  # DELETE /comments/1
-  # DELETE /comments/1.xml
-  def destroy
-    @comment = Comment.find(params[:id])
-    @comment.destroy
+        if @comment.save
+          redirect_to :controller => :pastes, :action => :show,:id => params[:id],:anchor => "comments"
+        else
+          render :action => "show",:archor => "comments"
+        end     
+     
+ end
 
-    respond_to do |format|
-      format.html { redirect_to(comments_url) }
-      format.xml  { head :ok }
-    end
-  end
 end
