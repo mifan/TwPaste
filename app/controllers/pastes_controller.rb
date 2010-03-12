@@ -83,7 +83,7 @@ class PastesController < ApplicationController
 
   # GET /pastes/1/edit
   def edit
-    @paste = Paste.find(params[:id])
+    @paste = current_user.pastes.find(params[:id)
     set_seo_meta("Edit paste")
   end
 
@@ -99,7 +99,7 @@ class PastesController < ApplicationController
   # PUT /pastes/1
   # PUT /pastes/1.xml
   def update
-    @paste = Paste.find(params[:id])
+    @paste = current_user.pastes.find(params[:id)
     @paste.update_attributes!(params[:paste])
     redirect_to(@paste)
   end
@@ -107,7 +107,7 @@ class PastesController < ApplicationController
   # DELETE /pastes/1
   # DELETE /pastes/1.xml
   def destroy
-    @paste = Paste.find(params[:id])
+    @paste = current_user.pastes.find(params[:id)
     @paste.destroy
     respond_to do |format|
       format.html { redirect_to(pastes_url) }

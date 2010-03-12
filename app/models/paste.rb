@@ -20,7 +20,7 @@ class Paste < ActiveRecord::Base
 
 
   def twitter_update
-    if post_to_twitter == 1
+    if post_to_twitter == '1'
         self.user.twitter_update("new paste: #{self.id} #{self.title} , http://twpaste.com/pastes/#{self.id}")
     end
   end

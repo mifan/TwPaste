@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
 
 
   def twitter_update
-    if post_to_twitter == 1
+    if post_to_twitter == '1'
         self.user.twitter_update(self.comment)
     end
   end
