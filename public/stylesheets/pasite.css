@@ -378,7 +378,7 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 .paste-code{ overflow:auto;}
 
 
-#comments { margin-top:18px; }
+#comments { margin:15px; padding:5px 10px; }
 
 .comment {
   border-bottom:1px dashed #EDEDED;
@@ -407,6 +407,11 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 .comment-name a {
   color:#555555;
   text-decoration:none;
+}
+
+.comment-name a:hover, .comment-name a:focus {
+  color:#005A9C;
+  text-decoration:underline;
 }
 
 .comment-date {

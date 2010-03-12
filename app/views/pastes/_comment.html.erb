@@ -9,7 +9,7 @@
       <%= link_to comment.user.login, user_pastes_path(comment.user),{:class => 'normal-weight'} %>
     </span>
     <span class="comment-date">
-      <%= comment.created_at.to_s(:short_time) %>
+      posted <%= comment.created_at.to_s(:short_time) %>
     </span>
     <%= format_comment(comment.comment) %>
   </div>
