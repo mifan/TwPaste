@@ -379,13 +379,46 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 
 
 #comments { margin-top:18px; }
-#comments .item { padding:8px;font-size:13px; }
-#comments .itemse { background:#F0F0F0;}
-#comments .item .body {line-height: 150%; min-height:50px; }
-#comments .item .meta {color:#999;  font-size:12px; }
-#comments .item .links { text-align: right; font-size:12px; }
-#comments .item .face { float:right; padding:0 0 8px 8px;}
-#comments .item .links a {color:#333;}
+
+.comment {
+  border-bottom:1px dashed #EDEDED;
+  margin:10px 0 5px;
+  overflow:hidden;
+}
+
+.twitt-face {
+  float:left;
+  height:55px;
+  width:50px;
+}
+
+.comment-body{
+  display:block;
+  margin-left:60px;
+  overflow:hidden;
+  padding-bottom:10px;
+  width:90%;
+}
+
+.comment-name {
+  padding-right:10px;
+}
+
+.comment-name a {
+  color:#555555;
+  text-decoration:none;
+}
+
+.comment-date {
+  color:#555555;
+  font-size:11px;
+}
+
+
+
+
+
+ 
 #comment_new .form { margin:9px;}
 
 #help { font-size:14px; }
