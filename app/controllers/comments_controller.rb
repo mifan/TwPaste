@@ -1,17 +1,13 @@
 class CommentsController < ApplicationController
- def create
 
- 
-      pcomment = params[:comment]
-      title = (pcomment[:title].blank?)?'Anonymous':pcomment[:title]
-      @comment = @paste.comments.new(:title => title,:user => current_user,:comment => pcomment[:comment])       
-
-        if @comment.save
-          redirect_to :controller => :pastes, :action => :show,:id => params[:id],:anchor => "comments"
-        else
-          render :action => "show",:archor => "comments"
-        end     
-     
- end
+  def create
+      paste = Paste.find_by_id(params[:paste_id])
+      @comment = paste.comments.build(:user => current_user,:comment => params[:comment])
+      @comment.save
+      respond_to do |format|
+          render :partial => 'pastes/comment' if request.xhr?
+          format.html { redirect_to :back }
+      end
+  end
 
 end

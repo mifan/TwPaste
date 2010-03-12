@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
   # 设置SEO 的Meta 值
   def set_seo_meta(title,keywords = '',desc = '')
     if title
-      @page_title =  "#{title} &raquo; TwPaste"
+      @page_title =  "#{title} &raquo; TwPaste TwitterPaste"
     else
-      @page_title = "TwPaste"
+      @page_title = "TwPaste TwitterPaste"
     end
     @meta_keywords = keywords
     @meta_description = desc
