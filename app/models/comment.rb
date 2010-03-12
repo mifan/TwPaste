@@ -1,3 +1,4 @@
+require "lib/shorten_url"
 class Comment < ActiveRecord::Base
   attr_accessor :post_to_twitter
 
