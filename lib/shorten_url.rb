@@ -1,5 +1,5 @@
 class ShortenUrl    
-  def self.short_url(origin_url)
+  def self.bitly_url(origin_url)
     bitly = Bitly.new('mifan', 'R_25b691a3c3e9adbf9405e8887f56b768')
     final_url = nil ;
     begin

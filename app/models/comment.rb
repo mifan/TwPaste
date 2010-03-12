@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
 
   def twitter_update
     if post_to_twitter == '1'
-        self.user.twitter_update(self.comment)
+        self.user.twitter_update(self.comment + ShortenUrl.bitly_url(paste_url(self.commentable)) )
     end
   end
 
