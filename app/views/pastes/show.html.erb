@@ -84,9 +84,11 @@
             <%= f.submit "Post comment" %>
           </div>
           <%= javascript_include_tag 'jquery.validate.pack.js' %>
-          <script>
-             $( function () {
-               $("#comment_comment").change(function(){
+          <script type="text/javascript">
+
+             $(document).ready(function(){
+
+				  $("#comment_comment").change(function(){
 				   var commentLength = $(this).val().length;
 				   var showChars = 120 - commentLength ;
 				   $('#commentChars').text(showChars);
@@ -95,7 +97,7 @@
 				   }else{
 				     $('#commentWarning').show();
 				   }
-               });
+                 });
 
 				$("#comment_post_to_twitter").change(function(){
 				  if($(this).checked){
@@ -103,9 +105,11 @@
 				  }else{
 				    $('#commentAll').hide();
 				  }  
-               });
+                });
 
-             }
+              }); 
+               
+ 
           </script>
 
         <% end %>
