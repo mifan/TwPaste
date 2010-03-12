@@ -16,7 +16,7 @@
 
 
   <div class="side-box">
-	<h3 class="inline">Views count </h3>
+    <h3 class="inline">Views count </h3>
     <%=h @paste.views_count_s  %>
   </div>
 
@@ -67,23 +67,46 @@
           <% form_for @comment, :url => paste_comments_path(@paste) do |f|%>
           <%= f.error_messages %>
           <div class="row">
-             <%= f.label :comment,"Comment:" %><br />
-             <%= f.text_area :comment ,:class => "text", :rows => 2, :cols => 135 %>
+             <%= f.label :comment,"Comment:" %>
+			 <span id="commentAll">(
+			   <span id="commentChars">120</span> chars left
+			   <span id="commentWarning" style="display:none;">, the tweet will be cut off</span>)
+             </span>			 
+             <%= f.text_area :comment ,:class => 'required', :rows => 2, :cols => 133 %>
           </div>
-		   <div style="width:90%;margin-top:5px;">
-	        <div class="post-to-twitter">
-			  <%= f.check_box :post_to_twitter, :checked => 'checked' %>
+           <div style="width:90%;margin-top:5px;">
+            <div class="post-to-twitter">
+              <%= f.check_box :post_to_twitter, :checked => 'checked' %>
               <%= f.label :post_to_twitter, "Tweet this comment" %>
-		    </div>	 	
-	       </div>
+            </div>         
+           </div>
           <div class="row">
             <%= f.submit "Post comment" %>
           </div>
-		  <script>
-		     $( function () {
-				 $('#comment_comment')
-	         }
-		  </script>
+          <%= javascript_include_tag 'jquery.validate.pack.js' %>
+          <script>
+             $( function () {
+               $("#comment_comment").change(function(){
+				   var commentLength = $(this).val().length;
+				   var showChars = 120 - commentLength ;
+				   $('#commentChars').text(showChars);
+				   if(showChars > 0){
+				     $('#commentWarning').hide();
+				   }else{
+				     $('#commentWarning').show();
+				   }
+               });
+
+				$("#comment_post_to_twitter").change(function(){
+				  if($(this).checked){
+				    $('#commentAll').show();
+				  }else{
+				    $('#commentAll').hide();
+				  }  
+               });
+
+             }
+          </script>
 
         <% end %>
       </div>

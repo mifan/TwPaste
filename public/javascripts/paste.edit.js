@@ -37,7 +37,7 @@ $(document).ready(function() {
     return false;
   });
 
-   $("#new_snippet").validate();
+  $("#new_snippet").validate();
 
 
 });
