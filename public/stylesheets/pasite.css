@@ -400,6 +400,10 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
   width:90%;
 }
 
+.comment-body p {
+  padding: 4px 10px;
+}
+
 .comment-name {
   padding-right:10px;
 }
