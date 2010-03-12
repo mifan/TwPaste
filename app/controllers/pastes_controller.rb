@@ -90,46 +90,18 @@ class PastesController < ApplicationController
   # POST /pastes
   # POST /pastes.xml
   def create
-    @paste = Paste.new(params[:paste])
-    if @current_user
-      @paste.user_id = @current_user.id
-    else
-      @paste.user_id = nil
-    end
-    
-    if @paste.errors.size > 0
-      render :action => "edit"
-    else
-      respond_to do |format|
-        if @paste.save
-          flash[:notice] = 'paste was successfully created.'
-          format.html { redirect_to(@paste) }
-          format.xml  { render :xml => @paste, :status => :created, :location => @paste }
-        else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @paste.errors, :status => :unprocessable_entity }
-        end
-      end
-    end
-
-    
+    @paste = current_user.pastes.build(params[:paste])
+    @paste.save!
+    flash[:notice] = 'paste was successfully created.'
+    redirect_to(@paste)
   end
 
   # PUT /pastes/1
   # PUT /pastes/1.xml
   def update
     @paste = Paste.find(params[:id])
-        
-    respond_to do |format|
-      if @paste.update_attributes(params[:paste])
-        flash[:notice] = 'paste was successfully updated.'
-        format.html { redirect_to(@paste) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @paste.errors, :status => :unprocessable_entity }
-      end
-    end
+    @paste.update_attributes!(params[:paste])
+    redirect_to(@paste)
   end
 
   # DELETE /pastes/1
@@ -137,7 +109,6 @@ class PastesController < ApplicationController
   def destroy
     @paste = Paste.find(params[:id])
     @paste.destroy
-
     respond_to do |format|
       format.html { redirect_to(pastes_url) }
       format.xml  { head :ok }

@@ -20,7 +20,7 @@ class Comment < ActiveRecord::Base
 
 
   def twitter_update
-    if post_to_twitter
+    if post_to_twitter == 1
         self.user.twitter_update(self.comment)
     end
   end
@@ -33,4 +33,5 @@ class Comment < ActiveRecord::Base
   def self.find_user_recent(user_id,size = 10)
     Comment.paginate :page => 1, :per_page => size, :conditions => ["user_id = ? and commentable_type = 'Pastes'",user_id], :order => "id desc", :include => [:user]
   end
+
 end
