@@ -22,7 +22,7 @@ class Comment < ActiveRecord::Base
 
   def twitter_update
     if post_to_twitter == '1'
-        self.user.twitter_update(self.comment + ShortenUrl.bitly_url(paste_url(self.commentable)) )
+        self.user.twitter_update(self.comment + ShortenUrl.bitly_url("http://twpaste.com/pastes/#{self.commentable.id}")) )
     end
   end
 
