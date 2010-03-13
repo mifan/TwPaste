@@ -85,18 +85,23 @@
           </div>
           <%= javascript_include_tag 'jquery.validate.pack.js' %>
           <script type="text/javascript">
-
-             $(document).ready(function(){
-
-				  $("#comment_comment").change(function(){
-				   var commentLength = $(this).val().length;
-				   var showChars = 120 - commentLength ;
+		     function comment_changed(){
+				var commentLength = $('#comment_comment').val().length;
+				var showChars = 120 - commentLength ;
 				   $('#commentChars').text(showChars);
 				   if(showChars > 0){
 				     $('#commentWarning').hide();
 				   }else{
 				     $('#commentWarning').show();
 				   }
+	
+			 }
+
+             $(document).ready(function(){
+
+				 
+				 $("#comment_comment").keyup(function(){
+				   comment_changed();
                  });
 
 				$("#comment_post_to_twitter").change(function(){
