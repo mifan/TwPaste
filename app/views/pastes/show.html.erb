@@ -91,8 +91,10 @@
 				   $('#commentChars').text(showChars);
 				   if(showChars > 0){
 				     $('#commentWarning').hide();
+					 $('#commentChars').removeClass('error');
 				   }else{
 				     $('#commentWarning').show();
+					 $('#commentChars').addClass('error');
 				   }
 	
 			 }
@@ -105,7 +107,7 @@
                  });
 
 				$("#comment_post_to_twitter").change(function(){
-				  if($(this).checked){
+				  if($(this)[0].checked){
 				    $('#commentAll').show();
 				  }else{
 				    $('#commentAll').hide();

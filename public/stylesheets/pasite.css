@@ -66,11 +66,13 @@ input.error , textarea.error {
   border-color:#D5665D;
 }
 
-label.error {
+label.error  {
   color:#D5060D;
   display:block;
 }
-
+span.error  {
+  color:#D5060D;
+}
 
 label {
   color:#333333;
