@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
       @comment.user = current_user
       @comment.save!
       respond_to do |format|
-          render :partial => 'pastes/comment' if request.xhr?
+          render :partial => 'pastes/comment' and return if request.xhr?
           format.html { redirect_to :back }
       end
   end

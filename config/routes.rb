@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
 
-  map.resource :user_session, :only => [:destory]
+  map.resource :user_sessions, :only => [:destory]
 
   map.resources :pastes do |paste|
     paste.resources :comments,:only => [:create]
@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.login 'login', :controller => 'users', :action => 'new'
-  map.logout 'logout', :controller => 'user_session', :action => 'destroy'
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
 
 
 
@@ -34,6 +34,4 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'pastes'
 
-  #map.connect ':controller/:action/:id'
-  #map.connect ':controller/:action/:id.:format'
 end
