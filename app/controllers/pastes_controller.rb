@@ -52,26 +52,22 @@ class PastesController < ApplicationController
     @paste = Paste.find(params[:id],:include => [:user,:tags,:comments])
     @paste.update_views_count
             
-    if @paste.private
-      return if not require_user
-      if not(@current_user.id == @paste.user_id or @current_user.admin)
-        render_404
-        return
-      end
+    if (@paste.private? && require_user && (current_user.id != @paste.user_id) )
+       redirect_to root_url,:status=>:found
+       return
     end
 
-      @comment = @paste.comments.new
-      set_seo_meta("##{@paste.id} #{@paste.title}")
-      respond_to do |format|
-        format.html # show.html.erb
-        format.raw { render :text => @paste.code }
-        format.code { render :text => @paste.code_formatted }
-      end
+    @comment = @paste.comments.new
+    set_seo_meta("##{@paste.id} #{@paste.title}")
+    respond_to do |format|
+      format.html # show.html.erb
+      format.raw { render :text => @paste.code }
+      format.code { render :text => @paste.code_formatted }
+    end
 
   end
-    
-  # GET /pastes/new
-  # GET /pastes/new.xml
+
+
   def new
     @paste = Paste.new(:language_id => 6)
     set_seo_meta("New paste")
