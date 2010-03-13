@@ -10,7 +10,7 @@ module PastesHelper
   end
 
   def paste_title(paste)
-       title = paste.title.blank? 'View' : paste.title 
+       title = paste.title.blank? ? 'View' : paste.title 
        truncate(h(title),:length => 50)
   end
 end
