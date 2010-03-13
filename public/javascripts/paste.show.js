@@ -40,6 +40,7 @@ $(document).ready(function(){
 		 $("#new_comment").serialize() ,
 		 function(partional){
 		  $("#comments").append(partional);
+		  $("#comment_comment").val('');
 	     });
 	  return false;
   });
