@@ -23,8 +23,8 @@
     </div>
 
     <div class="input-space">
-      <%= f.label :code,"Source code:" ,:class => 'title block'%>
-      <%= f.text_area :code, :class => "required space" , :rows => 18 %>    
+      <%= f.label :code,"Source code or plain text:" ,:class => 'title block'%>
+      <%= f.text_area :code, :class => 'space' , :rows => 18 %>
     </div>
 
     <div style="display:none;" id="textDesc" class="input-space">
@@ -33,7 +33,7 @@
     </div>
 
     <div style="display:none;" id="textTags" class="input-space">
-        <%= f.label :tags, "Tags:" ,:class => 'title' %>
+        <%= f.label :tags, "Tags:" ,:class => 'title inline' %><span>separated with ,</span>
         <%= text_field_tag("paste[tag_list]",@paste.tags.join(","),:class => "space") %>
     </div>
 
@@ -47,16 +47,16 @@
 
 	    <div class="post-to-twitter">
 			<%= f.check_box :post_to_twitter, :checked => 'checked' %>
-            <%= f.label :post_to_twitter, "Post it to Twitter" %>
+            <%= f.label :post_to_twitter, 'Post it to Twitter' %>
 		 </div>
 		 <div class="post-to-twitter">
 		   <%= f.check_box :private %>
-           <%= f.label :private, "Private" %>    
+           <%= f.label :private, 'Private' %>
 		 </div>		
 	 </div>
        
      <div style="clear:both; padding:10px 5px 15px 25px;">
-      <%= f.submit 'Save', :class => "submit" %>
+      <%= f.submit 'Save', :class => 'submit' %>
     </div>
 
 <% end %>

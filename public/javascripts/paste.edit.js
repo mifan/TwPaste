@@ -37,7 +37,14 @@ $(document).ready(function() {
     return false;
   });
 
-  $("#new_paste").validate();
+    $("#new_paste").validate({
+    rules: {
+      'paste[code]': 'required'
+    },
+    messages: {
+      'paste[code]': 'Please enter your source code or plain text'
+    }
+  });
 
 
 });
