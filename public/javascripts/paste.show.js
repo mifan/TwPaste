@@ -34,4 +34,13 @@ $(document).ready(function(){
     }
   });
 
+  $("#new_comment").submit(function(){
+     $.post(
+		 commentPostUrl,
+		 $("#new_comment").serialize() ,
+		 function(partional){
+		  $("#comments").append(partional);
+	     });
+	  return false;
+  });
 });
