@@ -44,7 +44,7 @@
   <%= success_messages %>
   <h2>
     # <%= @paste.id %>  <%=h @paste.title %>
-    <%= image_tag("icons/private.gif",:alt => "Private") if @paste.private %>
+    <%= image_tag('icons/private.gif',:alt => 'Private',:class => 'inline') if @paste.private %>
   </h2>
   <div id="paste_show">    
     <div class="paste-code">        
