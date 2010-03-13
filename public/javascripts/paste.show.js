@@ -25,4 +25,13 @@ $(document).ready(function(){
     }  
   });
 
+  $("#new_comment").validate({
+    rules: {
+      comment[comment]: "required"
+    },
+    messages: {
+      comment[comment]: "Please enter your comment"
+    }
+  });
+
 });

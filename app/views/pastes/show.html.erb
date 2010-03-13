@@ -14,7 +14,6 @@
         <%= link_to (h @paste.language.name), { :controller => "pastes", :action => "index", :language_id => @paste.language.slug } , { :class => 'normal-weight'} %>
     </div>
 
-
   <div class="side-box">
     <h3 class="inline">Views count </h3>
     <%=h @paste.views_count_s  %>
@@ -71,8 +70,8 @@
 			 <span id="commentAll">(
 			   <span id="commentChars">120</span> chars left
 			   <span id="commentWarning" style="display:none;">, the tweet will be cut off </span>)
-             </span>			 
-             <%= f.text_area :comment ,:class => 'required', :rows => 2, :cols => 133 %>
+             </span>
+             <%= f.text_area :comment , :rows => 2, :cols => 133 %>
           </div>
            <div style="width:90%;margin-top:5px;">
             <div class="post-to-twitter">
@@ -85,7 +84,8 @@
           </div>
         <% end %>
       </div>
-	  <%= javascript_include_tag 'paste.show.js' %>
+      <%= javascript_include_tag 'jquery.validate.pack.js' %>
+      <%= javascript_include_tag 'paste.show.js' %>
       <% else %>
           Please <a href="/login?return_to=<%=request.url%>">log in</a> to comment.
       <% end %>
