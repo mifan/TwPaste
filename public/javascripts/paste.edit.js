@@ -1,17 +1,26 @@
-$(document).ready(function() {  
-  //click
+$(document).ready(function() {
   var textDesc = $("#textDesc");
   var textTags = $("#textTags");
+
+  if(textDesc.val().length > 0){
+    textDesc.show();
+  }
+
+  if(textTags.val().length > 0){
+    textTags.show();
+  }
+
   if(textDesc.is(":visible")){
-          $("#addDescId").text('- Description');
-        }else{
-          $("#addDescId").text('+ Description');
-   }
-   if(textTags.is(":visible")){
-          $("#addTagsId").text('- Tags');
-        }else{
-          $("#addTagsId").text('+ Tags');
-   }
+    $("#addDescId").text('- Description');
+  }else{
+    $("#addDescId").text('+ Description');
+  }
+
+  if(textTags.is(":visible")){
+    $("#addTagsId").text('- Tags');
+  }else{
+    $("#addTagsId").text('+ Tags');
+  }
 
 
 
@@ -37,7 +46,7 @@ $(document).ready(function() {
     return false;
   });
 
-    $("#new_paste").validate({
+  $("#new_paste").validate({
     rules: {
       'paste[code]': 'required'
     },
@@ -45,6 +54,5 @@ $(document).ready(function() {
       'paste[code]': 'Please enter your source code or plain text'
     }
   });
-
 
 });

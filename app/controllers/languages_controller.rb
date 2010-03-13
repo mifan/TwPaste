@@ -19,7 +19,6 @@ class LanguagesController < ApplicationController
   def create
     @language = Language.new(params[:language])
     if @language.save
-      flash[:notice] = 'Language was successfully created.'
       redirect_to(@language)
     else
       render :action => "new"
@@ -30,7 +29,6 @@ class LanguagesController < ApplicationController
   def update
     @language = Language.find(params[:id])
       if @language.update_attributes(params[:language])
-        flash[:notice] = 'Language was successfully updated.'
         redirect_to(@language)
       else
         render :action => "edit"

@@ -73,12 +73,8 @@ class PastesController < ApplicationController
   # GET /pastes/new
   # GET /pastes/new.xml
   def new
-    @paste = Paste.new
+    @paste = Paste.new(:languge_id => 6)
     set_seo_meta("New paste")
-    respond_to do |format|
-      format.html { render :action => "edit" } # new.html.erb
-      format.xml  { render :xml => @paste }
-    end
   end
 
   # GET /pastes/1/edit
@@ -92,7 +88,6 @@ class PastesController < ApplicationController
   def create
     @paste = current_user.pastes.build(params[:paste])
     @paste.save!
-    flash[:notice] = 'paste was successfully created.'
     redirect_to(@paste)
   end
 

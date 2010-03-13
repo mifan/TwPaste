@@ -14,14 +14,13 @@ class Paste < ActiveRecord::Base
   validates_length_of   :title, :maximum => 60
 
   before_save :format_code 
-  after_create :twitter_update
+  after_save :twitter_update
 
 
 
   def twitter_update
     if post_to_twitter == '1'
         self.user.twitter_update("new paste: #{self.id} #{self.title} " + ShortenUrl.bitly_url("http://twpaste.com/pastes/#{self.id}"))
- 
     end
   end
 

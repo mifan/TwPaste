@@ -40,7 +40,7 @@ jQuery.cookie = function(name, value, options) {
 $(document).ready(function() {
   var user_theme = $.cookie('user_theme');
   if(user_theme == null){
-    user_theme = 'hldefault';
+    user_theme = 'hlnative';
   }
   var showClasses = "highlight "+ user_theme ;
   $(".highlight").attr("class",showClasses);

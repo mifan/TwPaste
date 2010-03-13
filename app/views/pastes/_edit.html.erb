@@ -1,0 +1,53 @@
+  <div>
+    <% form_for(@paste) do |f| %>
+      <%= f.error_messages %>
+      <div style="width:99%;">
+        <div style="float:left;" class="input-space">
+          <%= f.label :title,"Title:",:class => 'title' %>
+          <%= f.text_field :title ,{:class => 'space' ,:size => 50,:maxlength => "50"}%>
+        </div>
+        <div style="float:right;padding-right:10px;" class="input-space">
+          <%= f.label :language, "Language:" ,:class => 'title' %>
+          <%= f.select(:language_id,languages_array) %>
+        </div>
+      </div>
+
+      <div class="input-space">
+        <%= f.label :code,"Source code or plain text:" ,:class => 'title block'%>
+        <%= f.text_area :code, :class => 'space' , :rows => 18 %>
+      </div>
+
+      <div style="display:none;" id="textDesc" class="input-space">
+        <%= f.label :desc, "Description:" ,:class => 'title' %>
+        <%= f.text_area :desc, :class => "space", :rows => 5 %>
+      </div>
+
+      <div style="display:none;" id="textTags" class="input-space">
+        <%= f.label :tags, "Tags:" ,:class => 'title inline' %><span> ( separated with , )</span>
+        <%= text_field_tag("paste[tag_list]",@paste.tags.join(","),:class => "space") %>
+      </div>
+
+
+
+      <div style="width:90%;">
+        <div style="width:200px;float:left;padding-left:15px;">
+          <a href="#" id="addDescId" class="normal-weight font-smaller">+ Description</a> |
+          <a href="#" id="addTagsId" class="normal-weight font-smaller">+ Tags</a>
+        </div>
+
+        <div class="post-to-twitter">
+          <%= f.check_box :post_to_twitter, :checked => 'checked' %>
+          <%= f.label :post_to_twitter, 'Post it to Twitter' %>
+        </div>
+        <div class="post-to-twitter">
+          <%= f.check_box :private %>
+          <%= f.label :private, 'Private' %>
+        </div>
+      </div>
+
+      <div style="clear:both; padding:10px 5px 15px 25px;">
+        <%= f.submit 'Save', :class => 'submit' %>
+      </div>
+
+    <% end %>
+  </div>
