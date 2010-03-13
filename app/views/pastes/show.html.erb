@@ -70,7 +70,7 @@
              <%= f.label :comment,"Comment:" %>
 			 <span id="commentAll">(
 			   <span id="commentChars">120</span> chars left
-			   <span id="commentWarning" style="display:none;">, the tweet will be cut off</span>)
+			   <span id="commentWarning" style="display:none;">, the tweet will be cut off </span>)
              </span>			 
              <%= f.text_area :comment ,:class => 'required', :rows => 2, :cols => 133 %>
           </div>
@@ -83,44 +83,9 @@
           <div class="row">
             <%= f.submit "Post comment" %>
           </div>
-          <%= javascript_include_tag 'jquery.validate.pack.js' %>
-          <script type="text/javascript">
-		     function comment_changed(){
-				var commentLength = $('#comment_comment').val().length;
-				var showChars = 120 - commentLength ;
-				   $('#commentChars').text(showChars);
-				   if(showChars > 0){
-				     $('#commentWarning').hide();
-					 $('#commentChars').removeClass('error');
-				   }else{
-				     $('#commentWarning').show();
-					 $('#commentChars').addClass('error');
-				   }
-	
-			 }
-
-             $(document).ready(function(){
-
-				 
-				 $("#comment_comment").keyup(function(){
-				   comment_changed();
-                 });
-
-				$("#comment_post_to_twitter").change(function(){
-				  if($(this)[0].checked){
-				    $('#commentAll').show();
-				  }else{
-				    $('#commentAll').hide();
-				  }  
-                });
-
-              }); 
-               
- 
-          </script>
-
         <% end %>
       </div>
+	  <%= javascript_include_tag 'paste.show.js' %>
       <% else %>
           Please <a href="/login?return_to=<%=request.url%>">log in</a> to comment.
       <% end %>
