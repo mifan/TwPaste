@@ -6,7 +6,7 @@
     by <%= link_to paste.user.login ,{:controller => 'pastes' ,:action => "index", :user_id => paste.user.login} %>
   </div>
   <div class="link">
-      #<%= paste.id %> <%= link_to (truncate(h(paste.title),:length => 50)), paste %> 
+      #<%= paste.id %> <%= link_to paste_title(paste), paste %> 
        <span class="lang"> [<%= paste.language.name %>]</span>
        <span  class="count">(<%= paste.line_count %> lines,<%= paste.comments_count %> comments)</span>
   </div>

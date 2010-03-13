@@ -185,7 +185,7 @@ ul.navigation a  {
 .inline { display: inline; }
 .block { display: block; }
 .summary { 
-  margin:0.5em 0 0.5em 1.5em; 
+  margin:0.5em 0 0.5em 0.5em; 
   color:#999; 
 }
 .normal-weight{
@@ -358,7 +358,7 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 #pastes .item {	-moz-background-clip:border;	-moz-background-inline-policy:continuous;
 		-moz-background-origin:padding;	background:#EEEEEE none repeat scroll 0 0;	
 		margin-bottom:1em;	padding:7px 15px;}
-#pastes .item .link { color:#999;  font-size:12px;}
+#pastes .item .link { color:#999;  font-size:13px;}
 
 #pastes .item p {color:#777777;font-size:0.7em;margin:0 0 0.5em;}
 #pastes .item span.lang {font-size:11px; color:#666; }
