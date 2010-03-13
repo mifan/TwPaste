@@ -58,6 +58,8 @@
     <% end  %>
 
     <div class="comments" id="comments">
+      <%=render :partial => 'comment' , :collection => @paste.comments %>
+    </div>
       <div id="comment_new">
         <div class="form">
           <% if current_user %>
@@ -91,9 +93,9 @@
             Please <a href="/login?return_to=<%=request.url%>">log in</a> to comment.
           <% end %>
         </div>
-      </div>
+   
 
     </div>
   </div>
 
-</div>>
+</div>
