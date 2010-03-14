@@ -450,3 +450,18 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
   padding-left:25px;
   height:25px;
 }
+
+.cloud1, .cloud2, .cloud3, .cloud4 {
+  background:none repeat scroll 0 0 #60A5FF;
+  font-size:1em;
+  padding:3px;
+}
+.cloud3 {
+  background:none repeat scroll 0 0 #8BBDFF;
+}
+.cloud2 {
+  background:none repeat scroll 0 0 #A3CBFF;
+}
+.cloud1 {
+  background:none repeat scroll 0 0 #C8E0FF;
+}

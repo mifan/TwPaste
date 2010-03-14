@@ -27,15 +27,15 @@
 
  
 
-
         <div class="side-box" id="recent_comments">
-        <h3>Recent Comments</h3>
+        <h3>Tag cloud</h3>
         <ul>
-          <% Comment.pastes_recent(10).each do |comment| %>
-            <li>
-              <%= link_to (truncate(comment.user.login,:length => 10)), {:controller => "pastes", :action => "show", :id => comment.commentable_id} , {:class => 'normal-weight'}  %>: <%= truncate(h(comment.comment),:length => 20) %>
-           </li>
-          <% end %>
+		  <% tag_cloud(@tags, %w(cloud1 cloud2 cloud3 cloud4)) do |tag, css_class| %>
+		  <li>
+            <%= link_to tag.name, tag_pastes_path(tag), :class => css_class %>
+          </li>
+         <% end %>
+
         </ul>
       </div>
 	  <%=render :partial => 'tiles/sidebox/follow_us' %>

@@ -26,6 +26,10 @@ class Paste < ActiveRecord::Base
     { :order => order }
   }
 
+  named_scope :limit, lambda { |limit|
+    { :limit => limit }
+  }
+
 
 
   def twitter_update
@@ -49,7 +53,7 @@ class Paste < ActiveRecord::Base
   # find method
   def self.find_page(page = 1)		
     paginate :page => page,
-             :per_page => 8
+             :per_page => 10
   end
   #:include => [:user,:language]
 
