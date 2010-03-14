@@ -453,6 +453,7 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 
 .tags {
   overflow:hidden;
+  padding-top:10px;
 }
 
 .tags a {
@@ -461,6 +462,7 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
   float:left;
   margin-bottom:5px;
   margin-right:5px;
+  font-weight: normal;
 }
 .cloud1, .cloud2, .cloud3, .cloud4 {
   background:none repeat scroll 0 0 #60A5FF;
