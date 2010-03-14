@@ -24,7 +24,7 @@
 
       <div style="display:none;" id="textTags" class="input-space">
         <%= f.label :tags, "Tags:" ,:class => 'title inline' %><span> ( separated with , )</span>
-        <%= text_field_tag("paste[tag_list]",@paste.tags.join(","),:class => "space") %>
+        <%= text_field_tag("paste[tag_list]",@paste.tag_list,:class => "space") %>
       </div>
 
 

@@ -1,5 +1,8 @@
 <div class="rightCol">
   <%=render :partial => 'tiles/sidebox/profile', :object => current_user  if current_user %>
+  <div class="side-box">
+    <%= link_to 'Repaste', repaste_paste_path(@paste) %>
+  </div>
   <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
 <div class="main">

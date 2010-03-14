@@ -92,6 +92,7 @@ class PastesController < ApplicationController
   # GET /pastes/1/edit
   def edit
     @paste = current_user.pastes.find(params[:id])
+    @paste.tag_list = @paste.tags.join(",")
     set_seo_meta("Edit paste")
   end
 
