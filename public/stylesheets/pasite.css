@@ -373,6 +373,7 @@ table.grid { width:100%; border:1px solid #CCC;border-collapse:collapse;border-s
 
  
 #paste_show .desc { font-size:12px; margin:10px 0; color:#666; }
+#paste_show .desc a { font-size:12px; font-weight:normal;}
 #paste_show .info { background:#DDD; padding:8px; font-size:12px;}
 #paste_show .info span { margin-right:8px; color:#999;}
 #paste_show .info span b { margin-right:8px; color:#666;}
