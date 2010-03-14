@@ -53,7 +53,7 @@ class Paste < ActiveRecord::Base
   # find method
   def self.find_page(page = 1)		
     paginate :page => page,
-             :per_page => 10
+             :per_page => 8
   end
   #:include => [:user,:language]
 

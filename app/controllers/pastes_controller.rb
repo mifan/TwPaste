@@ -48,15 +48,12 @@ class PastesController < ApplicationController
   # GET /pastes/1
   # GET /pastes/1.xml
   def show
-
     @paste = Paste.find(params[:id],:include => [:user,:tags,:comments])
-    @paste.update_views_count
-            
-    if (@paste.private? && require_user && (current_user.id != @paste.user_id) )
+    if (@paste && @paste.private? && require_user && (current_user.id != @paste.user_id) )
        redirect_to root_url,:status=>:found
        return
     end
-
+    @paste.update_views_count
     @comment = @paste.comments.new
     set_seo_meta("##{@paste.id} #{@paste.title}")
     respond_to do |format|
@@ -70,6 +67,15 @@ class PastesController < ApplicationController
 
   def new
     @paste = Paste.new(:language_id => 6)
+    set_seo_meta("New paste")
+  end
+
+  def repaste
+    @paste = Paste.find(params[:id])
+    if (@paste && @paste.private? && require_user && (current_user.id != @paste.user_id) )
+       redirect_to root_url,:status=>:found
+       return
+    end
     set_seo_meta("New paste")
   end
 

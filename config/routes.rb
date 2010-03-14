@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_sessions, :only => [:destory]
 
-  map.resources :pastes do |paste|
+  map.resources :pastes, :member => { :repaste => :get} do |paste|
     paste.resources :comments,:only => [:create]
   end
 
@@ -23,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.login 'login', :controller => 'users', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
+
 
   #map.feed "feed",:controller => "pastes", :action => "index",:type => "feed"
   #map.lang_feed "lang/:lang/feed",:controller => "pastes", :action => "index",:type => "feed"
