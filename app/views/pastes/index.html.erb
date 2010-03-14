@@ -29,14 +29,13 @@
 
         <div class="side-box" id="recent_comments">
         <h3>Tag cloud</h3>
-        <ul>
+        <div class="tags">
 		  <% tag_cloud(@tags, %w(cloud1 cloud2 cloud3 cloud4)) do |tag, css_class| %>
-		  <li>
-            <%= link_to tag.name, tag_pastes_path(tag), :class => css_class %>
-          </li>
+		   
+            <%= link_to tag.name, "/tags/#{tag.name}/pastes", :class => css_class %>
+           
          <% end %>
 
-        </ul>
       </div>
 	  <%=render :partial => 'tiles/sidebox/follow_us' %>
 
