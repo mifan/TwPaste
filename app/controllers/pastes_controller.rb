@@ -71,12 +71,20 @@ class PastesController < ApplicationController
   end
 
   def repaste
-    @paste = Paste.find(params[:id])
-    if (@paste && @paste.private? && (current_user.id != @paste.user_id) )
+    paste_origin = Paste.find(params[:id])
+    if (paste_origin && paste_origin.private? && (current_user.id != paste_origin.user_id) )
        redirect_to root_url,:status=>:found
        return
     end
-    @paste.id = nil
+    @paste = Paste.new do |pa|
+      pa.title = paste_origin.title
+      pa.code = paste_origin.code
+      pa.desc = paste_origin.desc
+      pa.private = paste_origin.private
+      pa.language_id = paste_origin.language_id
+      pa.tag_list = paste_origin.tags.join(",")
+    end
+
     set_seo_meta("New paste")
     render :action => 'new'
   end

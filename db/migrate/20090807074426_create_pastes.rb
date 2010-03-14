@@ -1,11 +1,11 @@
 class CreatePastes < ActiveRecord::Migration
   def self.up
     create_table :pastes do |t|
-      t.string :title, :null => false
+      t.string :title, :null => true
 
       t.text :code, :null => false
       t.text :code_formatted, :null => false
-      t.text :summary_formatted,:null => false, :default => ""
+      t.text :summary_formatted,:null => false
       t.text :desc 
       t.float :size, :default => 0
       t.integer :line_count ,:null => false, :default => 0
