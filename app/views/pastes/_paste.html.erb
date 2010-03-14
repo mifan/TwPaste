@@ -7,6 +7,7 @@
   </div>
   <div class="link">
       #<%= paste.id %> <%= link_to paste_title(paste), paste %> 
+      <%= image_tag('icons/private.gif',:alt => 'Private',:class => 'inline') if paste.private %>
        <span class="lang"> [<%= paste.language.name %>]</span>
        <span  class="count">(<%= paste.line_count %> lines,<%= paste.comments_count %> comments)</span>
   </div>
