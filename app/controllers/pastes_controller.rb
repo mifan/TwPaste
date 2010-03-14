@@ -1,7 +1,7 @@
 class PastesController < ApplicationController
   # GET /pastes
   # GET /pastes.xml
-  before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy]
+  before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy,:repaste]
 
   
   def index 
@@ -49,7 +49,7 @@ class PastesController < ApplicationController
   # GET /pastes/1.xml
   def show
     @paste = Paste.find(params[:id],:include => [:user,:tags,:comments])
-    if (@paste && @paste.private? && require_user && (current_user.id != @paste.user_id) )
+    if (@paste && @paste.private? && (current_user.id != @paste.user_id) )
        redirect_to root_url,:status=>:found
        return
     end
@@ -72,10 +72,11 @@ class PastesController < ApplicationController
 
   def repaste
     @paste = Paste.find(params[:id])
-    if (@paste && @paste.private? && require_user && (current_user.id != @paste.user_id) )
+    if (@paste && @paste.private? && (current_user.id != @paste.user_id) )
        redirect_to root_url,:status=>:found
        return
     end
+    @paste.id = nil
     set_seo_meta("New paste")
     render :action => 'new'
   end
