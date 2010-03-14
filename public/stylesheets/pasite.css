@@ -271,12 +271,13 @@ ul.navigation a  {
   border:1px solid #dddddd;
   padding:2px 5px;
   text-decoration:none;
+  font-weight:normal;
 }
 .pagination span {
   -moz-background-clip:border;
   -moz-background-inline-policy:continuous;
   -moz-background-origin:padding;
-  background:black none repeat scroll 0 0;
+  background:#454547 none repeat scroll 0 0;
   border:1px solid #666666;
   color:white;
 }
