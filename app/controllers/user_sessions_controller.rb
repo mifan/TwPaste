@@ -5,7 +5,6 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     redirect_back_or_default login_url
-    redirect_to(paste)
   end
 
 end
