@@ -8,30 +8,29 @@ class PastesController < ApplicationController
     @sub_title = ''
     @pastes_count = 0
     if params[:language_id] && (@language = Language.find_by_slug(params[:language_id]))
-      @pastes = @language.pastes.find_page(params[:page])
-      @pastes_count = @language.pastes.count
+      @pastes = @language.pastes.user_scoped(current_user).order('id DESC').find_page(params[:page])
       @sub_title = "Listing pastes in #{@language.name} language"
       @feed_title = "#{@language.name}"
       set_seo_meta("pastes &raquo; #{@language.name} language")
     elsif params[:user_id] && (@user = User.find_by_login(params[:user_id]))
-        @pastes = @user.pastes.find_page(params[:page])
-        @pastes_count = @user.pastes_count
+        @pastes = @user.pastes.user_scoped(current_user).order('id DESC').find_page(params[:page])
         @sub_title = "Listing #{@user.login}'s pastes"
         @feed_title = "#{@user.login}'s pastes"
         set_seo_meta("#{@user.login}'s pastes")
     elsif params[:tag_id]
-      @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).find_page(params[:page])
-      @pastes_count = Paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
+      @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).user_scoped(current_user).order('id DESC').find_page(params[:page])
+      #@pastes_count = Paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
       @sub_title = "Listing #{params[:tag_id]} pastes"
       @feed_title = "Tags: #{params[:tag_id]}"
       set_seo_meta("pastes &raquo; Taged #{params[:tag_id]}")
     else
-      @pastes = Paste.find_page(params[:page])
-      @pastes_count = Paste.count
+      @pastes = Paste.user_scoped(current_user).order('id DESC').find_page(params[:page])
       @sub_title = "Listing pastes"
       @feed_title = "Recent pastes"
       set_seo_meta("All pastes")
     end
+
+    @pastes_count = @pastes.total_entries
 
     if params[:type] == "feed"
       # Set the content type to the standard one for RSS

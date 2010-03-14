@@ -5,11 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user , :admin_user
   filter_parameter_logging :password, :password_confirmation
 
-  # 输出404错误
-  def render_404
-    render_optional_error_file(404)
-  end
-  
+
   # 设置SEO 的Meta 值
   def set_seo_meta(title,keywords = '',desc = '')
     if title

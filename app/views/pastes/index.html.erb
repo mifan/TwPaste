@@ -19,7 +19,7 @@
   <div class="side-box" id="right_top_languages">    
     <h3>Top Languages</h3>
     <ul>
-        <% for language in Language.find_top %>
+        <% for language in Language.top_languages %>
           <li><%= link_to (h language.name), {:controller => "pastes", :action => "index", :language_id => language.slug} ,{:class => 'normal-weight font-larger'}%> <span class="count">(<%= language.pastes_count %>)</span></li>
         <% end %>
     </ul>

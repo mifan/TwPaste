@@ -14,7 +14,17 @@ class Paste < ActiveRecord::Base
   validates_length_of   :title, :maximum => 60
 
   before_save :format_code 
-  after_save :twitter_update
+  after_save  :twitter_update
+
+
+  named_scope :user_scoped, lambda { |user|
+    return {:conditions => ["private = ?", false]} unless user
+    { :conditions => ["private = ? or user_id = ?", false,user.id ] }
+  }
+
+  named_scope :order, lambda { |order|
+    { :order => order }
+  }
 
 
 
@@ -38,12 +48,10 @@ class Paste < ActiveRecord::Base
 
   # find method
   def self.find_page(page = 1)		
-    conditions = ["private = ?",false]
     paginate :page => page,
-             :per_page => 8,
-             :conditions => conditions,
-             :order => "id desc",
-             :include => [:user,:language]
+             :per_page => 8
   end
+  #:include => [:user,:language]
+
 
 end
