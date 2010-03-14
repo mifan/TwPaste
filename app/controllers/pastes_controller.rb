@@ -77,6 +77,7 @@ class PastesController < ApplicationController
        return
     end
     set_seo_meta("New paste")
+    render :action => 'new'
   end
 
   # GET /pastes/1/edit
