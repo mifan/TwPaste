@@ -31,7 +31,7 @@ class PastesController < ApplicationController
     end
 
     @pastes_count = @pastes.total_entries
-    @tags = Paste.tag_counts_on(:tags).user_scoped(current_user).limit(15)
+    @tags = Paste.user_scoped(current_user).tag_counts_on(:tags)
 
     if params[:type] == "feed"
       # Set the content type to the standard one for RSS
