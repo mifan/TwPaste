@@ -20,13 +20,13 @@
   </div>
 
   <% unless @paste.tags.blank? %>
-    <div class="side-box tags">
+    <div class="side-box">
       <h3>Tags</h3>
-      <% for tag in @paste.tags %>
-        <span class="tag_name">
-          <%= link_to (h tag.name), :controller => "pastes", :action => "index", :tag_id => tag.name %>
-        </span>
-      <% end %>
+	  <div class="tags">
+		 <% for tag in @paste.tags %>
+            <%= link_to tag.name, "/tags/#{tag.name}/pastes", :class => 'cloud1' %>
+         <% end %>
+      </div>
     </div>
   <% end %>
 
