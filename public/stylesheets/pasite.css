@@ -98,12 +98,13 @@ label {
 }
 
 #logo {
-  background:transparent url(../images/pastie.gif) no-repeat scroll 0 0;
+  background:transparent url(../images/logo.png) no-repeat scroll 0 0;
   float:left;
   width:200px;
   height:32px;
   margin: 17px 0 5px 42px;
   padding: 10px 0 0 40px;
+  text-indent: -2000px;
 }
 
 a#logo {
