@@ -1,10 +1,10 @@
-= Pastie
+= Twitter Paste
 
 Share you source code or plain text on the web.
 
 pastes and comments post to twitter directly :)
 
-http://twpaste.org
+http://twpaste.com
 
 
 
