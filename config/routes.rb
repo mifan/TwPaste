@@ -21,8 +21,10 @@ ActionController::Routing::Routes.draw do |map|
     tag.resources :pastes, :only =>[:index]
   end
 
-  map.login 'login', :controller => 'users', :action => 'new'
-  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
+  map.login '/login', :controller => 'users', :action => 'new'
+  map.logout '/logout', :controller => 'user_sessions', :action => 'destroy'
+
+  map.paste  "/:id",controller => "pastes", :action => "show" ,:requirements => { :id => /\d+/ } 
 
 
   #map.feed "feed",:controller => "pastes", :action => "index",:type => "feed"
