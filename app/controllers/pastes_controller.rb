@@ -10,40 +10,60 @@ class PastesController < ApplicationController
     if params[:language_id] && (@language = Language.find_by_slug(params[:language_id]))
       @pastes = @language.pastes.user_scoped(current_user).order('id DESC').find_page(params[:page])
       @sub_title = "Listing pastes in #{@language.name} language"
-      @feed_title = "#{@language.name}"
+      @rss_url = rss_language_pastes_path(params[:language_id])
       set_seo_meta("pastes &raquo; #{@language.name} language")
     elsif params[:user_id] && (@user = User.find_by_login(params[:user_id]))
         @pastes = @user.pastes.user_scoped(current_user).order('id DESC').find_page(params[:page])
         @sub_title = "Listing #{@user.login}'s pastes"
-        @feed_title = "#{@user.login}'s pastes"
+        @rss_url = rss_user_pastes_path(params[:user_id])
         set_seo_meta("#{@user.login}'s pastes")
     elsif params[:tag_id]
       @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).user_scoped(current_user).order('id DESC').find_page(params[:page])
       #@pastes_count = Paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
       @sub_title = "Listing #{params[:tag_id]} pastes"
-      @feed_title = "Tags: #{params[:tag_id]}"
+      @rss_url = rss_tag_pastes_path(params[:tag_id])
       set_seo_meta("pastes &raquo; Taged #{params[:tag_id]}")
     else
       @pastes = Paste.user_scoped(current_user).order('id DESC').find_page(params[:page])
       @sub_title = "Listing pastes"
       @feed_title = "Recent pastes"
+      @rss_url = rss_pastes_path
       set_seo_meta("All pastes")
+      
     end
 
     @pastes_count = @pastes.total_entries
     @tags = Paste.user_scoped(current_user).tag_counts_on(:tags)
 
-    if params[:type] == "feed"
-      # Set the content type to the standard one for RSS
-      response.headers['Content-Type'] = 'application/rss+xml'
-        render "rss" , :layout => false
-    else
-      respond_to do |format|
-        format.html # index.html.erb
-        format.xml  { render :xml => @pastes }
-      end
-    end
   end
+
+
+  def rss
+    @rss_title = ''
+    @rss_link = ''
+    if params[:language_id] && (@language = Language.find_by_slug(params[:language_id]))
+      @pastes = @language.pastes.feed_only
+      @rss_title = "Pastes in #{@language.name} language"
+      @rss_link = language_pastes_path(params[:language_id])
+    elsif params[:user_id] && (@user = User.find_by_login(params[:user_id]))
+        @pastes = @user.pastes.feed_only
+	@rss_title = "#{@user.login}'s pastes"
+        @rss_link = user_pastes_path(params[:user_id])
+    elsif params[:tag_id]
+      @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).feed_only
+      @rss_title = "Tags: #{params[:tag_id]}"
+      @rss_link = tag_pastes_path(params[:tag_id])
+    else
+      @pastes = Paste.feed_only
+      @rss_title = "Recent pastes"
+      @rss_url = pastes_path
+      
+    end
+    render :layout => false
+    response.headers["Content-Type"] = "application/xml; charset=utf-8"
+  end
+
+
 
   # GET /pastes/1
   # GET /pastes/1.xml

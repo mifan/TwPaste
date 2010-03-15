@@ -1,19 +1,11 @@
-<!-- content_for :head do >
-    <= auto_discovery_link_tag(:rss, :action => "index", :type => "feed") >
-< end >
--->
- 
-
-
-
 <div class="rightCol">
   <%=render :partial => 'tiles/sidebox/select_style' %>
-  <!--
-  <div class="side-box">
-    <h3 style="color:red;">Notice</h3>
-    <p> Please don't post any pastes, it is under construction now</p>
+
+  <div class="side-box drop-ie6">
+    <h3 style="color:#D5060D;">Notice</h3>
+    <p> We don't support IE6 any more :)</p>
   </div>
-  -->
+
   
   <% if current_user %>
     <%=render :partial => 'tiles/sidebox/profile', :object => current_user %>

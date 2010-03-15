@@ -1,19 +1,20 @@
-xml.instruct! :xml, :version=>"1.0" 
-xml.rss(:version=>"2.0"){
-  xml.channel{
-    xml.title "#{@feed_title} - Twitter Paste"
-    xml.link 'http://twpaste.com'
-    xml.description("code share platform.")
-    xml.language('zh-cn')
-      for item in @snippets
-        xml.item do
-          xml.title h(item.title)
-          xml.description item.code_formatted    
-          xml.author item.user == nil ? "Anonymous" : item.user.name       
-          xml.pubDate(item.created_at.strftime("%a, %d %b %Y %H:%M:%S %z"))
-          xml.link url_for(:host => APP_HOST,:controller => :snippets, :action => :show,:id => item.id)
-          xml.guid url_for(:host => APP_HOST,:controller => :snippets, :action => :show,:id => item.id)
-        end
-      end
-  }
-}
+xml.instruct!
+xml.rss "version" => "2.0", "xmlns:dc" => "http://purl.org/dc/elements/1.1/" do
+  xml.channel do
+
+   xml.title       @rss_title 
+   xml.link        @rss_link
+   xml.description "Source code of text share platform"
+
+   @pastes.each do |paste|
+     xml.item do
+       xml.title       "#{paste.id} #{h(paste.title)}"
+       xml.link        paste_path(paste)
+       xml.description paste.code
+       xml.guid        paste_path(paste)
+     end
+   end
+
+ end
+end
+

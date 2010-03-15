@@ -22,6 +22,9 @@ class Paste < ActiveRecord::Base
     { :conditions => ["private = ? or user_id = ?", false,user.id ] }
   }
 
+  
+  named_scope :feed_only, :conditions => ["private = ?", false], :limit => 30, :order => 'id desc'
+
   named_scope :order, lambda { |order|
     { :order => order }
   }

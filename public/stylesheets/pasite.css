@@ -232,6 +232,13 @@ ul.navigation a  {
   padding:12px 12px 12px 110px;
 }
 
+.drop-ie6 {
+  background:url("/images/ie6.jpg") no-repeat scroll right bottom transparent;
+  padding:12px 112px 12px 12px;
+  margin-right:10px;
+
+}
+
 .profile {
   margin-top:0;
   overflow:hidden;
