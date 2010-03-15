@@ -38,7 +38,7 @@
 
 <div class="main">
   <h2 class="inline"><%= @sub_title %></h2>
-  <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed inline")), :action => "index", :type => "feed" %>
+  <%= link_to (image_tag("feed.gif",:alt => "Subscription code",:class => "feed inline")), @rss_url %>
   <div id="pastes">
     <div class="summary">There have <%= @pastes_count %> pasites </div>
     <%=render :partial => 'paste' , :collection => @pastes %>
