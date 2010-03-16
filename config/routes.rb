@@ -2,6 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_sessions, :only => [:destory]
 
+
   map.resources :pastes, :member => { :repaste => :get }, :collection => { :rss => :get } do |paste|
     paste.resources :comments,:only => [:create]
   end
@@ -32,5 +33,10 @@ ActionController::Routing::Routes.draw do |map|
   #map.user_feed ":login/feed",:controller => "pastes", :action => "index",:type => "feed"
 
   map.root :controller => 'pastes'
+
+  map.connect '/pastes/pages/:page', :controller => 'pastes', :action => 'index', :requirements => { :page => /\d+/ } 
+  map.connect '/users/:user_id/pastes/pages/:page', :controller => 'pastes', :action => 'index', :requirements => { :page => /\d+/ } 
+  map.connect '/tags/:tag_id/pastes/pages/:page', :controller => 'pastes', :action => 'index', :requirements => { :page => /\d+/ } 
+  map.connect '/languages/:language_id/pastes/pages/:page', :controller => 'pastes', :action => 'index', :requirements => { :page => /\d+/ } 
 
 end
