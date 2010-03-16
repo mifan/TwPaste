@@ -1,10 +1,10 @@
-= Pastie
+= Twitter Paste
 
-Share you source code snippets on the web.
+Share you source code or plain text on the web.
 
-This project was cloned of pastie.org, because it was blocked under China internet.
+pastes and comments post to twitter directly :)
 
-I created the http://pasite.org
+http://twpaste.com
 
 
 
