@@ -1,7 +1,7 @@
 <div class="item clearfix">
   <div class="when">
     <span class="typo_date" title="<%= paste.created_at %>">
-      <%= paste.created_at.to_s(:short_time) %>
+      <%= time_ago_in_words(paste.created_at) %>
     </span>
     by <%= link_to paste.user.login ,{:controller => 'pastes' ,:action => "index", :user_id => paste.user.login} %>
   </div>
