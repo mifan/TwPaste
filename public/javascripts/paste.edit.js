@@ -6,7 +6,7 @@ $(document).ready(function() {
     textDesc.show();
   }
 
-  if($("paste_tag_list").val().length > 0){
+  if($("#paste_tag_list").val().length > 0){
     textTags.show();
   }
 
