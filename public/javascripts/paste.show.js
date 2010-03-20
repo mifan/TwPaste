@@ -15,7 +15,7 @@ $(document).ready(function(){
 
   if(privatePaste){
     $('#commentAll').hide();
-    $("#comment_post_to_twitter").attr("checked","false");
+	$("#paste_post_to_twitter").removeAttr("checked");
     $("#comment_post_to_twitter").attr("disabled","true");
   }
 
