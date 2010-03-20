@@ -1,5 +1,5 @@
 * limit column size of db
 * add more index of tables
-* private paste(include comment) can not post  to  twitter
+* private paste(include comment) can not post to twitter
 * expand tag/description when available.
-* add exception handler when post to twitter failed.
+* add exception handler when post to twitter failed
