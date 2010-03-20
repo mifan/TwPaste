@@ -13,9 +13,16 @@ function comment_changed(){
 
 $(document).ready(function(){
 
+  if(privatePaste){
+	$('#commentAll').hide();
+	$("#comment_post_to_twitter").attr("disabled","true");
+  }
+
   $("#comment_comment").keyup(function(){
     comment_changed();
   });
+
+
 
   $("#comment_post_to_twitter").change(function(){
     if($(this)[0].checked){

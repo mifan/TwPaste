@@ -90,6 +90,7 @@
             </div>
 			<script type="text/javascript">
 			   var commentPostUrl="<%=paste_comments_path(@paste)%>";
+			   var privatePaste="<%=@paste.private?%>"
 			</script>
             <%= javascript_include_tag 'jquery.validate.pack.js' %>
             <%= javascript_include_tag 'paste.show.js' %>

@@ -1,7 +1,9 @@
 * limit column size of db  [DONE]
 * add more index of tables  [DONE]
 TODO:
-* private paste(include comment) can not post to twitter
 * expand tag/description when available.
+
+* private paste(include comment) can not post to twitter
+
 * add exception handler when post to twitter failed
 * SEO enhancement

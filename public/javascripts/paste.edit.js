@@ -55,4 +55,14 @@ $(document).ready(function() {
     }
   });
 
+  $("#paste_private").change(function(){
+    if($(this)[0].checked){
+      $("#paste_post_to_twitter").attr("disabled","true");
+      $("#paste_post_to_twitter").attr("checked","false");
+    }else{
+      $("#paste_post_to_twitter").attr("disabled","false");
+    }
+  });
+
+
 });
