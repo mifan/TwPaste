@@ -9,9 +9,14 @@
     <%= link_to "HTML Code", {:controller => "pastes", :action => "show", :format => :code, :id => @paste.id} , { :class => 'normal-weight'}%>
   </div>
 
-  <div class="side-box">
-    <%= link_to 'Repaste', repaste_paste_path(@paste) %>
+  <div class="side-box operate">
+    <h3>Action</h3>
+    <% if has_permission(@paste) %>
+     <%= link_to 'Edit', edit_paste_path(@paste) %> | <%= link_to 'Destroy', @paste, :confirm => 'Are you sure?', :method => :delete %> | 
+    <% end %>
+<%= link_to 'Repaste', repaste_paste_path(@paste) %>
   </div>
+ 
 
   <div class="side-box">
     <h3 class="inline">Language </h3>
@@ -34,12 +39,7 @@
     </div>
   <% end %>
 
-  <% if has_permission(@paste) %>
-    <div class="side-box operate">
-      <h3>Action</h3>
-      <p><%= link_to 'Edit', edit_paste_path(@paste) %> | <%= link_to 'Destroy', @paste, :confirm => 'Are you sure?', :method => :delete %></p>
-    </div>
-  <% end %>
+
   <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
 
