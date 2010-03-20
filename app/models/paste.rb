@@ -11,7 +11,7 @@ class Paste < ActiveRecord::Base
   acts_as_commentable
 
   validates_presence_of :code
-  validates_length_of   :title, :maximum => 60
+  validates_length_of   :title, :maximum => 72
 
   before_save :format_code 
   after_save  :twitter_update
@@ -58,7 +58,5 @@ class Paste < ActiveRecord::Base
     paginate :page => page,
              :per_page => 8
   end
-  #:include => [:user,:language]
-
 
 end

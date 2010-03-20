@@ -4,11 +4,10 @@ namespace :db do
     task :update_pastes_count => :environment do
          ActiveRecord::Base.establish_connection(RAILS_ENV.to_sym)
          languages = Language.all
-         languages.each do |lang|
-           psc = lang.pastes.count
-	   lang.pastes_count = psc
-	   lang.save!
-	   puts "language #{lang.slug} pastes count is : #{psc}"
+         languages.each do |language|
+	   pastes_count = language.pastes.count
+           Language.update_counters language.id, :pastes_count => pastes_count
+	   puts "language #{language.slug} pastes count is : #{pastes_count}"
          end
     end
 
