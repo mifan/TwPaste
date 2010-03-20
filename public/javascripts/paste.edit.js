@@ -2,11 +2,11 @@ $(document).ready(function() {
   var textDesc = $("#textDesc");
   var textTags = $("#textTags");
 
-  if(textDesc.val().length > 0){
+  if($("#paste_desc").val().length > 0){
     textDesc.show();
   }
 
-  if(textTags.val().length > 0){
+  if($("paste_tag_list").val().length > 0){
     textTags.show();
   }
 
