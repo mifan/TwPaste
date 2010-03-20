@@ -86,7 +86,7 @@ class PastesController < ApplicationController
 
 
   def new
-    @paste = Paste.new(:language_id => 36)
+    @paste = Paste.new(:language_id => 35)
     set_seo_meta("New paste")
   end
 
