@@ -57,10 +57,10 @@ $(document).ready(function() {
 
   $("#paste_private").change(function(){
     if($(this)[0].checked){
-      $("#paste_post_to_twitter").attr("checked","false");
-	  $("#paste_post_to_twitter").attr("disabled","true");
+      $("#paste_post_to_twitter").removeAttr("checked");
+	  $("#paste_post_to_twitter").attr("disabled",'true');
     }else{
-      $("#paste_post_to_twitter").attr("disabled","false");
+      $("#paste_post_to_twitter").removeAttr("disabled");
     }
   });
 
