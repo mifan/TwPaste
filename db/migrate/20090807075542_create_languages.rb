@@ -1,7 +1,7 @@
 class CreateLanguages < ActiveRecord::Migration
   def self.up
     create_table :languages do |t|
-      t.string   :name, :null => false,:limit => 40
+      t.string   :name, :null => false,:limit => 50
       t.string   :slug, :null => false,:limit => 20
       t.string   :description, :null => true
       t.integer  :pastes_count, :null => false, :default => 0
@@ -89,6 +89,7 @@ class CreateLanguages < ActiveRecord::Migration
     end
 
     add_index :languages, :slug
+    add_index :languages, :pastes_count
   end
 
   def self.down

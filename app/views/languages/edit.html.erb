@@ -1,8 +1,9 @@
-<div id="content">
-<h1>Editing language</h1>
-
+<div class="rightCol">
+  <%=render :partial => 'tiles/sidebox/follow_us' %>
+</div>
+<div class="main">
+<h2>Editing language</h2>
 <% form_for(@language) do |f| %>
-  <%= f.error_messages %>
   <p>
     <%= f.label :name, "Name:" %><br />
     <%= f.text_field :name %>
@@ -19,9 +20,4 @@
     <%= f.submit 'Save' %>
   </p>
 <% end %>
-</div>
-<div id="right">
-    <div class="box">
-        <%= link_to 'Languages list', languages_path %>
-    </div>
 </div>

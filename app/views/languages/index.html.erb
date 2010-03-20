@@ -1,13 +1,11 @@
 <div class="rightCol">
   <% if admin_user %>
-      <div class="side-box" id="recent_comments">
-        <h3>New Language</h3>
+      <div class="side-box">
          <%= link_to 'New language', new_language_path %>
       </div>
   <% end %>
 	  <%=render :partial => 'tiles/sidebox/follow_us' %>
 </div>
-
 
 <div class="main">
 <h2>Supported languages</h2>

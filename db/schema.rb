@@ -12,13 +12,11 @@
 ActiveRecord::Schema.define(:version => 20090819032328) do
 
   create_table "comments", :force => true do |t|
-    t.string   "title",            :limit => 50, :default => ""
     t.text     "comment"
     t.integer  "commentable_id"
     t.string   "commentable_type"
     t.integer  "user_id"
     t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   add_index "comments", ["commentable_id"], :name => "index_comments_on_commentable_id"
@@ -26,37 +24,44 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "languages", :force => true do |t|
-    t.string   "name",         :default => "", :null => false
-    t.string   "slug",         :default => "", :null => false
+    t.string   "name",         :limit => 50, :default => "", :null => false
+    t.string   "slug",         :limit => 20, :default => "", :null => false
     t.string   "description"
-    t.integer  "pastes_count", :default => 0,  :null => false
+    t.integer  "pastes_count",               :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "languages", ["pastes_count"], :name => "index_languages_on_pastes_count"
+  add_index "languages", ["slug"], :name => "index_languages_on_slug"
+
   create_table "pastes", :force => true do |t|
-    t.string   "title",             :default => "",    :null => false
-    t.text     "code",                                 :null => false
-    t.text     "code_formatted",                       :null => false
-    t.text     "summary_formatted",                    :null => false
-    t.string   "desc"
-    t.float    "size",              :default => 0.0
-    t.integer  "line_count",        :default => 0,     :null => false
-    t.integer  "comments_count",    :default => 0,     :null => false
-    t.integer  "views_count",       :default => 0,     :null => false
-    t.boolean  "private",           :default => false, :null => false
-    t.integer  "language_id"
-    t.integer  "user_id"
+    t.string   "title",             :limit => 80
+    t.text     "code",                                               :null => false
+    t.text     "code_formatted",                                     :null => false
+    t.text     "summary_formatted",                                  :null => false
+    t.text     "desc"
+    t.float    "size",                            :default => 0.0
+    t.integer  "line_count",                      :default => 0,     :null => false
+    t.integer  "comments_count",                  :default => 0,     :null => false
+    t.integer  "views_count",                     :default => 0,     :null => false
+    t.boolean  "private",                         :default => false, :null => false
+    t.integer  "language_id",                                        :null => false
+    t.integer  "user_id",                                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "pastes", ["language_id"], :name => "index_pastes_on_language_id"
+  add_index "pastes", ["private"], :name => "index_pastes_on_private"
+  add_index "pastes", ["user_id"], :name => "index_pastes_on_user_id"
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "taggable_type"
+    t.string   "tagger_type",   :limit => 48
+    t.string   "taggable_type", :limit => 48
     t.string   "context"
     t.datetime "created_at"
   end
@@ -65,26 +70,27 @@ ActiveRecord::Schema.define(:version => 20090819032328) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], :name => "index_taggings_on_taggable_id_and_taggable_type_and_context"
 
   create_table "tags", :force => true do |t|
-    t.string "name"
+    t.string "name", :limit => 48
   end
 
+  add_index "tags", ["name"], :name => "index_tags_on_name"
+
   create_table "users", :force => true do |t|
-    t.string   "login"
+    t.string   "login",             :limit => 80
     t.string   "crypted_password"
-    t.string   "persistence_token", :default => "", :null => false
-    t.string   "oauth_token"
-    t.string   "oauth_secret"
-    t.string   "twitter_uid"
+    t.string   "persistence_token",                :default => "", :null => false
+    t.string   "oauth_token",       :limit => 128
+    t.string   "oauth_secret",      :limit => 128
+    t.string   "twitter_uid",       :limit => 80
     t.string   "avatar_url"
-    t.string   "name"
-    t.integer  "login_count",       :default => 0,  :null => false
-    t.datetime "last_request_at"
+    t.string   "name",              :limit => 80
+    t.integer  "login_count",                      :default => 0,  :null => false
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.integer  "pastes_count",      :default => 0,  :null => false
-    t.integer  "comments_count",    :default => 0,  :null => false
+    t.integer  "pastes_count",                     :default => 0,  :null => false
+    t.integer  "comments_count",                   :default => 0,  :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

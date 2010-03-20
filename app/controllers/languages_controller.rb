@@ -1,4 +1,5 @@
 class LanguagesController < ApplicationController
+  before_filter :admin_user, :only => [:new, :create, :edit, :update]
 
   def index
     @languages = Language.all(:order => 'name ASC')

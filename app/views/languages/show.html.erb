@@ -1,3 +1,7 @@
+<div class="rightCol">
+  <%=render :partial => 'tiles/sidebox/follow_us' %>
+</div>
+
 <div class="main">
 <p>
   <b>Name:</b>
@@ -11,8 +15,6 @@
 	<b>Pastes count:</b>
 	<%= h @language.pastes_count %>
 </p>
-
-
 <%= link_to 'Edit', edit_language_path(@language) %> |
 <%= link_to 'Back', languages_path %>
 </div>
