@@ -26,13 +26,5 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  # get top comments
-  def self.pastes_recent(size = 10)
-    Comment.paginate :page => 1, :per_page => size, :conditions => ["commentable_type = 'Paste'"], :order => "id desc", :include => [:user]
-  end
-
-  def self.find_user_recent(user_id,size = 10)
-    Comment.paginate :page => 1, :per_page => size, :conditions => ["user_id = ? and commentable_type = 'Pastes'",user_id], :order => "id desc", :include => [:user]
-  end
 
 end
