@@ -3,11 +3,13 @@ class User < ActiveRecord::Base
 
   acts_as_authentic
   before_create :populate_oauth_user
-
-
  
   def update_twitter_info
-    populate_oauth_user
+      begin
+        populate_oauth_user
+      rescue
+        puts "update twitter info of #{self.login} failed"
+      end
   end
 
   def twitter_update(tweet) 
@@ -17,14 +19,13 @@ class User < ActiveRecord::Base
       :token => self.oauth_token, 
       :secret => self.oauth_secret)
     if client.authorized?
-      client.update(tweet)
+      begin
+        client.update(tweet)
+      rescue
+        puts "update tweet#{tweet} failed"
+      end
     end
   end
-
-
-
- 
-
 
   def oauth_json_info
      unless oauth_token.blank?

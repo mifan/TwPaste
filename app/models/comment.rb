@@ -1,5 +1,8 @@
 require "lib/shorten_url"
 class Comment < ActiveRecord::Base
+  include ERB::Util
+  include ActionView::Helpers::TextHelper
+
   attr_accessor :post_to_twitter
 
   include ActsAsCommentable::Comment
@@ -22,7 +25,7 @@ class Comment < ActiveRecord::Base
 
   def twitter_update
     if post_to_twitter == '1'
-        self.user.twitter_update("#{self.comment} " + ShortenUrl.bitly_url("http://twpaste.com/pastes/#{self.commentable.id}") ) 
+        self.user.twitter_update("#{truncate(self.comment,120)} " + ShortenUrl.bitly_url("http://twpaste.com/pastes/#{self.commentable.id}") ) 
     end
   end
 
