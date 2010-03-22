@@ -6,17 +6,6 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
 
 
-  # 设置SEO 的Meta 值
-  def set_seo_meta(title,keywords = '',desc = '')
-    if title
-      @page_title =  "#{title} &raquo; TwPaste TwitterPaste"
-    else
-      @page_title = "TwPaste TwitterPaste"
-    end
-    @meta_keywords = keywords
-    @meta_description = desc
-  end
-
   private
     def current_user_session
       return @current_user_session if defined?(@current_user_session)

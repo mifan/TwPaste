@@ -1,4 +1,5 @@
 class PastesController < ApplicationController
+  include SystemText
   # GET /pastes
   # GET /pastes.xml
   before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy,:repaste]
@@ -11,30 +12,35 @@ class PastesController < ApplicationController
       @pastes = @language.pastes.user_scoped(current_user).order('id DESC').find_page(params[:page])
       @sub_title = "Listing pastes in #{@language.name} language"
       @rss_url = rss_language_pastes_path(params[:language_id])
-      set_seo_meta("pastes &raquo; #{@language.name} language")
+      @page_title = "Pastes in #{@language.name} language - Page #{params[:page] || 1} "
+      @page_keywords = "#{@language.name} Lanauage pastes "
+      @page_description = "All pastes of Lanauage #{@language.name} "
     elsif params[:user_id] && (@user = User.find_by_login(params[:user_id]))
         @pastes = @user.pastes.user_scoped(current_user).order('id DESC').find_page(params[:page])
         @sub_title = "Listing #{@user.login}'s pastes"
         @rss_url = rss_user_pastes_path(params[:user_id])
-        set_seo_meta("#{@user.login}'s pastes")
+        @page_title = "#{@user.login}'s pastes - Page #{params[:page] || 1} "
+        @page_keywords = "#{@user.login} pastes "
+        @page_description = "All pastes of user #{@user.login} "
     elsif params[:tag_id]
       @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).user_scoped(current_user).order('id DESC').find_page(params[:page])
       #@pastes_count = Paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
-      @sub_title = "Listing #{params[:tag_id]} pastes"
+      @sub_title = "Listing pastes  taged with #{params[:tag_id]}"
       @rss_url = rss_tag_pastes_path(params[:tag_id])
-      set_seo_meta("pastes &raquo; Taged #{params[:tag_id]}")
+      @page_title = "Pastes  taged with #{params[:tag_id]} - Page #{params[:page] || 1} "
+      @page_keywords = "#{params[:tag_id]} pastes "
+      @page_description = "All pastes tagged with #{params[:tag_id]} "
     else
       @pastes = Paste.user_scoped(current_user).order('id DESC').find_page(params[:page])
       @sub_title = "Listing pastes"
-      @feed_title = "Recent pastes"
       @rss_url = rss_pastes_path
-      set_seo_meta("All pastes")
+      @page_title = "All pastes - Page #{params[:page] || 1} "
+      @page_keywords = "All pastes "
+      @page_description = "All pastes "
       
     end
-
     @pastes_count = @pastes.total_entries
     @tags = Paste.user_scoped(current_user).tag_counts_on(:tags)
-
   end
 
 
@@ -75,7 +81,10 @@ class PastesController < ApplicationController
     end
     @paste.update_views_count
     @comment = @paste.comments.new
-    set_seo_meta("##{@paste.id} #{@paste.title}")
+
+      @page_title = "#{@paste.title || 'Untitled'} - Paste ID ##{@paste.id} "
+      @page_keywords = "#{@paste.tags.join(' ')} TwPaste #{@paste.title}"
+      @page_description = meta_description_text(@paste.desc)
     respond_to do |format|
       format.html # show.html.erb
       format.raw { render :text => @paste.code }
@@ -87,7 +96,7 @@ class PastesController < ApplicationController
 
   def new
     @paste = Paste.new(:language_id => 35)
-    set_seo_meta("New paste")
+    @page_title = "New paste" 
   end
 
   def repaste
@@ -105,7 +114,7 @@ class PastesController < ApplicationController
       pa.tag_list = paste_origin.tags.join(",")
     end
 
-    set_seo_meta("New paste")
+    @page_title = "Repaste"
     render :action => 'new'
   end
 
@@ -113,7 +122,7 @@ class PastesController < ApplicationController
   def edit
     @paste = current_user.pastes.find(params[:id])
     @paste.tag_list = @paste.tags.join(",")
-    set_seo_meta("Edit paste")
+    @page_title = "Edit paste" 
   end
 
   # POST /pastes

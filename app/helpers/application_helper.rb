@@ -29,15 +29,15 @@ module ApplicationHelper
 
   #-------------------------------------------------------------
   def page_title
-    @page_title || 'TwPaste | Twitter Paste'
+    (@page_title || '') << '&raquo; TwPaste &raquo; Twitter Paste &raquo; Code Sharing'
   end
   
-  def page_keywords
-    @page_keywords || 'TwPaste'
+  def page_keywords    
+    (@page_keywords || '') <<  ' TwPaste Twitter Paste Code Sharing'
   end
     
   def page_description
-    @page_description || 'TwPaste'
+    (@page_description || '') << ' TwPaste Twitter Paste Code Sharing'
   end
 
 end

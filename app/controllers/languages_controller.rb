@@ -3,6 +3,7 @@ class LanguagesController < ApplicationController
 
   def index
     @languages = Language.all(:order => 'name ASC')
+    @page_title = "All supported Languages "
    end
 
   def show
