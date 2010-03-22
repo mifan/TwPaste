@@ -25,9 +25,9 @@ class PastesController < ApplicationController
     elsif params[:tag_id]
       @pastes = Paste.tagged_with(params[:tag_id],:on => :tags).user_scoped(current_user).order('id DESC').find_page(params[:page])
       #@pastes_count = Paste.tagged_with(params[:tag],:on => :tags).count(:select => "*")
-      @sub_title = "Listing pastes  taged with #{params[:tag_id]}"
+      @sub_title = "Listing pastes  tagged with #{params[:tag_id]}"
       @rss_url = rss_tag_pastes_path(params[:tag_id])
-      @page_title = "Pastes  taged with #{params[:tag_id]} - Page #{params[:page] || 1} "
+      @page_title = "Pastes tagged with #{params[:tag_id]} - Page #{params[:page] || 1} "
       @page_keywords = "#{params[:tag_id]} pastes "
       @page_description = "All pastes tagged with #{params[:tag_id]} "
     else
@@ -35,8 +35,8 @@ class PastesController < ApplicationController
       @sub_title = "Listing pastes"
       @rss_url = rss_pastes_path
       @page_title = "All pastes - Page #{params[:page] || 1} "
-      @page_keywords = "All pastes "
-      @page_description = "All pastes "
+      @page_keywords = "All pastes language"
+      @page_description = "All pastes ,All Language ,All Users "
       
     end
     @pastes_count = @pastes.total_entries
@@ -96,7 +96,7 @@ class PastesController < ApplicationController
 
   def new
     @paste = Paste.new(:language_id => 35)
-    @page_title = "New paste" 
+    @page_title = "New paste " 
   end
 
   def repaste
@@ -114,7 +114,7 @@ class PastesController < ApplicationController
       pa.tag_list = paste_origin.tags.join(",")
     end
 
-    @page_title = "Repaste"
+    @page_title = "Repaste "
     render :action => 'new'
   end
 
@@ -122,7 +122,7 @@ class PastesController < ApplicationController
   def edit
     @paste = current_user.pastes.find(params[:id])
     @paste.tag_list = @paste.tags.join(",")
-    @page_title = "Edit paste" 
+    @page_title = "Edit paste " 
   end
 
   # POST /pastes
