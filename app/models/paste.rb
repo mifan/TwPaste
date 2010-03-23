@@ -37,7 +37,7 @@ class Paste < ActiveRecord::Base
 
   def twitter_update
     if post_to_twitter == '1'
-        self.user.twitter_update("twpaste: #{self.id} #{self.title} " + ShortenUrl.bitly_url("http://twpaste.com/pastes/#{self.id}"))
+        self.user.twitter_update("twpaste: #{self.title} " + ShortenUrl.bitly_url("http://twpaste.com/pastes/#{self.id}"))
     end
   end
 

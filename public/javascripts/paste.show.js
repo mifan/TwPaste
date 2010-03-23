@@ -23,6 +23,10 @@ $(document).ready(function(){
     comment_changed();
   });
 
+  $("#comment_comment").change(function(){
+    comment_changed();
+  });
+
 
 
   $("#comment_post_to_twitter").change(function(){

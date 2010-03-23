@@ -2,6 +2,21 @@ $(document).ready(function() {
   var textDesc = $("#textDesc");
   var textTags = $("#textTags");
 
+  function checkPasteTitle(){
+    if($("#paste_title").val().length > 0){
+      $("#title-notice").hide();
+      $("#paste_post_to_twitter").removeAttr("disabled");
+      $("#paste_post_to_twitter").attr("checked",'true');
+
+    }else{
+      $("#title-notice").show();
+      $("#paste_post_to_twitter").attr("disabled",'true');
+      $("#paste_post_to_twitter").removeAttr("checked");
+    }
+  }
+
+  checkPasteTitle();
+
   if($("#paste_desc").val().length > 0){
     textDesc.show();
   }
@@ -21,6 +36,15 @@ $(document).ready(function() {
   }else{
     $("#addTagsId").text('+ Tags');
   }
+
+
+  $("#paste_title").keyup(function(){
+    checkPasteTitle();
+  });
+
+  $("#paste_title").change(function(){
+    checkPasteTitle();
+  });
 
 
 

@@ -4,6 +4,7 @@ class PastesController < ApplicationController
   # GET /pastes.xml
   before_filter :require_user, :only => [:new,:create,:edit,:update,:destroy,:repaste]
 
+
   
   def index 
     @sub_title = ''

@@ -73,6 +73,9 @@ label.error  {
 span.error  {
   color:#D5060D;
 }
+p.notice {
+  color:#AD9D45;
+}
 
 label {
   color:#333333;

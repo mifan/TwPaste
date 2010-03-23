@@ -3,7 +3,8 @@
       <div style="width:99%;">
         <div style="float:left;" class="input-space">
           <%= f.label :title,"Title:",:class => 'title' %>
-          <%= f.text_field :title ,{:class => 'space' ,:size => 50,:maxlength => "72"}%>
+          <%= f.text_field :title ,{:class => 'space' ,:size => 50,:maxlength => "72", :style => "width:400px;"}%>
+		  <p id="title-notice" class="notice" style="padding:0 0 0 5px;">Can not post it to twitter if title is blank.</p>
         </div>
         <div style="float:right;padding-right:10px;" class="input-space">
           <%= f.label :language, "Language:" ,:class => 'title' %>
