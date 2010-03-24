@@ -27,6 +27,10 @@ module ApplicationHelper
     return auto_link(simple_format(html_escape(comment)))
   end
 
+  def format_description(desc)
+    return auto_link(simple_format(desc))
+  end
+
   #-------------------------------------------------------------
   def page_title
     (@page_title || '') << '&raquo; TwPaste &raquo; Twitter Paste &raquo; Code Sharing'

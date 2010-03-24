@@ -11,7 +11,7 @@ class Paste < ActiveRecord::Base
   acts_as_commentable
 
   validates_presence_of :code
-  validates_length_of   :title, :maximum => 72
+  validates_length_of   :title, :maximum => 80
 
   before_save :format_code 
   after_save  :twitter_update
