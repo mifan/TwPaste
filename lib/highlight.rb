@@ -36,6 +36,7 @@ class Highlight
   def self.format_without_linenos(code,type)
     result = ''
     IO.popen("pygmentize -f html -l #{type} -O encoding=utf8", 'r+') do |pipe|
+      pipe.sync  = true
       pipe.print code
       pipe.close_write
       result = pipe.read
