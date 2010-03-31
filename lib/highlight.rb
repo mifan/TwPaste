@@ -23,6 +23,7 @@ class Highlight
       pipe.flush
       pipe.close_write
       result = pipe.read
+      pipe.close_read
     end
     if $? != 0
       result = code
@@ -38,6 +39,7 @@ class Highlight
       pipe.print code
       pipe.close_write
       result = pipe.read
+      pipe.close_read
     end
     if $? != 0
       result = code
