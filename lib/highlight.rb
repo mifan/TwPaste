@@ -19,10 +19,12 @@ class Highlight
     #end
 
     IO.popen("pygmentize -f html -l #{type} -O encoding=utf8,linenos=1", 'r+') do |pipe|
+      pipe.sync  = true
       pipe.print code
       pipe.flush
       pipe.close_write
       result = pipe.read
+      pipe.flush
       pipe.close_read
     end
     if $? != 0
