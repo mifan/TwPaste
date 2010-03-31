@@ -21,11 +21,11 @@ class Highlight
     IO.popen("pygmentize -f html -l #{type} -O encoding=utf8,linenos=1", 'r+') do |pipe|
       #pipe.sync  = true
       pipe.print code
-      pipe.flush
+      #pipe.flush
       pipe.close_write
       result = pipe.read
-      pipe.flush
-      pipe.close_read
+      #pipe.flush
+      #pipe.close_read
     end
     if $? != 0
       result = code
@@ -42,7 +42,7 @@ class Highlight
       pipe.print code
       pipe.close_write
       result = pipe.read
-      pipe.close_read
+      #pipe.close_read
     end
     if $? != 0
       result = code
