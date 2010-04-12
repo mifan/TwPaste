@@ -1,7 +1,7 @@
 require "md5"
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  
+  include Twitter::Autolink
   # return the formatted flash[:notice] html
   def success_messages
     if flash[:notice]
@@ -23,12 +23,13 @@ module ApplicationHelper
 
 
   # format comment text
+
   def format_comment(comment)
-    return auto_link(simple_format(html_escape(comment)))
+    return  auto_link(simple_format(html_escape(comment)),:username_class => 'normal-weight')
   end
 
   def format_description(desc)
-    return auto_link(simple_format(desc))
+    return auto_link(simple_format(desc),:username_class => 'normal-weight')
   end
 
   #-------------------------------------------------------------
