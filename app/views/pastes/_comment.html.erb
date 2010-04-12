@@ -1,12 +1,12 @@
 <div class="comment">
   <div class="twitt-face">
-     <a href="<%= user_pastes_path(comment.user) %>">
+     <a href="/users/<%=comment.user.login%>/pastes">
        <img src="<%= comment.user.avatar_url %>" width="48px" height="48px" alt="<%= comment.user.login %>" />
      </a>
   </div>
   <div class="comment-body">
     <span class="comment-name">
-      <%= link_to comment.user.login, user_pastes_path(comment.user),{:class => 'normal-weight'} %>
+      <%= link_to comment.user.login, "/users/#{comment.user.login}/pastes" ,{:class => 'normal-weight'} %>
     </span>
     <span class="comment-date">
       posted <%= comment.created_at.to_s(:short_time) %>
