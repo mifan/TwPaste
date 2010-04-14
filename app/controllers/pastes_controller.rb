@@ -119,6 +119,23 @@ class PastesController < ApplicationController
     render :action => 'new'
   end
 
+  def count
+      paste = Paste.find(params[:id])
+      if paste
+       render :text => ViewsCounter.incr(paste.id) 
+      else
+       render :text => 'n/a' 
+      end
+  end
+
+  def viewscount
+    @paste = Paste.find(params[:id])
+    respond_to do |format|
+      format.js { render :layout => false }
+    end
+
+  end
+
   # GET /pastes/1/edit
   def edit
     @paste = current_user.pastes.find(params[:id])
