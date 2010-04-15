@@ -7,7 +7,6 @@ class Paste < ActiveRecord::Base
   belongs_to :user, :counter_cache => true
   acts_as_taggable_on :tags
 
-  acts_as_views_count
   acts_as_commentable
 
   validates_presence_of :code
