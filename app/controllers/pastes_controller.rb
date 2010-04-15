@@ -80,12 +80,12 @@ class PastesController < ApplicationController
        redirect_to root_url,:status=>:found
        return
     end
-    @paste.update_views_count
     @comment = @paste.comments.new
 
-      @page_title = "#{@paste.title || 'Untitled'} - Paste ID ##{@paste.id} "
-      @page_keywords = "#{@paste.tags.join(' ')} TwPaste #{@paste.title}"
-      @page_description = meta_description_text(@paste.desc)
+    @page_title = "#{@paste.title || 'Untitled'} - Paste ID ##{@paste.id} "
+    @page_keywords = "#{@paste.tags.join(' ')} TwPaste #{@paste.title}"
+    @page_description = meta_description_text(@paste.desc)
+
     respond_to do |format|
       format.html # show.html.erb
       format.raw { render :text => @paste.code }
