@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user , :admin_user
   filter_parameter_logging :password, :password_confirmation
 
+  before_filter :set_process_name_from_request
+  after_filter :unset_process_name_from_request
+
 
   private
     def current_user_session
@@ -49,9 +52,12 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+  def set_process_name_from_request
+    $0 = 't:' + request.path[0,14] 
+  end
 
-
-
-  
+  def unset_process_name_from_request
+    $0 = 't:' + request.path[0,13] + "*"
+  end
 
 end
